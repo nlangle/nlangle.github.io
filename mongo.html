@@ -1,0 +1,77 @@
+<h1>Using Mongo with MAMP</h1>
+<p>A brief rundown on installing and using mongodb with MAMP on osx yosemite</p>
+<p>this wasn't exactly straightforward, it took several steps from several online resources to get this going, here is the roadmap for my process</p>
+<p>this process will have to be repeated on all major osx updates (mavericks -> yosemite) or anytime that mamp is updated</p>
+
+<ol>
+    <li><h2>install mongodb</h2>
+        <p>make sure mongo is installed.  this was already done, but adding for sake of completeness</p>
+        <p>use brew to do this</p>
+        <pre>brew install mongodb</pre>
+    </li>
+    
+    <li>
+        <h2>install autoconf & xcode</h2>
+        <p>these were also previously installed, again just adding for completeness</p>
+        <pre>brew install autoconf</pre>
+        <p>NOTE: xcode updates may require reinstall of command line tools</p>
+        <pre>xcode-select --install</pre>
+        <a href="http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/" target="_blank">How to Install Command Line Tools in OS X Mavericks & Yosemite (Without Xcode)</a>
+    </li>
+    
+    <li>
+        <h2>Download and Install PHP Source</h2>
+        <ol>
+            <li>get php version
+                <pre>view MAMP webstart page and select php or view under MAMP preferences php tab</pre>
+            </li>
+            <li>find source from:<br><a href="http://www.php.net/releases/" target="_blank">http://www.php.net/releases/ </a>   </li>
+            <li>unzip downloaded package</li>
+            <li>move contents to MAMP directory</li>
+                <ul>
+                    <li>this will likely require a new directory to be created</li>
+                    <li>
+                        <pre>cd /Applications/MAMP/bin/php/php5.5.26/</pre>
+                        <pre>mkdir include</pre>
+                        <pre>cd include</pre>
+                        <pre>mkdir php</pre>
+                    </li>
+                    <li>move <b>contents</b> from downloaded php5.5.26 (or your php version) to this file.  OR... simply move and rename the downloaded file to the "include" directory and rename it "php"</li>
+                </ul>
+            <li>open the php file and run ./configure</li>
+            <pre>cd /Applications/MAMP/bin/php/php5.5.26/include/php/ && ./configure</pre>
+            <li>the above step may encounter an -iconv error.  if so run this:</li>
+            <pre>cd /Applications/MAMP/bin/php/php5.5.26/include/php/ && ./configure --without-iconv</pre>
+            <a href="http://www.allsupported.com/category/mamp-pro/" target="_blank"></a>
+        </ol>
+    </li>
+    
+    <li>
+        <h2>Build & Install mongo-php Driver</h2>
+        <p>install mongo</p>
+        <pre>cd /Applications/MAMP/bin/php/php5.5.26/bin</pre>
+        <pre>sudo pecl install mongo</pre>
+        <p>wait for it...</p>
+    </li>
+    
+    <li>
+        <h2>Add mongo.so extension to php.ini</h2>
+        <p>MAMP has LOTS of .ini files</p>
+        <p>find the .ini files that match your version of php</p>
+        <pre>cd /Applications/MAMP/bin/php/php5.5.26/conf/php.ini</pre>
+        <p>find the "Extensions" section</p>
+        <p>add this line to the bottom of the section</p>
+        <pre>extension=mongo.so</pre>
+        <p>but... mamp has another .ini file for this php version.  for good measure, let's add the extension here too:</p>
+        <pre>cd /Applications/MAMP/conf/php5.5.26/php.ini</pre>
+        <p>same as above, add to the bottom of the extensions section</p>
+        <pre>extension=mongo.so</pre>
+    </li>
+    
+    <li>
+        <h2>Restart MAMP</h2>
+        <p>after restart verify mongo is installed:</p>
+        <p>visit the mamp php page, look for mongo section on page</p>
+    </li>
+    
+</ol>
