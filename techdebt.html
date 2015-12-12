@@ -1,0 +1,203 @@
+<h1>What the heck is technical debt?</h1>
+
+<p>I recently read an article the defined technical debt and provided tips for dealing with it.  This is something that might be worthy of a brown bag discussion, to get fellow project managers to understand what it is and to help plan more acoordingly for it.  For easy reference, I am pasting the content below, but there is also a link at the end.</p>
+<h2>Defining and Dealing with Technical Debt</h2>
+<p>
+We're all familiar with debt, right? It's that concept where an amount is owed from one person (the borrower) to another (the lender). We often use it to describe financial situations. For example, I borrow money from a bank. I now have debt with them in the amount of how much money they lent me (plus interest!) and expect me to repay it.
+</p><p>
+Debt isn't always about money. In fact, we run into it as front-end developers all the time and may not even know it. We call this term technical debt and will be exploring what that means in this post.
+</p>
+<h2>Defining Technical Debt</h2>
+<p>I could pull a fast one on you and link you directly to the Wikipedia entry on technical debt to read yourself, but I think there's more to it than what's there.</p>
+<p>Technical debt is the sum of compromises we make when writing code during the development process. You might even think of every line of code you write as contributing to technical debt. That's because there is: the code itself, the results of that code, and also how that code interacts with other code. The consequences of debt arise when change needs to be made. The difficulty of coordinating that change with the desired result and other code's impact on that result is tied to the degree of technical debt.</p>
+<p>Each time we write code (especially if it's against what might be considered a best practice), we start to see consequences in the final product we ship. Like money, the compromises we make in our code is something that can and often needs to be paid back because, if not, the debt can bankrupt us, in the form of difficulty making changes.
+</p><p>
+The one thing worth taking away from the Wikipedia entry is that not all technical debt is created equal. In fact, there are four types of debt to consider. Let's take a look at each one.
+</p>
+<h2>Reckless Debt</h2>
+<p>
+Theses are the compromises we make in our code intentionally and without regard for the consequences they may have. It's the equivalent of taking out a few fresh credit cards and maxing them out with no intention of paying off the balances. Not that I have any experience with that or condone it in any way.
+</p><p>
+Think about the times you have used !important on a CSS attribute. There is almost always a way to avoid using it and it's generally a good idea to do so. Still, how many of us sneak one in there every now and then because the trouble of refactoring code seems too daunting in the moment? That's a compromise we make and will likely have to deal with at some other point in time when the style cascade fails us again in the future.
+</p><p>
+Sometimes we're aware we're being reckless, and sometimes we're not. Naming is a classic example of where it's easy to be oblivious of recklessness. Sometimes a name we choose (for a function, class name, whatever) seems perfectly OK at first, only to discover it clashes in an unexpected way in the future. The recklessness here being the absence or non-following of a naming strategy.
+</p>
+<h2>Prudent Debt</h2>
+<p>
+These are the compromises we make knowingly with an eye on the future. Have you ever borrowed money to make an investment in something that (hopefully) will pay off in the future? This is the same thing. In fact, prudence is often considered a virtue and is exemplified by careful thought and mindfulness on the future.
+</p><p>
+How do we make prudent compromises with our code? Think about the times you have written anything that was irrelevant at the time, but would make sense later in the future. I'm reminded of CSS3 features several years back. Remember when rounded corners were still unsupported in many browsers, but we all knew they would be supported soon? Using the prefixed and un-prefixed attributes together is a good example of a compromise that produces prudent debt:
+<pre>
+.rounded-corners {
+   -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+      -moz-border-radius: 5px;
+           border-radius: 5px;
+}
+</pre>
+
+That's a lot of code to support one small element of design, but we knew that it would play nice with browsers as they adopted the spec in future releases. At that point, we can freely pay back our debt by removing the vendor prefixes.
+</p><p>
+(Now, of course, we have tools like Autoprefixer to help with things like vendor prefixes.)
+</p><p>
+This type of thing is still debt. The planning and coding takes thought and effort and produces more code. Maybe things won't play out just as you thought they would.
+</p>
+<h2>Deliberate Debt</h2>
+<p>
+We sometimes make intentional compromises with our code and this, in turn, leads to debt. You would never do something like that, right? Well, consider some of the reasons you might:
+</p><p>
+<ul>
+    <li>Budget limitations</li>
+    <li>Deadlines</li>
+    <li>HiPPOs</li>
+</ul>
+I know that last one has bitten me in the butt at least a few times. The point is that there can be situations where we make compromises that are outside of our control, which results in taking out a technical debt, despite our best intentions.
+</p>
+<h2>Inadvertent Debt</h2>
+<p>
+This is sort of the result of not knowing what you don't know. These are the compromises we make because we don't know any better. It's not that we mean to. We happened to do it without knowledge of doing so.
+</p><p>
+Naming things is relevant here, too. For example, we decide the class names used on elements and the way we name them can have adverse consequences on how other parts of the code work. That's why we're now seeing a bigger movement to develop naming conventions, like BEM.
+</p><p>
+Other examples might be...
+<ul>
+    <li>You forgot to consider some edge cases in what a function could accept</li>
+    <li>You fixed a problem for one specific browser, and didn't realize it broke another</li>
+    <li>You didn't realize a library you were using had a method for something, so you hand-rolled your own, only to discover yours doesn't work quite as well</li>
+    <li>Your tests omitted a certain possible user state</li>
+</ul></p>
+<h2>The Consequences of Technical Debt</h2>
+<p>
+I have never heard the word "debt" used to describe something positive. Instead, it seems to be something that carries negative consequences. For code, those consequences can be devastating, in the form of an unstable codebase, and probably a motivation-sucking one.
+</p><p>
+Then there is the "interest" metaphor. Interest is an amount calculated by a rate on the amount of debt we owe and are expected to pay back in addition to what was borrowed. The more money we have (code we write) and the longer we wait, the higher the interest. One compromise can lead to others and the snowball effect can create interest that becomes too great to pay back in the form of maintenance, performance, or deadlines, among other things.
+</p>
+<h2>Dealing with Technical Debt</h2>
+<p>
+Technical debt is a lot like financial debt in the sense that we likely want to avoid it as much as possible. Here are a few ways we can do that in addition to dealing with any debt we might have.
+</p>
+<h3>Document Everything</h3>
+<p>
+Making notes in our code is good practice in general, but can get us out of sticky debt situations as well. If you find yourself in the position of needing to make a compromise, document what it is as comments in the code. In those comments, explain what you did, what impacts it could have, and how to solve it in the future. Your future self will thank you.
+</p><p>
+Comments are particularly useful when they not only explain the code does, but:
+<ul>
+    <li>Why it does it</li>
+    <li>Quirks that have come up related to it</li>
+    <li>Where other code resides that is related to it</li>
+</ul></p>
+<h3>Coding Style Guides</h3>
+<p>
+Keep a coding style guide and follow it with diligence. A style guide will provide standards for your team or project, and will often help you make tough decisions, such as naming conventions or code formatting.
+</p><p>
+Need help with a style guide? Chris has a nice write-up on where style guides fit into the development process in addition to this example of a Sass style guide.
+</p><p>
+A well-followed style guide can reduce the cognitive load when reasoning about a bit of code you haven't worked with recently.
+</p>
+<h3>Code Reviews</h3>
+<p>
+Review your code early and often. This could be a post in and of itself. Oh, it already is.
+</p><p>
+Be harsh on your code during these reviews. Could you have made better decisions when looking at the code for things such as maintainability, performance, or accessibility? The writer of the code probably isn't the best judge of all these things.
+</p>
+<h3>Shame File</h3>
+<p>
+This is one of my all-time favorite recommendations. Harry Roberts floated the idea around as a way of keeping tabs on our deliberate technical debt. Keep all known compromises in this file and use it as a task list of debts that need to be repaid. And, like a large credit card bill, make an effort to at least clear the minimum payment for the month.
+</p><p>
+It may seem like making a pool for technical debt is a bad idea. But it's known technical debt - which you could think of as less expensive that scattered, undocumented, insidious technical debt.
+</p>
+<h2>Wrapping Up</h2>
+<p>
+We covered the concept of technical debt in this post and often described it in terms of money. Do you think technical exists? If so, where do you rack up the most debt and how do you deal with it? If not, is technical debt (and the financial metaphor) a bit much? Share your thoughts in the comments.
+</p>
+<h3>Other Resources</h3>
+<ul>
+    <li>DevMag.io: What is Technical Debt?</li>
+    <li>A Brief History of Technical Debt</li>
+    <li>Technical Debt 101</li>
+    <li> Managing Technical Debt</li>
+</ul>
+
+<a href="https://css-tricks.com/defining-and-dealing-with-technical-debt/#more-209028">click here to read the original article</a>
+<br><br><br><br>
+<h1>A Field Study of Technical Debt</h1>
+    <p>In their haste to deliver software capabilities, developers sometimes engage in less-than-optimal coding practices. If not addressed, these shortcuts can ultimately yield unexpected rework costs that offset the benefits of rapid delivery. <a href="http://www.sei.cmu.edu/architecture/research/arch_tech_debt/"><em>Technical debt</em></a> conceptualizes the tradeoff between the short-term benefits of rapid delivery and long-term value. Taking shortcuts to expedite the delivery of features in the short term incurs technical debt, analogous to financial debt, that must be paid off later to optimize long-term success. Managing technical debt is an increasingly critical aspect of producing cost-effective, timely, and high-quality software products, especially in projects that apply <a href="http://insights.sei.cmu.edu/post.cfm/what-is-agile">agile </a>methods.</p>
+                    <p></p>
+                    <p>
+                        </p><p>A delicate balance is needed between the desire to release new software features rapidly to satisfy users and the desire to practice sound software engineering that reduces rework. Too often, however, technical debt focuses on coding issues when a broader perspective--one that incorporates software architectural concerns--is needed. This blog post, the first in a series, highlights the findings of a recent field study to assess the state of the practice and current thinking regarding technical debt and guide the development of a technical debt timeline.</p>
+<p><strong>The Technical Debt Metaphor </strong></p>
+<p>The technical debt metaphor, first introduced by <a href="http://www.wikiwand.com/en/Ward_Cunningham" data-new-link="http://www.wikiwand.com/en/Ward_Cunningham" data-noreplace="1">Ward Cunningham</a> in 1992, refers to the degraded quality resulting from overly hasty delivery of software capabilities to users. As my colleague Ipek Ozkaya explained at the <a href="http://insights.sei.cmu.edu/post.cfm/strategic-management-of-architectural-technical-debt">2012 Agile Research Forum</a>, "A little debt speeds up development, and can be beneficial as long as the debt is paid back promptly with a rewrite that reduces complexity and streamlines future enhancements."</p>
+<p>At the SEI, our working definition is taken from <a href="http://www.construx.com/10x_Software_Development/Technical_Debt/">Steve McConnell</a>:</p>
+<p style="padding-left: 30px;"><em>A design or construction approach that is expedient in the short term but that creates a technical context in which the same work will cost more to do later than it would cost to do now (including increased cost over time).</em></p>
+<p>The SEI Architecture Practices team has been one of the pioneers in advancing the research agenda regarding technical debt. In addition to our ongoing research and industry work, we have also helped to organize the international <a href="http://insights.sei.cmu.edu/archives.cfm/category/technical-debt">Managing Technical Debt workshop</a> series. Our early efforts have focused on providing software engineers visibility into technical debt from <a href="http://insights.sei.cmu.edu/archives.cfm/category/technical-debt">strategic and architectural perspectives</a>. Our ongoing efforts focus on developing tools and practices for providing comprehensive technical debt detection and visualization for developers, architects and business stakeholders.</p>
+<p>One question our work in this field has raised is whether there are practices that move this metaphor beyond a mere communication mechanism. The metaphor is attractive to practitioners because it communicates the idea that if quality problems are not addressed, things may get worse. Is there more to it than that?</p>
+<p>Existing studies of technical debt have largely focused on code metrics and small surveys of developers. Practitioners currently broadly define technical debt as a "<a href="http://www.construx.com/10x_Software_Development/Technical_Debt/">shortcut for expediency</a>" and more specifically, <a href="http://blog.crisp.se/2013/10/11/henrikkniberg/good-and-bad-technical-debt">bad code or inadequate refactoring</a>. The initial definition, from <a href="http://c2.com/doc/oopsla92.html">Ward Cunningham</a>, referred to the debt incurred because "first-time code" would ship with a limited understanding of the true nature of the problem. But is there more to technical debt than bad code?</p>
+<p>This blog post reports on our survey of 1831 participants, primarily software engineers and architects working in long-lived, software-intensive projects from three large organizations and follow-up interviews of seven of those software engineers.</p>
+<p><strong>Approach and Demographics</strong></p>
+<p>We piloted and then released a survey consisting of approximately 20 questions. You can find our survey instrument here. The seven follow-up interviews took 45 minutes each. We used coding, a well-developed qualitative research technique for categorizing concepts in text, to classify open-ended answers. Some details about our survey include the following:</p>
+<ul>
+<li>Respondents had on average 6 or more years' experience (one third of whom had more than 15 years).</li>
+<li>Roles selected included developers (42 percent), system engineers (7 percent), QA/testers (7 percent), project leads/managers (32 percent), architects (7 percent) and other (6 percent).</li>
+<li>There were 39 separate business units represented among the three companies, covering a broad set of domains, from scientific computing, to command and control, to business information systems, to embedded software.</li>
+<li>Most projects were web systems (24 percent) or embedded systems (31 percent).</li>
+<li>Projects generally consisted of 10 to 20 people, although 32 percent had fewer than 9 staff (including contractors and business staff).</li>
+<li>The systems averaged 3 to 5 years old, but a significant number (29 percent) were more than 10 years old.</li>
+<li>The systems were typically between 100 KLOC and 1MLOC in size.</li>
+<li>Most respondents used Scrum (33 percent) or incremental development methods (20 percent), but some were using self-admitted waterfall (15 percent) and some had no methodology (17 percent).</li>
+</ul>
+<p>The remainder of this post details our three research questions, the motivations behind each, and what our team learned from the responses.</p>
+<p><strong>First Question: Usefulness of the Metaphor<br></strong></p>
+<p>Our first research question asked<em></em></p>
+<p style="padding-left: 30px;"><em>Is there a commonly shared definition of technical debt among professional software engineers?</em></p>
+<p>Our team selected this question primarily because the practice of managing technical debt is still in its infancy. Too often, software developers will approach a manager and indicate that technical debt has been incurred and ask for money to fix it. Our results confirm the widely held belief that neither developers nor their managers share a clear understanding of exactly what is meant by the metaphor and what it means for their project. The exception is a shared understanding that poor architectural choices may generate technical debt.</p>
+<p>We asked participants to rank statements using a five-point scale from strongly disagree to strongly agree. You can see some of those statements in the figure below: 79 percent agree or strongly agree that "lack of awareness is a problem" and 71 percent that "technical debt implies dealing with both principal and interest." These responses suggest that there is widespread agreement on high-level aspects of the technical debt metaphor, including some popular financial extensions of the metaphor, such as the notion of principal, interest, and the need for payback.</p>
+<p><img style="vertical-align: middle;" src="http://insights.sei.cmu.edu/assets/content/chart1_perceptions_technicaldebt[1].png" alt="Perceptions of Technical Debt" height="215" width="423"></p>
+<h5><em>Perceptions of Technical Debt</em></h5>
+<p>As the figure below demonstrates, some of the most commonly-occurring concepts (such as Awareness, Interest, and Time Pressure) on the open-ended questions were similarly high-level.  For example, we assigned the concept Interest to the definition "extra effort in projects which is not required for purely technical reasons." These abstract concepts lack the detail for delineating the source of technical debt from the causes and consequences. Less common were answers pointing to the source such as "Code that has been incrementally developed over the years that is now so complicated ..." or "bugs and crash-downs."</p>
+<h5><em><img style="float: left;" src="http://insights.sei.cmu.edu/assets/content/chart2_codingfrequency.png" alt="Coding Frequency" height="336" width="556"></em></h5>
+<h5></h5>
+<h5></h5>
+<h5></h5>
+<h5></h5>
+<h5></h5>
+<h5></h5>
+<h5></h5>
+<h5></h5>
+<h5></h5>
+<h5><em>Coding Frequency for Open-Ended Questions</em></h5>
+<p>Our survey responses and follow-up interviews revealed that architecture was commonly seen as a major source of technical debt, which informed our second survey question.</p>
+<p><strong>Second Question: Architecture Choices</strong></p>
+<p>Our second research question asked</p>
+<p style="padding-left: 30px;"><em>Are issues with architectural elements (such as module dependencies, external dependencies, external team dependencies, architecture decisions) among the most significant sources of technical debt? </em></p>
+<p>Throughout our research into technical debt, we have seen multiple instances where the management of technical debt needed to extend beyond coding issues and focus on architecture issues.  For example, one respondent mentioned that some initial hacking had resulted in the abuse of a communication protocol for diagnosis and monitoring, resulting in poor extensibility and high maintenance costs. Another common example is where less modular design in the first release due to time constraints affects subsequent releases. Additional functionality could not be added later without doing extensive refactoring. This refactoring impacted future timelines and introduced additional bugs.</p>
+<p>This question was motivated by our previous research into technical debt, as well as the high percentage of responses to the previous question that answered with "architecture choice".</p>
+<p>For the second research question, we asked participants to rank a randomly ordered list of 14 choices (shown in the image below) "with respect to the amount of debt (1=high, 14=low) they represent on this project." These choices reflect different possible sources, including code, requirements, and architecture, that emerged from a workshop series we have helped organize, detailed in <a href="http://resources.sei.cmu.edu/library/asset-view.cfm?assetid=424850">this paper</a>. The image below shows that architecture choice predominates here.</p>
+<p>The image shows a stacked bar for each choice, and the total height of each bar reflects the number of survey respondents who selected that choice as either the first-, second-, or third-highest amount of debt on their project.</p>
+<p><img style="vertical-align: middle;" src="http://insights.sei.cmu.edu/assets/content/chart3_ranking_sources_technicaldebt.png" alt="Ranking Sources" height="303" width="502"></p>
+<p>Our examples offer cases different from "bad code," since decisions are taken earlier and involve more strategic design. For example: "The work that we're doing now to introduce a service layer and also building some clients using other technology is an example of, you know, decisions that could have been done at an earlier stage if we had had more time and had the funding and the resources to do them at the time instead of doing it now."</p>
+<p>We see a similar architecture focus in our interviews. Five (of seven) participants told stories about architecture choices in the context of a heavy emphasis on fast delivery of features and limited budget. These choices were framed in terms of development varying from an important architectural decision (in the form of a pattern or application framework) that was no longer followed.</p>
+<p>One participant offered an example of the model-view-controller pattern: "In retrospect we put messaging/communication ... in the wrong place in the model view controller architecture which limited flexibility. The correct implementation would put it at the model layer (supporting communication interaction between models) rather than at the presentation layer. As a result modifying or adding new roles requires more work than it should."</p>
+<p>While architecture choices were the greatest source of technical debt, dealing with that debt was more problematic. This problem stems from the long-life span of many of these projects and a drift from the original decisions, designs, and documentation. For example, "There were some problems in the infrastructure code where there was originally an architecture in place, but it wasn't necessarily followed consistently. ... So thought had been given to that, but in the implementation... shortcuts were taken and dependencies were not clean." One implication of this drift from original designs is a need for better monitoring of decisions and approaches.</p>
+<p><strong>Managing Technical Debt</strong></p>
+<p>Our final research question asked</p>
+<p style="padding-left: 30px;"><em>Are there practices and tools for managing technical debt?</em></p>
+<p>In asking this question, our team hoped to gain a greater understanding of what tools and practices organizations used in managing technical debt and whether those tools and practices were effective. A majority of the organizations that we interviewed rely primarily on code-level issue trackers.</p>
+<p>Our survey revealed few systemic management practices with 65 percent of respondents having no defined technical debt management practice. Of the remaining respondents, 25 percent managed it at the team level. While there is not an explicit standard approach for managing technical debt, there is some management of technical debt within existing processes. For example, 60 percent of respondents track technical debt as part of risk processes or backlog grooming.</p>
+<p>We asked about tool use, and 41 percent do not use tools for managing technical debt (26 percent have no opinion; only 16 percent thought tools were giving appropriate detail). For our question concerning who is aware of technical debt, our respondents (most of whom are developers, architects, or program managers) said executives and business managers were largely unaware (42 percent), and only 10 percent said their business managers were actively managing technical debt.</p>
+<p>Specific technical debt tools were rarely used to manage architectural issues, owing to the complexity of configuring them or interpreting results. We collated responses to an open-ended question on tools into the most-frequently cited tool categories, seen in the figure below.</p>
+<h5><img style="vertical-align: middle;" src="http://insights.sei.cmu.edu/assets/content/chart4_tooluse.png" alt="Tool Use" height="204" width="470"><em></em></h5>
+<h5><em>Tool Use as a Percentage of Total Answers. None and Unknown Excluded. </em></h5>
+<p>Issue trackers, which include tools such as Redmine, Jira, and Team Foundation Server, were the most prevalent (28 percent). After that, no tool category exceeded 11 percent, including dependency analysis (e.g., SonarQube, Understand), code rule checking (e.g., CPPCheck, Findbugs, SonarQube), and code metrics (e.g., Sloccount).<strong></strong></p>
+<p><strong>Overall Findings</strong></p>
+<p>Our survey revealed that software practitioners agree on the usefulness of the metaphor, notwithstanding different interpretations of what comprises technical debt in particular contexts. There is consensus on McConnell's definition of "a design and construction approach that is expedient in the short term."</p>
+<p>Our data and analysis strongly support that the leading sources of technical debt are architectural choices. Architectural choices and their design implications take many years to evolve and, consequently, are hard to plan and fund. It is vital to manage the drift between the preliminary understanding of the problem and the current understanding of the problem, since this drift will have important implications for the solution. This situation is what Cunningham means by "shipping first-time code is like going into debt."</p>
+<p>Developers perceive management as unaware of technical debt issues, and they desire standard practices and tools to manage technical debt that do not currently exist.</p>
+<p>We suggest that research in technical debt tooling focus on monitoring the gap between development and architecture, improving ongoing architecture analysis and conformance. Tooling is a necessary component of any technical debt management strategy. We are investigating use of the technical debt timeline as a way to map discovered technical debt issues to guide a management strategy. The next post in this series will explore this idea of a timeline in more detail.</p>
+<p><strong>Additional Resources</strong></p>
+<p>Portions of this post were taken from <a href="https://fink08.files.wordpress.com/2005/03/fse15.pdf">our research paper</a>, to be presented at the <a href="http://esec-fse15.dei.polimi.it/">ACM SIGSOFT Symposium on the Foundations of Software Engineering (FSE)</a> in September. More details on the methodology used and analyses conducted can be found there.</p>
+<p>You can access survey materials, including the questions, <a href="https://github.com/neilernst/td-survey">here</a>. We are interested in continuing the research, so if you would like to collaborate on a similar survey,<a href="http://www.sei.cmu.edu/contact.cfm"> please get in touch</a>.</p>
+<p>This survey is part of a wider SEI effort on technical debt, including an <a href="http://www.sei.cmu.edu/architecture/research/arch_tech_debt/index.cfm">ongoing research effort</a>.</p>
+<p>For other posts in our technical debt series, please click <a href="http://insights.sei.cmu.edu/archives.cfm/category/technical-debt">here</a>.</p>
+    
+    
+<a href="https://insights.sei.cmu.edu/sei_blog/2015/07/a-field-study-of-technical-debt.html">read the article</a>
