@@ -1,0 +1,168 @@
+<h1>Code Local</h1>
+<p>This covers setting up a local development environment on Mac OS X, using built in Apache and PHP.</p>
+<p>There are several how-to guides out there, for doing this.  For my own use, it took a combination of the steps from several of these, plus some info from stack overflow to get it working properly.</p>
+
+<ol>
+    <li>
+        <h2>Xcode</h2>
+        <p>Make sure Xcode is installed</p>
+        <p>Also, make install Xcode Command Line Tools <pre>xcode-select --install</pre></p>
+    </li>
+    <li>
+        <h2>Homebrew</h2>
+        <p>Make sure Homebrew is installed and/or updated</p><pre>brew update</pre>and do any necessary housecleaning<pre>brew outdated</pre><pre>brew cleanup</pre>
+    </li>
+    <li>
+        <h2>Sites Directory</h2>
+        <p>create sites directory in your user account</p>
+        <pre>/Users/nlangle/Sites</pre>
+    </li>
+    <li>
+        <h2>Apache</h2>
+        <p>Test Apache</p>
+        <pre>sudo apachectl start</pre>
+        <pre>apachectl configtest</pre>
+        <ol>
+            <li>
+                <h3>httpd.conf</h3>
+                <p>Open with Atom</p>
+                <pre>/private/etc/apache2/httpd.conf</pre>
+                <b>Uncomment these modules:</b>
+                <pre>LoadModule deflate_module libexec/apache2/mod_deflate.so</pre>
+                <pre>LoadModule vhost_alias_module libexec/apache2/mod_vhost_alias.so</pre>
+                <pre>LoadModule userdir_module libexec/apache2/mod_userdir.so</pre>
+                <pre>LoadModule rewrite_module libexec/apache2/mod_rewrite.so</pre>
+                <pre>LoadModule php5_module libexec/apache2/libphp5.so</pre>
+                <b>Change user and group</b>
+                <br>
+                <pre style="display:inline-block;">User _www</pre><span style="display:inline-block;margin:0 10px;background:cyan">--></span><pre style="display:inline-block;">User nlangle</pre>
+                <br>
+                <pre style="display:inline-block;">Group _www</pre><span style="display:inline-block;margin:0 10px;background:cyan">--></span><pre style="display:inline-block;">User staff</pre>
+                <br>
+                <b>Update document root</b>
+                <br>
+                <pre style="display:inline-block;">DocumentRoot "/Library/WebServer/Documents"</pre><span style="display:inline-block;margin:0 10px;background:cyan">--></span><pre style="display:inline-block;">DocumentRoot "/Users/nlangle/Sites"</pre>
+                <br>
+                <xmp style="display:inline-block;"><Directory "/Library/WebServer/Documents"></xmp><span style="display:inline-block;margin:0 10px;background:cyan">--></span><xmp style="display:inline-block;"><Directory "/Users/nlangle/Sites"></xmp>
+                <br>
+                <pre style="display:inline-block;">Options FollowSymLinks Multiviews</pre><span style="display:inline-block;margin:0 10px;background:cyan">--></span><pre style="display:inline-block;">Options Indexes FollowSymLinks Multiviews</pre>
+                <br>
+                <pre style="display:inline-block;">AllowOverride None</pre><span style="display:inline-block;margin:0 10px;background:cyan">--></span><pre style="display:inline-block;">AllowOverride All</pre>
+                <br>
+                <b>Add php to directory index</b>
+                <pre>DirectoryIndex index.html index.php</pre>
+                <b>Add type x-httpd-php</b>
+                <p>Insert this near the other AddType lines in the mime_module section</p>
+                <pre># Adding html type so php code can be included in it<br>AddType application/x-httpd-php .html .htm</pre>
+                <b>Allow user home directories</b>
+                <p>uncomment</p>
+                <pre>Include /private/etc/apache2/extra/httpd-userdir.conf</pre>
+                <b>Virtual hosts</b>
+                <p>uncomment</p>
+                <pre>Include /private/etc/apache2/extra/httpd-vhosts.conf</pre>
+            </li>
+            <li>
+                <h3>httpd-userdir.conf</h3>    
+                <p>uncomment</p>
+                <pre>Include /private/etc/apache2/users/*.conf</pre>
+            </li>
+            <li>
+                <h3>httpd-vhosts.conf</h3>  
+                <p>add virtual hosts to this file</p>
+                <h4>MAKE SURE THAT THIS IS THE VERY FIRST V-HOST IN THE FILE!!!</h4>
+                <xmp>
+                <Virtualhost *:80>
+                   DocumentRoot "/Users/nlangle/Sites/"
+                   ServerName localhost
+                </Virtualhost>
+                </xmp>
+                <p>then, add other virtual hosts in this format:</p>
+                <xmp>
+                <VirtualHost *:80>
+                    DocumentRoot "/Users/nlangle/Sites/smartgrid"
+                    ServerName smartgrid
+                </VirtualHost>
+                </xmp>
+            </li>
+            <li>
+                <h3>Add <i>username</i>.conf file</h3>
+                <p>create a new file in:</p>
+                <pre>/private/etc/apache2/users</pre>
+                <p>the file should be your username.conf</p>
+                <pre>nlangle.conf</pre>
+                <p>make it look like this:</p>
+                <xmp>
+                <Directory "/Users/nlangle/Sites/">
+                    Options Indexes MultiViews FollowSymLinks
+                    Require all granted
+                    AllowOverride All
+                    Order allow,deny
+                    Allow from all
+                </Directory>
+                </xmp>
+                <p>make sure permissions match this:</p>
+                <pre>-rw-r--r--  1 nlangle  wheel  181 Feb 10 15:31 nlangle.conf</pre>
+            </li>
+        </ol>
+        <p>restart apache</p>
+        <pre>sudo apachectl restart</pre>
+    </li>
+    <li>
+        <h2>Map to localhost</h2>
+        <p>add the virtual hosts from above to hosts</p>
+        <pre>/private/etc/hosts</pre>
+        <p>add each host in this format:</p>
+        <pre>127.0.0.1  <i>virtual host ServerName</i><br>::1  <i>virtual host ServerName</i></pre>
+        <p>example</p>
+        <pre>127.0.0.1  smartgrid<br>::1  smartgrid</pre>
+        <p>The <b>::1  <i>virtual host ServerName</i></b> line is important, it does not seem to work without this</p>
+        <p>restart apache</p>
+        <pre>sudo apachectl restart</pre>
+    </li>
+    <li>
+        <h2>PHP</h2>
+        <p>edit or create php.ini</p>
+        <pre>/private/etc/php.ini</pre>
+        <p>if it doesn't exist, copy from:</p>
+        <pre>/private/etc/php.ini.default</pre>
+        <ol>
+            <li>
+                <h3>allow error reporting</h3>
+                <pre style="display:inline-block;">error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT</pre><span style="display:inline-block;margin:0 10px;background:cyan">--></span><pre style="display:inline-block;">error_reporting = E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT</pre>
+                <br>
+                <pre style="display:inline-block;">display_errors = Off</pre><span style="display:inline-block;margin:0 10px;background:cyan">--></span><pre style="display:inline-block;">display_errors = On</pre>
+            </li>
+            <li>
+                <h3>add mongo extension</h3>
+                <p>add this to the extensions section in order to enable mongo:</p>
+                <pre>extension=mongo.so</pre>
+                <p>make sure mongo.so is in this location:</p>
+                <pre>/usr/lib/php/extensions/no-debug-non-zts-20121212</pre>
+            </li>
+            <li>
+                <h3>install mongo php driver</h3>
+                <a href="http://yamasnax.com/blog/yosemite-built-in-apache-installing-mongodb-php-driver/">Yosemite built-in apache, installing mongodb & php driver</a>
+            </li>
+        </ol>
+        <p>restart apache</p>
+        <pre>sudo apachectl restart</pre>
+    </li>
+    <li>
+        <h2>References & Links</h2>
+        <p>List of references used to achieve this workflow</p>
+        <ul>
+            <li><a href="https://mallinson.ca/osx-web-development/">https://mallinson.ca/osx-web-development/</a></li>
+            <li><a href="http://coolestguidesontheplanet.com/get-apache-mysql-php-phpmyadmin-working-osx-10-10-yosemite/">http://coolestguidesontheplanet.com/get-apache-mysql-php-phpmyadmin-working-osx-10-10-yosemite/</a></li>
+            <li><a href="http://coolestguidesontheplanet.com/set-virtual-hosts-apache-mac-osx-10-10-yosemite/">http://coolestguidesontheplanet.com/set-virtual-hosts-apache-mac-osx-10-10-yosemite/</a></li>
+            <li><a href="https://donatstudios.com/PHP-in-OS-X-Yosemite">https://donatstudios.com/PHP-in-OS-X-Yosemite</a></li>
+            <li><a href="https://getgrav.org/blog/mac-os-x-apache-setup-multiple-php-versions">https://getgrav.org/blog/mac-os-x-apache-setup-multiple-php-versions</a></li>
+            <li><a href="https://getgrav.org/blog/mac-os-x-apache-setup-mysql-vhost-apc">https://getgrav.org/blog/mac-os-x-apache-setup-mysql-vhost-apc</a></li>
+            <li><a href="https://medium.com/@raureif/os-x-yosemite-how-to-set-up-apache-mysql-and-php-with-homebrew-4bc236d7d9fa#.3eciao50w">https://medium.com/@raureif/os-x-yosemite-how-to-set-up-apache-mysql-and-php-with-homebrew-4bc236d7d9fa#.3eciao50w</a></li>
+            <li><a href="http://blog.johnjcamilleri.com/2014/10/fix-apache-php-after-upgrading-to-osx-yosemite/">http://blog.johnjcamilleri.com/2014/10/fix-apache-php-after-upgrading-to-osx-yosemite/</a></li>
+            <li><a href="https://gist.github.com/offsky/3707280">https://gist.github.com/offsky/3707280</a></li>
+            <li><a href="http://yamasnax.com/blog/yosemite-built-in-apache-installing-mongodb-php-driver/">http://yamasnax.com/blog/yosemite-built-in-apache-installing-mongodb-php-driver/</a></li>
+            <li><a href="http://technosophos.com/2010/01/30/os-x-installing-mongodb-and-php-mongo-driver.html">http://technosophos.com/2010/01/30/os-x-installing-mongodb-and-php-mongo-driver.html</a></li>
+            <li><a href="http://apple.stackexchange.com/questions/135336/virtual-hosts-not-working-on-osx-mavericks">http://apple.stackexchange.com/questions/135336/virtual-hosts-not-working-on-osx-mavericks</a></li>
+        </ul>
+    </li>
+</ol>

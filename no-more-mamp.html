@@ -1,0 +1,36 @@
+<h1>No more MAMP</h1>
+<p>Recently, I elected to ditch MAMP to use OS X built in local development environment.  MAMP was running on Mavericks, but when I switched to Yosemite, things were never quite right.  After putting this off for several months, I started working on a few projects that were just not working right.  Rather than mess with MAMP any longer, I decided to start from scratch.</p>
+<p>However, you can't just uninstall MAMP and expect this to work...</p>
+<h2>Ripping it out</h2>
+<ol>
+    <li>follow these set up instuctions for the <a href="code-local.html">OS X local development environment</a></li>
+    <li>turn off the MAMP apache server</li>
+    <li>copy or move any project files
+        <ul>
+            <li>FROM: /Applications/MAMP/htdocs</li>
+            <li>TO: your new directory (/Users/nlangle/Sites)</li>
+        </ul>
+    </li>
+    <li>Check what version of PHP Apache wants to use.<br>In terminal run:
+        <ul>
+            <li><pre>which php</pre></li>
+            <li><pre>php --ini</pre></li>
+        </ul>
+    If either of these are pointed to MAMP, the PATH should be edited
+    </li>
+    <li>Edit the PATH (if needed)<pre>echo $PATH</pre>
+    Mine looked like this:
+    <pre>
+export PATH=/Applications/MAMP/bin/php/php5.5.23/bin:/Applications/MAMP/bin/php/php5.5.23/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin source /Users/nlangle/.bash_profile 
+export PATH=/Applications/MAMP/bin/php/php5.5.26/bin:/Applications/MAMP/bin/php/php5.5.23/bin:/Applications/MAMP/bin/php/php5.5.23/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin source /Users/nlangle/.bash_profile</pre>
+    Update it by editng <pre>~/.bash_profile</pre>
+    I changed the path to this:
+    <pre>export PATH=/usr/bin:/bin:/usr/sbin:/sbin</pre>
+    After saving changes, run this:
+    <pre>source ~/.bash_profile</pre>
+    </li>
+    <li>Restart Apache
+    <pre>sudo apachectl restart</pre>
+    </li>
+    <li>Don't look back!</li>
+</ol>

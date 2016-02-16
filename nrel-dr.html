@@ -1,0 +1,62 @@
+<h1>Data Repository (DR) Projects</h1>
+<p>This is a brief tutorial about getting a DR project ready for a local environment.</p>
+<ol>
+    <li>
+        <h2>Install ElasticSearch</h2>
+        <a href="http://stackoverflow.com/questions/23034863/install-elasticsearch-1-1-using-brew">http://stackoverflow.com/questions/23034863/install-elasticsearch-1-1-using-brew</a>
+    </li>
+    <li>
+        <h2>git</h2>
+        <p>git checkout/pull latest from repository</p>
+    </li>
+    <li>
+        <h2>build database</h2>
+        <p>start mongo</p>
+        <pre>mongo</pre>
+        <pre>mongod</pre>
+        <p>build/populate/index mongo database with data</p>
+        <p>set up mongo</p>
+        <p>index</p>
+        <pre>cd opt_bin/</pre>
+        <p>run script</p>
+        <pre>./xdr_elasticsearch_indexer_cli.php </pre>
+    </li>
+    <li>
+        <h2>build symlink</h2>
+        <p>need to build a symlink for local.settings.php</p>
+        <pre>cd /Users/nlangle/Sites/nreldr/</pre>
+        <pre>cd assets/</pre>
+        <pre>ln -s localSettings.php.localdev localSettings.php</pre>
+        <pre>ls -al</pre>
+        <p>look for:</p>
+        <pre>lrwxr-xr-x   1 nlangle  staff     26 Feb 11 09:41 localSettings.php -> localSettings.php.localdev</pre>
+    </li>
+    <li>
+        <h2>enable elasticsearch</h2>
+        <pre>/Users/nlangle/Sites/nreldr/assets/localSettings.php.dev</pre>
+        <p>set useElasticsearch = true</p>
+        <pre>const useElasticsearch = true;</pre>
+    </li>
+    <li>
+        <h2>Start Elasticsearch</h2>
+        <p>open terminal, run:</p>
+        <pre>elasticsearch</pre>
+        <p>to verify it is running, open in web browser:</p>
+        <pre>http://localhost:9200/</pre>
+        <p>it is VERY memeory intensive, so be sure to turn it off when not needed</p>
+    </li>
+    <li>
+        <h2>Stop Elasticsearch</h2>
+        <p>When not using for local development, disable elasticsearch</p>
+        <p>from the terminal window that started elasticsearch</p>
+        <pre>cntrl c</pre>
+        <p>OR in a new terminal shell:</p>
+        <pre>pkill -f elasticsearch</pre>
+        <p>Then, disable in the project:</p>
+        <pre>/Users/nlangle/Sites/nreldr/assets/localSettings.php.dev</pre>
+        <pre>const useElasticsearch = false;</pre>
+    </li>
+</ol>
+<h2>More Info on ElasticSearch</h2>
+<a href="http://www.elasticsearchtutorial.com/elasticsearch-in-5-minutes.html#Shutdown">ElasticSearch in 5 minutes</a>
+<br><br>
