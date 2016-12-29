@@ -1,0 +1,43 @@
+<h1>Atomic Design</h1>
+<p>good info on how to build using the atomic design concept</p>
+<b>What is it?</b>
+<p>break down website compenents into a basic design system with modular parts that work together</p>
+<ul>
+  <ol>
+    <dt>atoms</dt>
+    <dd>Atoms are the basic building blocks of any particular app. These are usually semantic HTML elements, and they are the only atomic element that is not normally a container. Like atoms in the real world, these should represent the smallest possible component within which it wouldn’t make sense to abstract further. Think a Reply button that is simply some text and an icon and some styles. Together they compose the various other atomic components like organisms or molecules.</dd>
+    <img class="progressiveMedia-image js-progressiveMedia-image" data-src="https://cdn-images-1.medium.com/max/800/1*rpszR8CNKm6Y-5_FIJBcFA.png" src="https://cdn-images-1.medium.com/max/800/1*rpszR8CNKm6Y-5_FIJBcFA.png">
+  </ol>
+  <ol>
+    <dt>molecules</dt>
+    <dd>Molecules are groups of elements describing a static piece of an interface, such as a group of shared UI elements like a grouping that includes a like button, share button, bookmark button, etc.<br />Although they can appear anywhere in the hierarchy, molecules are most often found within repeating organisms.</dd>
+    <img class="progressiveMedia-image js-progressiveMedia-image" data-src="https://cdn-images-1.medium.com/max/800/1*8rVSQRn2vB9XCwhCZD79iw.png" src="https://cdn-images-1.medium.com/max/800/1*8rVSQRn2vB9XCwhCZD79iw.png">
+  </ol>
+  <ol>
+    <dt>organisms</dt>
+    <dd>Organisms are really the core component of any dynamic web application, these components represent dynamic containers of information that repeat consistently across a UI. Think tweet boxes, material cards, etc. Anything that is a repeating, dynamic container.</dd>
+    <img class="progressiveMedia-image js-progressiveMedia-image" data-src="https://cdn-images-1.medium.com/max/800/1*FQfgphdMLvl0to16yLMvfA.png" src="https://cdn-images-1.medium.com/max/800/1*FQfgphdMLvl0to16yLMvfA.png">
+  </ol>
+  <ol>
+    <dt>ecosystem</dt>
+    <dd>Ecosystems should represent the major core container components and ideas the interface is trying to communicate — this also provides an isolated outer context for styles.<br />If you are using Redux for your data-management (which you should be), ecosystems are what would possibly be your Smart Components, facilitating communication between each other on an ecosystem-to-ecosystem level.<br />Responsible for both handling the data reduced via redux as well as delegating the manipulated state through its child organisms, molecules, and atoms as stateless functional components.</dd>
+    <img class="progressiveMedia-image js-progressiveMedia-image" data-src="https://cdn-images-1.medium.com/max/800/1*zbigDi4OL6vYw3BDVqpaPQ.png" src="https://cdn-images-1.medium.com/max/800/1*zbigDi4OL6vYw3BDVqpaPQ.png">
+  </ol>
+  <ol>
+    <dt>environment</dt>
+    <dd>Environments correspond to whole views or ‘pages’. If you are making an app that is either static, or has entirely separate views on separate routes, you’d have multiple environments.</dd>
+    <img class="progressiveMedia-image js-progressiveMedia-image" data-src="https://cdn-images-1.medium.com/max/800/1*D8sPdvrv0EBaWrKX5N8cog.png" src="https://cdn-images-1.medium.com/max/800/1*D8sPdvrv0EBaWrKX5N8cog.png">
+  </ol>
+</ul>
+<hr />
+<h2>Links & References</h2>
+  <li>
+<ul>
+  <li><a href="http://atomicdesign.bradfrost.com/chapter-2/">Atomic Design Methodology</a></li>
+  <li><a href="https://medium.com/@yejodido/a-brief-look-at-atomic-components-39cbe71d38b5#.wti14qwb7">Atomic Components</a></li>
+  <li><a href="https://www.smashingmagazine.com/2016/07/building-maintaining-atomic-design-systems-pattern-lab/">Making And Maintaining Atomic Design Systems With Pattern Lab 2</a></li>
+  <li><a href="http://patternlab.io/">Create atomic design systems with Pattern Lab.</a></li>
+  <li><a href="https://www.lullabot.com/articles/bem-atomic-design-a-css-architecture-worth-loving">BEM & Atomic Design: A CSS Architecture Worth Loving</a></li>
+  <li><a href="https://medium.com/re-write/8-ways-to-increase-designer-developer-collaboration-42da0ebb238a#.fepegitx4">8 ways to increase designer/developer collaboration</a></li>
+  <li><a href="http://alistapart.com/article/learning-from-lego-a-step-forward-in-modular-web-design">Learning from Lego: A Step Forward in Modular Web Design</a></li>
+</ul>
