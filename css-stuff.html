@@ -65,3 +65,48 @@
   <li><a href="https://github.com/postcss/autoprefixer">PostCSS autoprefixer github</a></li>
   <li><a href="https://github.com/postcss/autoprefixer">PostCSS autoprefixer github</a></li>
 </ul>
+
+
+
+
+<h3>Code Snippets</h3>
+<h4>Sonar Wave</h4>
+<pre>
+  /*---------------*/
+/*--SONAR WAVE--*/
+/*-------------*/
+.sonar-wave {
+	display: block;
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	width: 100%;
+  	height: 100%;
+  	border-radius: 100%;
+  	opacity: 0;
+  	z-index: -1;
+  	pointer-events: none;
+  	box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  	background-color: rgba(255,255,255,.6);
+}
+
+.sonar-wave {
+  animation: sonarWave 4s linear 1.8s infinite;
+}
+
+@keyframes sonarWave {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  60% {
+  	opacity: 0;
+    transform: scale(2.5);
+  }
+  100% {
+  	opacity: 0;
+    transform: scale(2.5);
+  }
+}
+
+</pre>
