@@ -20,4 +20,4 @@ var componentApp = new Vue({
       { text: 'Expand Site with Vue' }
     ]
   }
-})
+});

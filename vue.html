@@ -44,13 +44,21 @@
     </pre>
     <pre>
       <code>
+        //Vue ToDo Example
         Vue.component('todo-item', {
-          // The todo-item component accepts a
-          // "prop", which is like a custom attribute.
-          // This prop is called todo.
           props: ['todo'],
-          template: '&lt;li>{{ todo.text }}</li>'
+          template: '<li>{{ todo.text }}</li>'
         })
+        var componentApp = new Vue({
+          el: '#component-app',
+          data: {
+            nicksList: [
+              { text: 'Learn Vue' },
+              { text: 'Style Site' },
+              { text: 'Expand Site with Vue' }
+            ]
+          }
+        });
       </code>
     </pre>
     <div id="component-app">
