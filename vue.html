@@ -11,7 +11,7 @@
     <div id="app">
       {{ message }}
     </div>
-    <h2>How it works:</h2>
+    <h2>How it works, a simple example:</h2>
     <p>HTML</p>
     <pre>
       <code>
@@ -22,13 +22,35 @@
     </pre>
     <p>JS</p>
     <pre>
-      var app = new Vue({
-        el: '#app',
-        data: {
-          message: 'Tech + Nick + L + Vue!'
-        }
-      });
+      <code>
+        var app = new Vue({
+          el: '#app',
+          data: {
+            message: 'Working with Vue!'
+          }
+        });
+      </code>
     </pre>
+    <h2>Component Systems</h2>
+    <p>register a component in vue</p>
+    <pre>
+      <code>
+        Vue.component('todo-item', {
+          // The todo-item component accepts a
+          // "prop", which is like a custom attribute.
+          // This prop is called todo.
+          props: ['todo'],
+          template: '<li>{{ todo.text }}</li>'
+        })
+      </code>
+    </pre>
+    <div id="component-app">
+      <ol>
+        <!-- Now provide each todo-item with the todo object    -->
+        <!-- it's representing, so that its content can be dynamic -->
+        <todo-item v-for="item in nicksList" v-bind:todo="item"></todo-item>
+      </ol>
+    </div>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="main.js"></script>
   </body>
