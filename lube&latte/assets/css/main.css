@@ -187,6 +187,7 @@ a.navbar-brand {
   padding: 0 15px;
   background: url(../img/logo.svg);
   background-size: 278px 72px;
+  background-repeat: no-repeat;
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -459,6 +460,20 @@ iframe {
   /* home page images */
   .image-content {
     width: calc(100% + 45px);
+  }
+}
+
+@media screen and (max-width : 320px) {
+  a.navbar-brand {
+    position: relative;
+    left: 5px;
+    width: 250px;
+    background-size: contain;
+  }
+
+  .navbar-default button.navbar-toggle,
+  .navbar-default button.navbar-toggle.collapsed {
+    padding: 18px 10px;
   }
 }
 
