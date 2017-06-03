@@ -180,7 +180,8 @@ footer #disclaimer {
   border-color: #70a9bd;
 }
 
-.navbar-brand {
+a.navbar-brand {
+  display: block;
   height: 72px;
   width: 278px;
   padding: 0 15px;
