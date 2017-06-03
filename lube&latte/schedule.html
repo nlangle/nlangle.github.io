@@ -1,0 +1,141 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Lube & Latte | Your friendly local auto repair shop</title>
+    <meta name="description" content="An award winning, friendly, local owned, customer first, full-service auto repair shop.  Serving customers and coffee since 2006, in Lakewood Colorado.">
+    <meta name="Keywords" content="Auto repair, car repair, vehicle repair, auto service, full service repair, diagnostics, brake repair, steering repair, steering repair, suspension repair, engine repair, transmission repair, oil change, auto mechanic, environmentally friendly auto repair, coffee shop, coffee, latte, Lakewood, Denver, Golden, Colorado">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="img/ico" href="assets/img/favicon.ico"/>
+    <link rel="touch-icon" href="apple-touch-icon.png"/>
+    <link rel="author" href="humans.txt" />
+    <link rel="robots" href="robots.txt" />
+
+    <!--load basic minimum styles-->
+    <style></style>
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+    <!--Load Assets-->
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <!--Web Fonts-->
+    <!--<link href="https://fonts.googleapis.com/css?family=Raleway|Roboto:300,700" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300|Black+Ops+One|Racing+Sans+One" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+          <!-- Brand and toggle grouped for better mobile display -->
+          <div class="navbar-header">
+            <a class="navbar-brand" href="index.html" aria-label="Home Page Link">
+              <object alt="Lube & Latte Logo" height="72" width="248" type="image/svg+xml" data="assets/img/logo.svg" style="pointer-events: none;"></object>
+            </a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navLinks" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar top-bar"></span>
+              <span class="icon-bar middle-bar"></span>
+              <span class="icon-bar bottom-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse center" id="navLinks">
+            <ul class="nav navbar-nav primary-nav right">
+              <li><a href="autoshop">Auto Shop</a></li>
+              <li><a href="cafe">Cafe</a></li>
+              <li><a href="about">About</a></li>
+              <li><a href="schedule" class="current">Schedule</a></li>
+            </ul>
+          </div><!-- end .navbar-collapse -->
+        </div><!-- end .container-fluid -->
+      </nav><!-- end .navbar -->
+    </header>
+    <main>
+      <h3 class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">Schedule an appointment online</h3>
+      <form action="handle_appointment5.php" method="post" id="spots-location" class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2" autocapitalize="off" name="spots-location">
+        <div class="form-group">
+          <label for="first_name">First Name</label>
+          <input type="text" class="form-control" name="first_name" id="first-name" placeholder="First Name" required>
+        </div>
+        <div class="form-group">
+          <label for="last_name">Last Name</label>
+          <input type="text" class="form-control" name="last_name" id="last-name" placeholder="Last Name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+          <label for="tel">Primary Phone</label>
+          <input type="tel" class="form-control" name="tel" id="tel" placeholder="Primary telephone #" required>
+        </div>
+        <div class="form-group">
+          <label for="tel">Secondary Phone</label>
+          <input type="tel" class="form-control" name="tel" id="tel2" placeholder="Alternate telephone #">
+        </div>
+        <div class="form-group">
+          <label for="date">Requested Appointment Date</label>
+          <input type="date" class="form-control" name="date" id="date" required>
+        </div>
+        <div class="form-group">
+          <label for="time">Requested Appointment Time</label>
+          <input type="time" class="form-control" name="time" id="time" required>
+          <span class="help-block">enter time as two digit hour, two digit minute and AM or PM</span>
+        </div>
+        <div class="form-group">
+          <label for="time2">Alternate Appointment Time</label>
+          <input type="time" class="form-control" name="time2" id="time2" required>
+          <span class="help-block">enter time as two digit hour, two digit minute and AM or PM</span>
+        </div>
+        <div class="form-group">
+          <label for="year">Vehicle Year</label>
+          <input type="number" class="form-control" name="year" id="year" min="1940" max="2018" step="1" value="" placeholder="Vehicle Year" required>
+        </div>
+        <div class="form-group">
+          <label for="year">Vehicle Make</label>
+          <input type="text" class="form-control" name="make" id="make" placeholder="Vehicle Make" required>
+        </div>
+        <div class="form-group">
+          <label for="year">Vehicle Model</label>
+          <input type="text" class="form-control" name="model" id="model" placeholder="Vehicle Model" required>
+        </div>
+        <div class="form-group">
+          <label for="year">Requested Service</label>
+          <textarea class="form-control" name="service" id="service" placeholder="Please tell us why you are bringing your vehicle in" rows="5" maxlength="1500" required></textarea>
+        </div>
+        <fieldset id="photo">
+          <div class="form-group">
+            <button type="submit" class="btn btn-lg btn-primary col-xs-6 col-xs-offset-3" name="submit" value="Submit">Submit</button>
+          </div><br /><br />
+          <div class="alert alert-info center">
+            Please note that your requested date and time may not be available.<br />We will contact you to confirm your appointment details, or to provide alternate appointment options if needed.
+          </div>
+        </fieldset>
+      </form>
+    </main>
+    <footer class="row center">
+      <div id="contact" class="col-xs-12 col-sm-4 footerBlock">
+        <a href="tel:303-274-0713">303-274-0713</a>
+        <span id="hours">Monday - Friday 7:30am to 5:00pm</span>
+      </div>
+      <div id="locate" class="col-xs-12 col-sm-4 footerBlock">
+        <a href="https://goo.gl/maps/rD3Jt9cxFW82">2595 Kipling Street Lakewood, CO 80215</a>
+      </div>
+      <div id="social" class=" col-xs-12 col-sm-4 footerBlock">
+        <a href="http://www.facebook.com/lubeandlatte"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        <a href="http://www.twitter.com/lubeandlatte"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+        <a href="http://www.lubenlatte.blogspot.com/"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+      </div>
+      <div id="disclaimer" class="col-xs-12">
+        <div>2017 Copyright by Lube and Latte. All Rights Reserved.</div>
+      </div>
+    </footer>
+    <!--Load Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+</html>
