@@ -80,10 +80,8 @@ p.welcome {
 #responsible .contrast {
   color: #FDF5E6;
   background: rgba(0,0,0,0.33);
+  background: rgba(82, 132, 138, 0.5)
   text-shadow: 1px 2px #373C3D;
-  /*color: inherit;
-  background: rgba(255,255,255,0.5);
-  text-shadow: 1px 2px #eee;*/
 }
 
 .section-img {
@@ -359,6 +357,7 @@ a.navbar-brand {
   color: #FDF5E6;
   text-shadow: 1px 2px #373C3D;
   background: rgba(0,0,0,0.33);
+  background: rgba(82, 132, 138, 0.5);
 }
 
 .jumbotron .services {
