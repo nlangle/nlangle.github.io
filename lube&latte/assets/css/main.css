@@ -182,6 +182,7 @@ footer #disclaimer {
 
 .navbar-brand {
   height: 72px;
+  min-width: 278px;
   padding: 0 15px;
 }
 
