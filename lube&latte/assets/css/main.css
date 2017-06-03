@@ -473,7 +473,8 @@ iframe {
 
   .navbar-default button.navbar-toggle,
   .navbar-default button.navbar-toggle.collapsed {
-    padding: 18px 10px;
+    margin-bottom: 0;
+    padding: 22px 10px;
   }
 }
 
