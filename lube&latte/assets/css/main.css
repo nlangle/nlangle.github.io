@@ -105,13 +105,10 @@ p.welcome {
 }
 
 #responsible .section-img {
-  background-image: url(../img/breanna-galley-colorado2.jpg);
-  background-image: url(../img/dustin-delatore-allenspark.jpg);
-  background-image: url(../img/zach-miles-estes-park.jpg);
+  background-image: url(../img/zach-miles-estes-park.png);
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
-  /*background-size: 120%;*/
-  background-position:center;
   z-index: -1;
 }
 
@@ -305,7 +302,7 @@ footer #disclaimer {
   min-height: 400px;
   clip-path: polygon(50% 0, 100% 0%, 100% 100%, 0 100%);
   -webkit-clip-path: polygon(50% 0, 100% 0%, 100% 100%, 0 100%);
-  background: url(../img/stock3.jpg) no-repeat;
+  background: url(../img/stock3.png) no-repeat;
   background-size: cover;
   z-index: -1;
 }
@@ -443,7 +440,7 @@ iframe {
     min-height: 500px;
   }
   .jumbotron .cafe {
-    background-position: left center;
+    background-position: center;
   }
   .jumbotron .btn-service {
     left: calc((100% - 170px)/2);
