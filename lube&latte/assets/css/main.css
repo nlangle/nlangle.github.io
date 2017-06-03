@@ -452,6 +452,11 @@ iframe {
     top: inherit;
     right: calc((100% - 170px)/2);
   }
+
+  /* home page images */
+  .image-content {
+    width: calc(100% + 45px);
+  }
 }
 
 /* rounded title */
