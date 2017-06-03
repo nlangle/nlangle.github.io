@@ -185,6 +185,8 @@ a.navbar-brand {
   height: 72px;
   width: 278px;
   padding: 0 15px;
+  background: url(../img/logo.svg);
+  background-size: 278px 72px;
 }
 
 .navbar-default .navbar-nav>li>a {
