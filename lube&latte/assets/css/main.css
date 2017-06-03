@@ -290,6 +290,7 @@ footer #disclaimer {
   height: 100%;
   min-height: 400px;
   clip-path: polygon(0 0, 100% 0%, 50% 100%, 0% 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0%, 50% 100%, 0% 100%);
   background: url(../img/stock1.jpg) no-repeat;
   background-size: cover;
   z-index: -1;
@@ -303,6 +304,7 @@ footer #disclaimer {
   height: 100%;
   min-height: 400px;
   clip-path: polygon(50% 0, 100% 0%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(50% 0, 100% 0%, 100% 100%, 0 100%);
   background: url(../img/stock3.jpg) no-repeat;
   background-size: cover;
   z-index: -1;
