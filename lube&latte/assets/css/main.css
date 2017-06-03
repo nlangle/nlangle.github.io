@@ -80,7 +80,7 @@ p.welcome {
 #responsible .contrast {
   color: #FDF5E6;
   background: rgba(0,0,0,0.33);
-  background: rgba(82, 132, 138, 0.5)
+  background: rgba(82, 132, 138, 0.5);
   text-shadow: 1px 2px #373C3D;
 }
 
@@ -374,7 +374,6 @@ a.navbar-brand {
 .jumbotron .btn-default {
   width: 170px;
   font-weight: 800;
-  /*border-color: #d6e9ef;*/
   border-color: transparent;
   background: rgba(255,255,255,0.85);
   box-shadow: 0px 1px 2px #373C3D;
