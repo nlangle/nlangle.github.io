@@ -1,0 +1,129 @@
+/* example CSS */
+body {
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+h1 {
+  font-size: 8vw;
+  font-size: 6rem;
+  font-weight: 700;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: Racing Sans One;
+}
+
+a.navbar-brand {
+  display: block;
+  height: 72px;
+  width: 278px;
+  padding: 0 15px;
+  background: url(https://www.anythinklibraries.org/sites/all/themes/anythinktheme/images/squiggle-logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.navbar-default .navbar-nav>li>a {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #52848A;
+}
+
+.navbar-default .navbar-nav>li>a.current {
+  color: #7E5B41;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+  color: #70a9bd;
+}
+
+.nav>li {
+  padding: 11px;
+  font-size: larger;
+}
+
+/* mobile nav button */
+.navbar-default button.navbar-toggle,
+.navbar-default button.navbar-toggle.collapsed {
+  padding: 18px;
+  border: none;
+  background: none;
+}
+
+.navbar-default button.navbar-toggle:focus,
+.navbar-default button.navbar-toggle:hover {
+  background: none;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #52848A;
+}
+
+.navbar-default .navbar-toggle:focus .icon-bar,
+.navbar-default .navbar-toggle:hover .icon-bar {
+  background-color: #70a9bd;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  display: block;
+  width: 28px;
+  height: 3px;
+  border-radius: 1px;
+  transition: transform 0.2s, opacity 0.2s;
+  -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+}
+
+.icon-bar.top-bar {
+  transform: rotate(45deg);
+  transform-origin: 15% 10%;
+  -webkit-transform: rotate(45deg);
+  -webkit-transform-origin: 15% 10%;
+}
+
+.collapsed .icon-bar.top-bar {
+  transform: rotate(0);
+  -webkit-transform: rotate(0);
+}
+
+.icon-bar.middle-bar {
+  opacity: 0;
+}
+
+.collapsed .icon-bar.middle-bar {
+  opacity: 1;
+}
+
+.icon-bar.bottom-bar {
+  transform: rotate(-45deg);
+  transform-origin: 10% 90%;
+  -webkit-transform: rotate(-45deg);
+  -webkit-transform-origin: 10% 90%;
+}
+
+.collapsed .icon-bar.bottom-bar {
+  transform: rotate(0);
+  -webkit-transform: rotate(0);
+}
+
+.jumbotron {
+  background: url(https://www.anythinklibraries.org/sites/all/themes/anythinktheme/images/squiggle-logo.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+footer {
+  width: 100%;
+  float: left;
+  background: #555;
+  color: rebeccapurple;
+}
+
+footer #social {
+  font-size: 40px;
+}
+
+footer #social i {
+  margin: 0 4px;
+}
