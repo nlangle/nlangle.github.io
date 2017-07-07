@@ -418,6 +418,11 @@ a.navbar-brand {
   text-shadow: 1px 1px #52848a;
 }
 
+.newsletter {
+  text-align: center;
+  padding: 10px;
+}
+
 form {
   margin: 33px auto;
 }
