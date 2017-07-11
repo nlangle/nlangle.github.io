@@ -109,6 +109,31 @@
           <a href="#" class="btn btn-default">Sign up for our newsletter! <i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
       </div>
       </section>
+      <!-- newsletter modal -->
+      <div class="modal fade" id="newsletterModal" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h3 class="modal-title">Recieve the latest news and updates</h3>
+            </div>
+            <div class="modal-body">
+              <!--<form id="newsletterForm" class="input-group" method="post" action="handle_newsletter7.php" enctype="text/plain">-->
+              <form id="newsletterForm" class="input-group" method="post" action="process.php" enctype="text/plain">
+                <input type="email" class="form-control" name="emailSignUp" id="signUp" placeholder="your email" required autofocus>
+                <span class="input-group-btn">
+                  <button type="submit" class="btn btn-primary" id="joinBtn" value="Submit">Join</button>
+                </span>
+              </form>
+              <div id="newsletterSuccess" class="hidden alert-success">
+                <h4>You're signed up!    <i class="fa fa-newspaper-o" aria-hidden="true"></i></h4>
+                <p>Stay tuned to your inbox for news and updates from Lube & Latte.</p>
+              </div>
+            </div>
+            <div class="modal-footer"><div type="button" class="btn btn-default" data-dismiss="modal">Close</div></div>
+          </div>
+        </div>
+      </div>
     </main>
     <footer class="row center">
       <div id="contact" class="col-xs-12 col-sm-4 footerBlock">
