@@ -11,7 +11,7 @@ $.ajax({
 });
 
 // Ajax code to submit newsletter form
-$('form#newsletterForm').submit(function(event) {
+/*$('form#newsletterForm').submit(function(event) {
   $.ajax({
           type: "POST",
           //url: "handle_newsletter7.php",
@@ -21,8 +21,20 @@ $('form#newsletterForm').submit(function(event) {
           cache: false,
           success: function(result){
             $("#newsletterModal .modal-body").addClass("alert-success");
-           $("#newsletterForm").hide();
-           $("#newsletterSuccess").show();
+            $("#newsletterForm").hide();
+            $("#newsletterSuccess").show();
          }
   });
-});
+});*/
+
+$('form#newsletterForm').submit(function(){
+      $.post($(this).attr('action'),
+      $(this).serialize(),
+      function(response){
+        // do something here on success
+        $("#newsletterModal .modal-body").addClass("alert-success");
+        $("#newsletterForm").hide();
+        $("#newsletterSuccess").show();
+      },'json');
+      return false;
+   });
