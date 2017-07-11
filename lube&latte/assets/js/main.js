@@ -6,7 +6,7 @@ $.ajax({
         cache: false,
         success: function(result){
          // Simply give your modal an id something like "thankyouModal"
-         $("#thankyouModal").modal('show')
+         $("#thankyouModal").modal('show');
        }
 });
 
@@ -18,8 +18,8 @@ $('form#newsletterForm').submit(function(event) {
           data: dataString,
           cache: false,
           success: function(result){
-           $("#newsletterModal").modal('hide')
-           $("#newsletterSuccessModal").modal('show')
+           $("#newsletterForm").hide();
+           $("#newsletterSuccess").show();
          }
   });
 });
