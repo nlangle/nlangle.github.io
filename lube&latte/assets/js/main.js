@@ -11,13 +11,15 @@ $.ajax({
 });
 
 // Ajax code to submit newsletter form
-$.ajax({
-        type: "POST",
-        url: "handle_newsletter7.php",
-        data: dataString,
-        cache: false,
-        success: function(result){
-         $("#newsletterModal").modal('hide')
-         $("#newsletterSuccessModal").modal('show')
-       }
+$('form#newsletterForm').submit(function(event) {
+  $.ajax({
+          type: "POST",
+          url: "handle_newsletter7.php",
+          data: dataString,
+          cache: false,
+          success: function(result){
+           $("#newsletterModal").modal('hide')
+           $("#newsletterSuccessModal").modal('show')
+         }
+  });
 });
