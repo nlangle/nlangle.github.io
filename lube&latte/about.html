@@ -20,8 +20,6 @@
 
     <!--Load Assets-->
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/js/main.js">
-    <link rel="stylesheet" href="assets/js/magic.js">
 
     <!--Web Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300|Black+Ops+One|Racing+Sans+One" rel="stylesheet">
@@ -94,38 +92,22 @@
               <h3 class="modal-title">Recieve the latest news and updates</h3>
             </div>
             <div class="modal-body">
-              <!--<form class="input-group" method="post" action="mailto:nlangle25@yahoo.com" enctype="text/plain">-->
               <!--<form id="newsletterForm" class="input-group" method="post" action="handle_newsletter7.php" enctype="text/plain">-->
               <form id="newsletterForm" class="input-group" method="post" action="process.php" enctype="text/plain">
-                <input type="email" class="form-control" name="Newsletter sign up" id="signUp" placeholder="your email" required autofocus>
+                <input type="email" class="form-control" name="emailSignUp" id="signUp" placeholder="your email" required autofocus>
                 <span class="input-group-btn">
                   <button type="submit" class="btn btn-primary" id="joinBtn" value="Submit">Join</button>
                 </span>
               </form>
               <div id="newsletterSuccess" class="hidden alert-success">
-                <h4>You're signed up!</h4>
+                <h4>You're signed up!    <i class="fa fa-newspaper-o" aria-hidden="true"></i></h4>
                 <p>Stay tuned to your inbox for news and updates from Lube & Latte.</p>
               </div>
             </div>
-            <div class="modal-footer"><i class="fa fa-newspaper-o" aria-hidden="true"></i><div type="button" class="btn btn-default" data-dismiss="modal">Close</div></div>
+            <div class="modal-footer"><div type="button" class="btn btn-default" data-dismiss="modal">Close</div></div>
           </div>
         </div>
       </div>
-      <!-- sign up success modal -->
-      <!--<div class="modal fade" id="newsletterSuccessModal" role="dialog">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header alert-success">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h3 class="modal-title">You're signed up!</h3>
-            </div>
-            <div class="modal-body">
-              <p>Thank you!  </p>
-            </div>
-            <div class="modal-footer"><button type="button" class="close btn btn-success" data-dismiss="modal">Ok</button></div>
-          </div>
-        </div>
-      </div>-->
     </main>
     <footer class="row center">
       <div id="contact" class="col-xs-12 col-sm-4 footerBlock">
@@ -148,5 +130,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" async></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous" async></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="assets/js/form.js"></script>
   </body>
 </html>

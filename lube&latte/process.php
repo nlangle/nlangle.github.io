@@ -8,7 +8,7 @@ $data           = array();      // array to pass back data
     // if any of these variables don't exist, add an error to our $errors array
 
     if (empty($_POST['email']))
-        $errors['email'] = 'Email is required.';
+        $errors['emailSignUp'] = 'Email is required.';
 
 // return a response ===========================================================
 
