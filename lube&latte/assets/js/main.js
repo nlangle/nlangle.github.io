@@ -28,13 +28,13 @@ $.ajax({
 });*/
 
 $('form#newsletterForm').submit(function(){
-      $.post($(this).attr('action'),
-      $(this).serialize(),
-      function(response){
-        // do something here on success
-        $("#newsletterModal .modal-body").addClass("alert-success");
-        $("#newsletterForm").hide();
-        $("#newsletterSuccess").show();
-      },'json');
-      return false;
-   });
+  //$.post($(this).attr('action'),
+  //$(this).serialize(),
+  //function(response){
+    // do something here on success
+    $("#newsletterModal .modal-body").addClass("alert-success");
+    $("#newsletterForm").hide();
+    $("#newsletterSuccess").show();
+  //},'json');
+  //return false;
+});
