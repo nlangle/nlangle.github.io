@@ -15,8 +15,9 @@ $('form#newsletterForm').submit(function(event) {
   $.ajax({
           type: "POST",
           //url: "handle_newsletter7.php",
-          url:'',
-          data: dataString,
+          url:'url',
+          data: $("#newsletterForm").serialize(),
+          //data: dataString,
           cache: false,
           success: function(result){
             $("#newsletterModal .modal-body").addClass("alert-success");
