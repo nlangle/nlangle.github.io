@@ -16,7 +16,7 @@ $('form#appointmentForm').submit(function(){
 $('form#newsletterForm').submit(function(){
       // get the form data
       var formData = {
-        'email' : $('input[name=emailSignUp]').val()
+        'email': $('input[name=emailSignUp]').val()
       };
 
       // process the newsletter form
