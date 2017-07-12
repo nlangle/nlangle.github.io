@@ -6,8 +6,8 @@ $('form#appointmentForm').submit(function(){
     data: dataString,
     cache: false,
     success: function(result){
-     // Simply give your modal an id something like "thankyouModal"
-     $("#thankyouModal").modal('show');
+     // Display modal to confirm form submission
+     $("#appointmentConfirmModal").modal('show');
    }
   });
 });
