@@ -416,8 +416,9 @@ a.navbar-brand {
 }
 
 .newsletter {
-  text-align: center;
   padding: 10px;
+  text-align: center;
+  text-shadow: none;
 }
 
 form {
