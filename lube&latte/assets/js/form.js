@@ -93,7 +93,9 @@ $('form#newsletterForm').submit(function(event){
 
   //build the data object
   var data = {
-    email: $('#signUp').val()
+    firstName: $('#signUpFirstName').val(),
+    lastName: $('#signUpLastName').val(),
+    email: $('#signUpEmail').val()
   };
 
   //send the data object
