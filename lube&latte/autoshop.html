@@ -131,11 +131,22 @@
               <h3 class="modal-title">Recieve the latest news and updates</h3>
             </div>
             <div class="modal-body">
-              <form id="newsletterForm" class="input-group">
-                <input type="email" class="form-control" name="emailSignUp" id="signUp" placeholder="your email" required autofocus>
-                <span class="input-group-btn">
+              <form id="newsletterForm">
+                <div class="input-group">
+                  <span class="input-group-addon">First Name</span>
+                  <input type="text" class="form-control" name="firstNameSignUp" id="signUpFirstName" placeholder="your first name" required autofocus>
+                </div><br />
+                <div class="input-group">
+                  <span class="input-group-addon">Last Name</span>
+                  <input type="text" class="form-control" name="lastNameSignUp" id="signUpLastName" placeholder="your last name" required>
+                </div><br />
+                <div class="input-group">
+                  <span class="input-group-addon">Email</span>
+                  <input type="email" class="form-control" name="emailSignUp" id="signUpEmail" placeholder="your email" required>
+                </div><br />
+                <div class="center">
                   <button type="submit" class="btn btn-primary" id="joinBtn" value="Submit">Join</button>
-                </span>
+                </div>
               </form>
               <div id="newsletterSuccess" class="hidden alert-success">
                 <h4>You're signed up!    <i class="fa fa-newspaper-o" aria-hidden="true"></i></h4>
