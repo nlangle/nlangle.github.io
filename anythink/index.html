@@ -3,79 +3,94 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>the Anythink studio helper</title>
+    <title>Anythink Caffeine & Coding</title>
     <meta name="description" content="my description goes here">
     <meta name="Keywords" content="web design, anythink, example">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="img/ico" href="assets/img/favicon.ico"/>
-    <link rel="touch-icon" href="apple-touch-icon.png"/>
-    <link rel="author" href="humans.txt" />
-    <link rel="robots" href="robots.txt" />
+    <link rel="icon" type="img/ico" href="images/spooky_ghost.png"/>
 
-    <!--load basic minimum styles-->
-    <style></style>
+    <!--front-end framework-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" crossorigin="anonymous"/>
 
-    <!--Bootstrap-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-
-    <!--Load Assets-->
+    <!--Load styles-->
     <link rel="stylesheet" href="main.css">
 
     <!--Web Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Racing+Sans+One|Oswald|Roboto:300,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Creepster" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
 
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-default navbar-static-top">
-        <div class="container-fluid">
-          <!-- Brand and toggle grouped for better mobile display -->
-          <div class="navbar-header">
-            <a class="navbar-brand" href="index.html" aria-label="Home Page Link"></a>
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navLinks" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar top-bar"></span>
-              <span class="icon-bar middle-bar"></span>
-              <span class="icon-bar bottom-bar"></span>
-            </button>
+      <nav class="navbar is-dark">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="http://anythinklibraries.org/">
+          </a>
+          <div class="navbar-burger burger" data-target="caffeineandcoding">
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
-          <div class="collapse navbar-collapse center" id="navLinks">
-            <ul class="nav navbar-nav primary-nav right">
-              <li><a href="code-blocks.html">Code Blocks</a></li>
-              <li><a href="resources.html">Helpful Links</a></li>
-            </ul>
-          </div><!-- end .navbar-collapse -->
-        </div><!-- end .container-fluid -->
-      </nav><!-- end .navbar -->
+        </div>
+
+        <div id="caffeineandcoding" class="navbar-menu">
+          <div class="navbar-start"></div>
+          <div class="navbar-end">
+            <a class="navbar-item" href="index.html">Home</a>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">
+                Spooky Locations
+              </a>
+              <div class="navbar-dropdown is-right">
+                <a class="navbar-item" href="#">
+                  story 1
+                </a>
+                <a class="navbar-item" href="#">
+                  story 2
+                </a>
+                <a class="navbar-item" href="#">
+                  story 3
+                </a>
+                <a class="navbar-item" href="#">
+                  story 4
+                </a>
+                <a class="navbar-item" href="#">
+                  story 5
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item" href="about.html">
+                  About Riverdale Road
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
     </header>
     <main>
-      <div class="jumbotron">
-        <p>a brief lesson in HTML & CSS concepts</p>
-      </div>
       <section id="intro">
-        <h1>let's make a story</h1>
+        <h1 class="title has-text-centered">The Members of Caffeine & Coding</h1>
+        <h2 class="subtitle has-text-centered">present:</h2>
         <hr />
+        <p class="spooky-title has-text-centered">
+          Hauntings of Riverdale Road
+        </p>
         <p>
-          Using <i>Mozilla Thimble</i> to make your story.
+          Welcome to a spooky and spicy edition of Caffeine & Coding, this month we’ll be taking inspiration from Adams County History.  The collection of chilling stories on this site were handcrafted by our caffeinated coders.  Read at your own risk!
+        </p>
+        <p>
+          <iframe width="100%" height="420" src="http://maps.stamen.com/toner/embed#13/39.9374/-104.8556"></iframe>
         </p>
       </section>
     </main>
-    <footer class="row center">
-      <div id="contact" class="col-xs-12 col-sm-4 footerBlock">
-        <a href="tel:303-000-0000">303-000-0000</a>
-        <span id="">call me</span>
-      </div>
-      <div id="locate" class="col-xs-12 col-sm-4 footerBlock">
-        <a href="#">some other info can go here</a>
-      </div>
-      <div id="social" class=" col-xs-12 col-sm-4 footerBlock">
-        <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-        <a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+    <footer class="has-background-grey-dark">
+      <div id="social" class="has-text-centered">
+        <a href="https://www.facebook.com/ilovemyanythink/"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/ilovemyanythink"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
       </div>
     </footer>
     <!--Load Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" async></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous" async></script>
+    <script src="script.js" async></script>
   </body>
 </html>

@@ -53,29 +53,50 @@
       <h2>Header & Navigation</h2>
       <pre>
         <code>
-        &lt;header>
-          &lt;nav class="navbar navbar-default navbar-static-top">
-            &lt;div class="container-fluid">
-              <!-- Brand and toggle grouped for better mobile display -->
-              &lt;div class="navbar-header">
-                &lt;a class="navbar-brand" href="index.html" aria-label="Home Page Link">&gt;/a>
-                &lt;button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navLinks" aria-expanded="false">
-                  &lt;span class="sr-only">Toggle navigation&lt;/span>
-                  &lt;span class="icon-bar top-bar">&lt;/span>
-                  &lt;span class="icon-bar middle-bar">&lt;/span>
-                  &lt;span class="icon-bar bottom-bar">&lt;/span>
-                &lt;/button>
+          &lt;nav class="navbar is-dark">
+          &lt;div class="navbar-brand">
+            &lt;a class="navbar-item" href="http://anythinklibraries.org/">
+            &lt;/a>
+            &lt;div class="navbar-burger burger" data-target="caffeineandcoding">
+              &lt;span>&lt;/span>
+              &lt;span>&lt;/span>
+              &lt;span>&lt;/span>
+            &lt;/div>
+          &lt;/div>
+
+          <div id="caffeineandcoding" class="navbar-menu">
+            &lt;div class="navbar-start">&lt;/div>
+            &lt;div class="navbar-end">
+              &lt;a class="navbar-item" href="index.html">Home&lt;/a>
+              &lt;div class="navbar-item has-dropdown is-hoverable">
+                &lt;a class="navbar-link" href="#">
+                  Spooky Locations
+                &lt;/a>
+                &lt;div class="navbar-dropdown is-right">
+                  &lt;a class="navbar-item" href="#">
+                    story 1
+                  &lt;/a>
+                  &lt;a class="navbar-item" href="#">
+                    story 2
+                  &lt;/a>
+                  &lt;a class="navbar-item" href="#">
+                    story 3
+                  &lt;/a>
+                  &lt;a class="navbar-item" href="#">
+                    story 4
+                  &lt;/a>
+                  &lt;a class="navbar-item" href="#">
+                    story 5
+                  &lt;/a>
+                  &lt;hr class="navbar-divider">
+                  &lt;a class="navbar-item" href="about.html">
+                    About Riverdale Road
+                  &lt;/a>
+                &lt;/div>
               &lt;/div>
-              &lt;div class="collapse navbar-collapse center" id="navLinks">
-                &lt;ul class="nav navbar-nav primary-nav right">
-                  &lt;li>&lt;a href="code-blocks.html">Code Blocks&lt;/a>&lt;/li>
-                  &lt;li>&lt;a href="mdl.html">Cafe&lt;/a>&lt;/li>
-                  &lt;li>&lt;a href="resources.html">Helpful Links&lt;/a>&lt;/li>
-                &lt;/ul>
-              &lt;/div><!-- end .navbar-collapse -->
-            &lt;/div><!-- end .container-fluid -->
-          &lt;/nav><!-- end .navbar -->
-        &lt;/header>
+            &lt;/div>
+          &lt;/div>
+        &lt;/nav>
         </code>
       </pre>
     </main>
