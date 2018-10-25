@@ -7,22 +7,93 @@
 </head>
 <body>
   <div id="app">
-    <el-button @click="visible = true">Button</el-button>
+    <ul>
+    <li v-for="item in items">
+      <a href="#">{{item}}</a>
+    </li>
+  </ul>
+  </div>
+  <div id="app-1">
+    <h3>app 1</h3>
+    <el-button @click="visible = true">This Button</el-button>
     <el-dialog v-model="visible" title="Hello world">
       <p>Try Element</p>
+      <p>
+        {{message}}
+      </p>
     </el-dialog>
   </div>
+  <div id="app-3">
+    <h3>app 3</h3>
+    <span v-if="seen">Now you see me</span>
+  </div>
+  <div id="app-4">
+    <h3>app 4</h3>
+  <ol>
+    <li v-for="todo in todos">
+      {{ todo.text }}
+    </li>
+  </ol>
+</div>
+
+<div id="app">
+    <routing></routing>
+    <div class="container pt-3 pb-3">
+        <router-view></router-view>
+    </div>
+</div>
+
+
 </body>
+<!--import vue v2-->
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<!--<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>-->
+
   <!-- import Vue before Element -->
-  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!--<script src="https://unpkg.com/vue/dist/vue.js"></script>-->
   <!-- import JavaScript -->
   <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+
   <script>
     new Vue({
-      el: '#app',
+      el: '#app-1',
       data: function() {
-        return { visible: false }
+        message: 'this is awesome'
       }
-    })
+    });
+
+    var app3 = new Vue({
+      el: '#app-3',
+      data: {
+        seen: true
+      }
+    });
+
+    var app4 = new Vue({
+      el: '#app-4',
+      data: {
+        todos: [
+          { text: 'Learn JavaScript' },
+          { text: 'Learn Vue' },
+          { text: 'Build something awesome' }
+        ]
+      }
+    });
+
+    const appNav = new Vue({
+      el: '#app',
+      data: {
+        items: [
+          'nav1',
+          'nav2 ',
+          'nav3',
+          'nav4'
+        ]
+      }
+    });
   </script>
+
 </html>
