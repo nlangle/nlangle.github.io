@@ -20,6 +20,9 @@
     <link href="https://fonts.googleapis.com/css?family=Creepster" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
 
+    <!--map-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+
   </head>
   <body>
     <header>
@@ -46,17 +49,17 @@
                 <a class="navbar-item" href="gatesofhell.html">
                   Gates of Hell
                 </a>
-                <a class="navbar-item" href="#">
-                  story 2
+                <a class="navbar-item" href="wolpertmansion.html">
+                  The Sad Wolpert Mansion
                 </a>
-                <a class="navbar-item" href="#">
-                  story 3
+                <a class="navbar-item" href="witchtree.html">
+                  The Curse of the Witch Tree
                 </a>
-                <a class="navbar-item" href="#">
-                  story 4
+                <a class="navbar-item" href="hiker.html">
+                  The Hiker
                 </a>
-                <a class="navbar-item" href="#">
-                  story 5
+                <a class="navbar-item" href="thing.html">
+                  The Thing
                 </a>
                 <hr class="navbar-divider">
                 <a class="navbar-item" href="about.html">
@@ -80,12 +83,14 @@
           Welcome to a spooky and spicy edition of Caffeine & Coding, this month we’ll be taking inspiration from Adams County History.  The collection of chilling stories on this site were handcrafted by our caffeinated coders.  Read at your own risk!
         </p>
         <br />
+      </section>
+      <section>
+        <hr />
+        <div id="map"></div>
         <p>
           <!--<iframe width="100%" height="420" src="http://maps.stamen.com/toner/embed#13/39.9374/-104.8556"></iframe>-->
-
         </p>
       </section>
-      <div id="map"></div>
     </main>
     <footer class="has-background-grey-dark">
       <div id="social" class="has-text-centered">
@@ -96,28 +101,20 @@
     <!--Load Scripts-->
     <script src="script.js" async></script>
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
-    <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
     <script>
-
-      var mymap = L.map('map').setView([39.9374, -104.8556], 13);
+      var mymap = L.map('map').setView([39.9374, -104.8556], 11);
+      
       var CartoDB_DarkMatter = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}{r}.png', {
          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
           subdomains: 'abcd',
            maxZoom: 19
      }).addTo(mymap);
-      /*var Stamen_Toner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.{ext}', {
-         attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-         subdomains: 'abcd',
-         minZoom: 0,
-         maxZoom: 20,
-         ext: 'png'
-       }).addTo(mymap);*/
 
       var circle = L.circle([39.9374, -104.854], {
           color: 'red',
           fillColor: 'rgb(181,26,56)',
           fillOpacity: 0.5,
-          radius: 350
+          radius: 1500
       }).addTo(mymap);
       circle.bindPopup("a spooky thing happened here.");
 

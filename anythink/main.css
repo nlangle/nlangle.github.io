@@ -9,10 +9,19 @@ main {
   padding: 20px;
 }
 
+p {
+  margin: 16px 0;
+}
+
 .spooky-title {
   font-family: Creepster, sans-serif;
   font-size: 5em;
   color: rgb(181,26,56);
+}
+@media only screen and (max-width: 768px) {
+  .spooky-title {
+    font-size: 3em;
+  }
 }
 
 .story-title {
