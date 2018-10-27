@@ -1,0 +1,152 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Anythink Caffeine & Coding | Wolpert Mansion</title>
+    <meta name="description" content="Caffeine and coding collected a series of chilling stories for your entertainment.">
+    <meta name="Keywords" content="web design, anythink, example">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="img/ico" href="images/spooky_ghost.png"/>
+
+    <!--front-end framework-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" crossorigin="anonymous"/>
+
+    <!--Load styles-->
+    <link rel="stylesheet" href="main.css">
+
+    <!--Web Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Creepster" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--map-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+
+  </head>
+  <body>
+    <header>
+      <nav class="navbar is-dark">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="http://anythinklibraries.org/">
+          </a>
+          <div class="navbar-burger burger" data-target="caffeineandcoding">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div id="caffeineandcoding" class="navbar-menu">
+          <div class="navbar-start"></div>
+          <div class="navbar-end">
+            <a class="navbar-item" href="index.html">Home</a>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">
+                Spooky Locations
+              </a>
+              <div class="navbar-dropdown is-right">
+                <a class="navbar-item" href="gatesofhell.html">
+                  Gates of Hell
+                </a>
+                <a class="navbar-item" href="wolpertmansion.html">
+                  The Sad Wolpert Mansion
+                </a>
+                <a class="navbar-item" href="witchtree.html">
+                  The Curse of the Witch Tree
+                </a>
+                <a class="navbar-item" href="hiker.html">
+                  The Hiker
+                </a>
+                <a class="navbar-item" href="thing.html">
+                  The Thing
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item" href="about.html">
+                  About Riverdale Road
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section id="intro">
+        <h1 class="title story-title">The Sad Wolpert Mansion</h1>
+        <hr />
+        <div id="map"></div>
+        <br />
+        <div class="columns">
+          <div class="column is-8">
+            <p>
+              David Wolpert was a normal man, who led a normal life...
+            </p>
+            <p>
+              To an extent. He built a House, a normal everyday House. 9190 Riverdale Road. Oh, what a perfect family. David and Cathy Wolpert. David Jr., Lucille, and Mary.
+            </p>
+            <hr />
+            <p>
+              Fifty years later, David Wolpert is dead. House is now Mansion. 1975. The chicken house was burned down. Mansion is declared bad things like "fire hazard" or "danger to the community". People decide to let Mansion decay.
+            </p>
+            <p>
+              The Wolperts are now dead, and Mansion is now sad. Coincidence? I think not. Oh, what a perfect family. David and Cathy Wolpert. David Jr., Lucille, Mary, Mansion, and all the lost souls who dig their noses too deep in the history of Wolpert Mansion. The ones who read this story. The ones like You.
+            </p>
+            </p>
+          </div>
+          <div class="column is-4">
+            <img class="is-" src="images/riverdale_road.png">
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="storyteller">
+          <p>
+            This story told by:
+            <span>Jacob</span>
+            <span>on 10/25/2018</span>
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="has-background-grey-dark">
+      <div id="social" class="has-text-centered">
+        <a href="https://www.facebook.com/ilovemyanythink/"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/ilovemyanythink"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+      </div>
+    </footer>
+    <!--Load Scripts-->
+    <script src="script.js" async></script>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+    <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
+    <script>
+
+      var mymap = L.map('map').setView([39.8647286, -104.9353042], 13);
+      /*L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(mymap);*/
+      var CartoDB_DarkMatter = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}{r}.png', {
+         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+          subdomains: 'abcd',
+           maxZoom: 19
+     }).addTo(mymap);
+      var Stamen_Toner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.{ext}', {
+	       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      	 subdomains: 'abcd',
+      	 minZoom: 0,
+      	 maxZoom: 20,
+      	 ext: 'png'
+       }).addTo(mymap);
+
+      var circle = L.circle([39.8647286, -104.9353042], {
+          color: 'red',
+          fillColor: 'rgb(181,26,56)',
+          fillOpacity: 0.5,
+          radius: 350
+      }).addTo(mymap);
+      circle.bindPopup("the ruins of a mansion are near here");
+
+    </script>
+  </body>
+</html>
