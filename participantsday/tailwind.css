@@ -1,0 +1,17 @@
+:root {
+  /* color variables */
+  --amc_blue: #005F8D;
+  --amc_light_blue: #e7eef3;
+  --amc_dark_blue: #284568;
+  --amc_red: #c2002f;
+  --amc_light_red: #bf415a;
+  --amc_solar: #ffd501;
+  --amc_vto: #87c073;
+  --amc_h2o: #05c3de;
+  --amc_mfg: #bcbec0;
+  --amc_geo: #f7921e;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
