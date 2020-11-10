@@ -1291,7 +1291,7 @@ var app = (function () {
     }
 
     /**
-     * @param {string} url
+     * @param {string} url 
      * @return {ClientNode}
      */
     function urlToRoute(url) {
@@ -1603,8 +1603,8 @@ var app = (function () {
      * @typedef {Object} RoutifyContext
      * @prop {ClientNode} component
      * @prop {ClientNode} layout
-     * @prop {any} componentFile
-     *
+     * @prop {any} componentFile 
+     * 
      *  @returns {import('svelte/store').Readable<RoutifyContext>} */
     function getRoutifyContext() {
       return getContext('routify') || rootContext
@@ -1613,7 +1613,7 @@ var app = (function () {
 
     /**
      * @typedef {import('svelte/store').Readable<ClientNodeApi>} ClientNodeHelperStore
-     * @type { ClientNodeHelperStore }
+     * @type { ClientNodeHelperStore } 
      */
     const page = {
       subscribe(run) {
@@ -1624,7 +1624,7 @@ var app = (function () {
     /**
      * @callback AfterPageLoadHelper
      * @param {function} callback
-     *
+     * 
      * @typedef {import('svelte/store').Readable<AfterPageLoadHelper> & {_hooks:Array<function>}} AfterPageLoadHelperStore
      * @type {AfterPageLoadHelperStore}
      */
@@ -1633,7 +1633,7 @@ var app = (function () {
       subscribe: hookHandler
     };
 
-    /**
+    /** 
      * @callback BeforeUrlChangeHelper
      * @param {function} callback
      *
@@ -1660,7 +1660,7 @@ var app = (function () {
      * @return {String}
      *
      * @typedef {import('svelte/store').Readable<UrlHelper>} UrlHelperStore
-     * @type {UrlHelperStore}
+     * @type {UrlHelperStore} 
      * */
     const url = {
       subscribe(listener) {
@@ -1674,10 +1674,10 @@ var app = (function () {
       }
     };
 
-    /**
-     * @param {{component: ClientNode}} $ctx
-     * @param {RouteNode} $oldRoute
-     * @param {RouteNode[]} $routes
+    /** 
+     * @param {{component: ClientNode}} $ctx 
+     * @param {RouteNode} $oldRoute 
+     * @param {RouteNode[]} $routes 
      * @param {{base: string, path: string}} $location
      * @returns {UrlHelper}
      */
@@ -1716,9 +1716,9 @@ var app = (function () {
     }
 
     /**
-     *
-     * @param {string} path
-     * @param {object} params
+     * 
+     * @param {string} path 
+     * @param {object} params 
      */
     function _getQueryString(path, params) {
       if (!defaultConfig.queryHandler) return ""
@@ -1738,7 +1738,7 @@ var app = (function () {
     * @param {GotoOptions=} options
     *
     * @typedef {import('svelte/store').Readable<GotoHelper>}  GotoHelperStore
-    * @type {GotoHelperStore}
+    * @type {GotoHelperStore} 
     * */
     const goto = {
       subscribe(listener) {
@@ -1760,9 +1760,9 @@ var app = (function () {
      * @param {UrlParams=} params
      * @param {UrlOptions=} options
      * @returns {Boolean}
-     *
+     * 
      * @typedef {import('svelte/store').Readable<IsActiveHelper>} IsActiveHelperStore
-     * @type {IsActiveHelperStore}
+     * @type {IsActiveHelperStore} 
      * */
     const isActive = {
       subscribe(run) {
@@ -1916,7 +1916,7 @@ var app = (function () {
         store.set(true);
         return true
       }));
-
+      
       afterPageLoad.subscribe(fn => fn(event => store.set(false)));
 
       return store
@@ -2034,7 +2034,7 @@ var app = (function () {
     	return block;
     }
 
-    // (132:36)
+    // (132:36) 
     function create_if_block_3(ctx) {
     	let each_blocks = [];
     	let each_1_lookup = new Map();
@@ -3266,7 +3266,7 @@ var app = (function () {
     	}
     }
 
-    /**
+    /** 
      * Node payload
      * @typedef {Object} NodePayload
      * @property {RouteNode=} file current node
@@ -3277,7 +3277,7 @@ var app = (function () {
      * State Object
      * @typedef {Object} StateObject
      * @prop {TreePayload=} treePayload payload from the tree
-     *
+     * 
      * Node walker proxy
      * @callback NodeWalkerProxy
      * @param {NodePayload} NodePayload
@@ -3288,11 +3288,11 @@ var app = (function () {
      * Node middleware
      * @description Walks through the nodes of a tree
      * @example middleware = createNodeMiddleware(payload => {payload.file.name = 'hello'})(treePayload))
-     * @param {NodeWalkerProxy} fn
+     * @param {NodeWalkerProxy} fn 
      */
     function createNodeMiddleware(fn) {
 
-        /**
+        /**    
          * NodeMiddleware payload receiver
          * @param {TreePayload} payload
          */
@@ -3300,7 +3300,7 @@ var app = (function () {
             return await nodeMiddleware(payload.tree, fn, { state: { treePayload: payload } })
         };
 
-        /**
+        /**    
          * NodeMiddleware sync payload receiver
          * @param {TreePayload} payload
          */
@@ -3315,7 +3315,7 @@ var app = (function () {
      * Node walker
      * @param {Object} file mutable file
      * @param {NodeWalkerProxy} fn function to be called for each file
-     * @param {NodePayload=} payload
+     * @param {NodePayload=} payload 
      */
     async function nodeMiddleware(file, fn, payload) {
         const { state, scope, parent } = payload || {};
@@ -3339,7 +3339,7 @@ var app = (function () {
      * Node walker (sync version)
      * @param {Object} file mutable file
      * @param {NodeWalkerProxy} fn function to be called for each file
-     * @param {NodePayload=} payload
+     * @param {NodePayload=} payload 
      */
     function nodeMiddlewareSync(file, fn, payload) {
         const { state, scope, parent } = payload || {};
@@ -3362,7 +3362,7 @@ var app = (function () {
 
     /**
      * Clone with JSON
-     * @param {T} obj
+     * @param {T} obj 
      * @returns {T} JSON cloned object
      * @template T
      */
@@ -3420,9 +3420,9 @@ var app = (function () {
     }
 
     /**
-     *
-     * @param {RouteNode} file
-     * @param {Number} direction
+     * 
+     * @param {RouteNode} file 
+     * @param {Number} direction 
      */
     function _getSibling(file, direction) {
         if (!file.root) {
@@ -3455,7 +3455,7 @@ var app = (function () {
         createNodeMiddleware(payload => {
             if (payload.file.isPage || payload.file.isFallback)
             payload.state.treePayload.routes.push(payload.file);
-        }).sync(treePayload);
+        }).sync(treePayload);    
         treePayload.routes.sort((c, p) => (c.ranking >= p.ranking ? -1 : 1));
     };
 
@@ -3527,7 +3527,7 @@ var app = (function () {
         get prev() { return _navigate(this, -1) }
         preload() {
             this.__file.layouts.forEach(file => file.component());
-            this.__file.component();
+            this.__file.component(); 
         }
     }
 
@@ -7486,7 +7486,7 @@ var app = (function () {
     }, I$1 = /** @class */ function(e) {
         function n(t, n) {
             var r = this;
-            return (r = e.call(this, n) || this).code = t, r.message = n, r.name = "FirebaseError",
+            return (r = e.call(this, n) || this).code = t, r.message = n, r.name = "FirebaseError", 
             // HACK: We write a toString property directly because Error is not a real
             // class and so inheritance does not work correctly. We could alternatively
             // do the same "back-door inheritance" trick that FirebaseError does.
@@ -7616,7 +7616,7 @@ var app = (function () {
     /**
      * Casts `obj` to `T`. In non-production builds, verifies that `obj` is an
      * instance of `T` before casting.
-     */ function k$1(t,
+     */ function k$1(t, 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     e) {
         return t;
@@ -7644,10 +7644,10 @@ var app = (function () {
      * If `nBytes < 0` , an error will be thrown.
      */ function P$1(t) {
         // Polyfills for IE and WebWorker by using `self` and `msCrypto` when `crypto` is not available.
-        var e =
+        var e = 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         "undefined" != typeof self && (self.crypto || self.msCrypto), n = new Uint8Array(t);
-        if (e && "function" == typeof e.getRandomValues) e.getRandomValues(n); else
+        if (e && "function" == typeof e.getRandomValues) e.getRandomValues(n); else 
         // Falls back to Math.random
         for (var r = 0; r < t; r++) n[r] = Math.floor(256 * Math.random());
         return n;
@@ -7675,7 +7675,7 @@ var app = (function () {
             // Alphanumeric characters
             var t = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", e = Math.floor(256 / t.length) * t.length, n = ""
             // The largest byte value that is a multiple of `char.length`.
-            ; n.length < 20; ) for (var r = P$1(40), i = 0; i < r.length; ++i)
+            ; n.length < 20; ) for (var r = P$1(40), i = 0; i < r.length; ++i) 
             // Only accept values that are [0, maxMultiple), this ensures they can
             // be evenly mapped to indices of `chars` via a modulo operation.
             n.length < 20 && r[i] < e && (n += t.charAt(r[i] % t.length));
@@ -7742,7 +7742,7 @@ var app = (function () {
         }, t.prototype.toBase64 = function() {
             return t = this.i, btoa(t);
             /** Converts a binary string to a Base64 encoded string. */        var t;
-            /** True if and only if the Base64 conversion functions are available. */    },
+            /** True if and only if the Base64 conversion functions are available. */    }, 
         t.prototype.toUint8Array = function() {
             return function(t) {
                 for (var e = new Uint8Array(t.length), n = 0; n < t.length; n++) e[n] = t.charCodeAt(n);
@@ -7774,7 +7774,7 @@ var app = (function () {
             } catch (e) {
                 throw new I$1(b.INVALID_ARGUMENT, "Failed to construct Bytes from Base64 string: " + e);
             }
-        },
+        }, 
         /**
          * Creates a new `Bytes` object from the given Uint8Array.
          *
@@ -7782,7 +7782,7 @@ var app = (function () {
          */
         t.fromUint8Array = function(e) {
             return new t(C$1.fromUint8Array(e));
-        },
+        }, 
         /**
          * Returns the underlying bytes as a Base64-encoded string.
          *
@@ -7790,7 +7790,7 @@ var app = (function () {
          */
         t.prototype.toBase64 = function() {
             return this.l.toBase64();
-        },
+        }, 
         /**
          * Returns the underlying bytes in a new `Uint8Array`.
          *
@@ -7798,7 +7798,7 @@ var app = (function () {
          */
         t.prototype.toUint8Array = function() {
             return this.l.toUint8Array();
-        },
+        }, 
         /**
          * Returns a string representation of the `Bytes` object.
          *
@@ -7806,7 +7806,7 @@ var app = (function () {
          */
         t.prototype.toString = function() {
             return "Bytes(base64: " + this.toBase64() + ")";
-        },
+        }, 
         /**
          * Returns true if this `Bytes` object is equal to the provided one.
          *
@@ -7871,7 +7871,7 @@ var app = (function () {
         }, n.prototype.toString = function() {
             return "Blob(base64: " + this.toBase64() + ")";
         }, n;
-    }(U$1), j =
+    }(U$1), j = 
     /**
          * Constructs a DatabaseInfo using the provided host, databaseId and
          * persistenceKey.
@@ -7887,7 +7887,7 @@ var app = (function () {
          * option when using WebChannel as the network transport.
          */
     function(t, e, n, r, i, o) {
-        this._ = t, this.persistenceKey = e, this.host = n, this.ssl = r, this.forceLongPolling = i,
+        this._ = t, this.persistenceKey = e, this.host = n, this.ssl = r, this.forceLongPolling = i, 
         this.T = o;
     }, G$1 = /** @class */ function() {
         function t(t, e) {
@@ -7976,7 +7976,7 @@ var app = (function () {
      * automatically handles collisions of keys.
      */ var W$1 = /** @class */ function() {
         function t(t, e) {
-            this.m = t, this.A = e,
+            this.m = t, this.A = e, 
             /**
                  * The inner map for a key -> value pair. Due to the possibility of
                  * collisions we keep a list of entries that we do a linear search through
@@ -7994,21 +7994,21 @@ var app = (function () {
             }
         }, t.prototype.has = function(t) {
             return void 0 !== this.get(t);
-        },
+        }, 
         /** Put this key and value in the map. */ t.prototype.set = function(t, e) {
             var n = this.m(t), r = this.R[n];
             if (void 0 !== r) {
                 for (var i = 0; i < r.length; i++) if (this.A(r[i][0], t)) return void (r[i] = [ t, e ]);
                 r.push([ t, e ]);
             } else this.R[n] = [ [ t, e ] ];
-        },
+        }, 
         /**
          * Remove this key from the map. Returns a boolean if anything was deleted.
          */
         t.prototype.delete = function(t) {
             var e = this.m(t), n = this.R[e];
             if (void 0 === n) return !1;
-            for (var r = 0; r < n.length; r++) if (this.A(n[r][0], t)) return 1 === n.length ? delete this.R[e] : n.splice(r, 1),
+            for (var r = 0; r < n.length; r++) if (this.A(n[r][0], t)) return 1 === n.length ? delete this.R[e] : n.splice(r, 1), 
             !0;
             return !1;
         }, t.prototype.forEach = function(t) {
@@ -8046,7 +8046,7 @@ var app = (function () {
          * @return a new timestamp representing the current date.
          */    return t.now = function() {
             return t.fromMillis(Date.now());
-        },
+        }, 
         /**
          * Creates a new timestamp from the given date.
          *
@@ -8056,7 +8056,7 @@ var app = (function () {
          */
         t.fromDate = function(e) {
             return t.fromMillis(e.getTime());
-        },
+        }, 
         /**
          * Creates a new timestamp from the given number of milliseconds.
          *
@@ -8068,7 +8068,7 @@ var app = (function () {
         t.fromMillis = function(e) {
             var n = Math.floor(e / 1e3);
             return new t(n, 1e6 * (e - 1e3 * n));
-        },
+        }, 
         /**
          * Converts a `Timestamp` to a JavaScript `Date` object. This conversion causes
          * a loss of precision since `Date` objects only support millisecond precision.
@@ -8078,7 +8078,7 @@ var app = (function () {
          */
         t.prototype.toDate = function() {
             return new Date(this.toMillis());
-        },
+        }, 
         /**
          * Converts a `Timestamp` to a numeric timestamp (in milliseconds since
          * epoch). This operation causes a loss of precision.
@@ -8090,7 +8090,7 @@ var app = (function () {
             return 1e3 * this.seconds + this.nanoseconds / 1e6;
         }, t.prototype.g = function(t) {
             return this.seconds === t.seconds ? L$1(this.nanoseconds, t.nanoseconds) : L$1(this.seconds, t.seconds);
-        },
+        }, 
         /**
          * Returns true if this `Timestamp` is equal to the provided one.
          *
@@ -8106,7 +8106,7 @@ var app = (function () {
                 seconds: this.seconds,
                 nanoseconds: this.nanoseconds
             };
-        },
+        }, 
         /**
          * Converts this object to a primitive string, which allows Timestamp objects to be compared
          * using the `>`, `<=`, `>=` and `>` operators.
@@ -8134,7 +8134,7 @@ var app = (function () {
             return this.timestamp.g(t.timestamp);
         }, t.prototype.isEqual = function(t) {
             return this.timestamp.isEqual(t.timestamp);
-        },
+        }, 
         /** Returns a number representation of the version for use in spec tests. */ t.prototype.p = function() {
             // Convert to microseconds.
             return 1e6 * this.timestamp.seconds + this.timestamp.nanoseconds / 1e3;
@@ -8145,7 +8145,7 @@ var app = (function () {
         }, t;
     }(), Y$1 = /** @class */ function() {
         function t(t, e, n) {
-            void 0 === e ? e = 0 : e > t.length && S$1(), void 0 === n ? n = t.length - e : n > t.length - e && S$1(),
+            void 0 === e ? e = 0 : e > t.length && S$1(), void 0 === n ? n = t.length - e : n > t.length - e && S$1(), 
             this.segments = t, this.offset = e, this.S = n;
         }
         return Object.defineProperty(t.prototype, "length", {
@@ -8161,7 +8161,7 @@ var app = (function () {
             return e instanceof t ? e.forEach((function(t) {
                 n.push(t);
             })) : n.push(e), this.C(n);
-        },
+        }, 
         /** The index of one past the last segment of the path. */ t.prototype.limit = function() {
             return this.offset + this.length;
         }, t.prototype.N = function(t) {
@@ -8209,7 +8209,7 @@ var app = (function () {
             return this.L().join("/");
         }, n.prototype.toString = function() {
             return this.B();
-        },
+        }, 
         /**
          * Creates a resource path from the given slash-delimited string. If multiple
          * arguments are provided, all components are combined. Leading and trailing
@@ -8238,7 +8238,7 @@ var app = (function () {
         }
         return __extends(n, e), n.prototype.C = function(t, e, r) {
             return new n(t, e, r);
-        },
+        }, 
         /**
          * Returns true if the string could be used as a segment in a field path
          * without escaping.
@@ -8247,24 +8247,24 @@ var app = (function () {
             return J$1.test(t);
         }, n.prototype.B = function() {
             return this.L().map((function(t) {
-                return t = t.replace("\\", "\\\\").replace("`", "\\`"), n.K(t) || (t = "`" + t + "`"),
+                return t = t.replace("\\", "\\\\").replace("`", "\\`"), n.K(t) || (t = "`" + t + "`"), 
                 t;
             })).join(".");
         }, n.prototype.toString = function() {
             return this.B();
-        },
+        }, 
         /**
          * Returns true if this field references the key of a document.
          */
         n.prototype.W = function() {
             return 1 === this.length && "__name__" === this.get(0);
-        },
+        }, 
         /**
          * The field designating the key of a document.
          */
         n.j = function() {
             return new n([ "__name__" ]);
-        },
+        }, 
         /**
          * Parses a field string from the given server-formatted string.
          *
@@ -8301,7 +8301,7 @@ var app = (function () {
             return new t(X$1.q(e));
         }, t.J = function(e) {
             return new t(X$1.q(e).N(5));
-        },
+        }, 
         /** Returns true if the document is in the specified collectionId. */ t.prototype.Y = function(t) {
             return this.path.length >= 2 && this.path.get(this.path.length - 2) === t;
         }, t.prototype.isEqual = function(t) {
@@ -8312,7 +8312,7 @@ var app = (function () {
             return X$1.D(t.path, e.path);
         }, t.X = function(t) {
             return t.length % 2 == 0;
-        },
+        }, 
         /**
          * Creates and returns a new document key with the given segments.
          *
@@ -8408,9 +8408,9 @@ var app = (function () {
      */
     // Visible for testing
     var rt = function(t, e, n, r, i, o, u) {
-        void 0 === e && (e = null), void 0 === n && (n = []), void 0 === r && (r = []),
-        void 0 === i && (i = null), void 0 === o && (o = null), void 0 === u && (u = null),
-        this.path = t, this.collectionGroup = e, this.orderBy = n, this.filters = r, this.limit = i,
+        void 0 === e && (e = null), void 0 === n && (n = []), void 0 === r && (r = []), 
+        void 0 === i && (i = null), void 0 === o && (o = null), void 0 === u && (u = null), 
+        this.path = t, this.collectionGroup = e, this.orderBy = n, this.filters = r, this.limit = i, 
         this.startAt = o, this.endAt = u, this.tt = null;
     };
 
@@ -8422,8 +8422,8 @@ var app = (function () {
      * using this factory method, because `Query` provides an implicit `orderBy`
      * property.
      */ function it(t, e, n, r, i, o, u) {
-        return void 0 === e && (e = null), void 0 === n && (n = []), void 0 === r && (r = []),
-        void 0 === i && (i = null), void 0 === o && (o = null), void 0 === u && (u = null),
+        return void 0 === e && (e = null), void 0 === n && (n = []), void 0 === r && (r = []), 
+        void 0 === i && (i = null), void 0 === o && (o = null), void 0 === u && (u = null), 
         new rt(t, e, n, r, i, o, u);
     }
 
@@ -8441,7 +8441,7 @@ var app = (function () {
             })).join(","), n += "|ob:", n += e.orderBy.map((function(t) {
                 return (e = t).field.B() + e.dir;
                 var e;
-            })).join(","), tt(e.limit) || (n += "|l:", n += e.limit), e.startAt && (n += "|lb:",
+            })).join(","), tt(e.limit) || (n += "|l:", n += e.limit), e.startAt && (n += "|lb:", 
             n += er(e.startAt)), e.endAt && (n += "|ub:", n += er(e.endAt)), e.tt = n;
         }
         return e.tt;
@@ -8452,7 +8452,7 @@ var app = (function () {
         if (t.orderBy.length !== e.orderBy.length) return !1;
         for (var n = 0; n < t.orderBy.length; n++) if (!ur(t.orderBy[n], e.orderBy[n])) return !1;
         if (t.filters.length !== e.filters.length) return !1;
-        for (var r = 0; r < t.filters.length; r++) if (i = t.filters[r], o = e.filters[r],
+        for (var r = 0; r < t.filters.length; r++) if (i = t.filters[r], o = e.filters[r], 
         i.op !== o.op || !i.field.isEqual(o.field) || !Wt(i.value, o.value)) return !1;
         var i, o;
         return t.collectionGroup === e.collectionGroup && !!t.path.isEqual(e.path) && !!rr(t.startAt, e.startAt) && rr(t.endAt, e.endAt);
@@ -8483,19 +8483,19 @@ var app = (function () {
      */ var at, ct, ht = /** @class */ function() {
         function t(
         /** The target being listened to. */
-        t,
+        t, 
         /**
          * The target ID to which the target corresponds; Assigned by the
          * LocalStore for user listens and by the SyncEngine for limbo watches.
          */
-        e,
+        e, 
         /** The purpose of the target. */
-        n,
+        n, 
         /**
          * The sequence number of the last transaction during which this target data
          * was modified.
          */
-        r,
+        r, 
         /** The latest snapshot version seen for this target. */
         i
         /**
@@ -8508,20 +8508,20 @@ var app = (function () {
          * matches the target. The resume token essentially identifies a point in
          * time from which the server should resume sending results.
          */ , u) {
-            void 0 === i && (i = H$1.min()), void 0 === o && (o = H$1.min()), void 0 === u && (u = C$1.u),
-            this.target = t, this.targetId = e, this.et = n, this.sequenceNumber = r, this.nt = i,
+            void 0 === i && (i = H$1.min()), void 0 === o && (o = H$1.min()), void 0 === u && (u = C$1.u), 
+            this.target = t, this.targetId = e, this.et = n, this.sequenceNumber = r, this.nt = i, 
             this.lastLimboFreeSnapshotVersion = o, this.resumeToken = u;
         }
         /** Creates a new target data instance with an updated sequence number. */    return t.prototype.st = function(e) {
             return new t(this.target, this.targetId, this.et, e, this.nt, this.lastLimboFreeSnapshotVersion, this.resumeToken);
-        },
+        }, 
         /**
          * Creates a new target data instance with an updated resume token and
          * snapshot version.
          */
         t.prototype.it = function(e, n) {
             return new t(this.target, this.targetId, this.et, this.sequenceNumber, n, this.lastLimboFreeSnapshotVersion, e);
-        },
+        }, 
         /**
          * Creates a new target data instance with an updated last limbo free
          * snapshot version number.
@@ -8529,7 +8529,7 @@ var app = (function () {
         t.prototype.rt = function(e) {
             return new t(this.target, this.targetId, this.et, this.sequenceNumber, this.nt, e, this.resumeToken);
         }, t;
-    }(), ft =
+    }(), ft = 
     // TODO(b/33078163): just use simplest form of existence filter for now
     function(t) {
         this.count = t;
@@ -8611,7 +8611,7 @@ var app = (function () {
      * @returns The Code equivalent to the given GRPC status code. Fails if there
      *     is no match.
      */ function pt(t) {
-        if (void 0 === t)
+        if (void 0 === t) 
         // This shouldn't normally happen, but in certain error cases (like trying
         // to send invalid proto messages) we may get an error with no GRPC code.
         return N$1("GRPC error has no .code"), b.UNKNOWN;
@@ -8679,13 +8679,13 @@ var app = (function () {
      * "UNKNOWN", etc.)
      * @returns The equivalent Code. Non-matching responses are mapped to
      *     Code.UNKNOWN.
-     */ (ct = at || (at = {}))[ct.OK = 0] = "OK", ct[ct.CANCELLED = 1] = "CANCELLED",
-    ct[ct.UNKNOWN = 2] = "UNKNOWN", ct[ct.INVALID_ARGUMENT = 3] = "INVALID_ARGUMENT",
-    ct[ct.DEADLINE_EXCEEDED = 4] = "DEADLINE_EXCEEDED", ct[ct.NOT_FOUND = 5] = "NOT_FOUND",
-    ct[ct.ALREADY_EXISTS = 6] = "ALREADY_EXISTS", ct[ct.PERMISSION_DENIED = 7] = "PERMISSION_DENIED",
-    ct[ct.UNAUTHENTICATED = 16] = "UNAUTHENTICATED", ct[ct.RESOURCE_EXHAUSTED = 8] = "RESOURCE_EXHAUSTED",
-    ct[ct.FAILED_PRECONDITION = 9] = "FAILED_PRECONDITION", ct[ct.ABORTED = 10] = "ABORTED",
-    ct[ct.OUT_OF_RANGE = 11] = "OUT_OF_RANGE", ct[ct.UNIMPLEMENTED = 12] = "UNIMPLEMENTED",
+     */ (ct = at || (at = {}))[ct.OK = 0] = "OK", ct[ct.CANCELLED = 1] = "CANCELLED", 
+    ct[ct.UNKNOWN = 2] = "UNKNOWN", ct[ct.INVALID_ARGUMENT = 3] = "INVALID_ARGUMENT", 
+    ct[ct.DEADLINE_EXCEEDED = 4] = "DEADLINE_EXCEEDED", ct[ct.NOT_FOUND = 5] = "NOT_FOUND", 
+    ct[ct.ALREADY_EXISTS = 6] = "ALREADY_EXISTS", ct[ct.PERMISSION_DENIED = 7] = "PERMISSION_DENIED", 
+    ct[ct.UNAUTHENTICATED = 16] = "UNAUTHENTICATED", ct[ct.RESOURCE_EXHAUSTED = 8] = "RESOURCE_EXHAUSTED", 
+    ct[ct.FAILED_PRECONDITION = 9] = "FAILED_PRECONDITION", ct[ct.ABORTED = 10] = "ABORTED", 
+    ct[ct.OUT_OF_RANGE = 11] = "OUT_OF_RANGE", ct[ct.UNIMPLEMENTED = 12] = "UNIMPLEMENTED", 
     ct[ct.INTERNAL = 13] = "INTERNAL", ct[ct.UNAVAILABLE = 14] = "UNAVAILABLE", ct[ct.DATA_LOSS = 15] = "DATA_LOSS";
 
     /**
@@ -8713,11 +8713,11 @@ var app = (function () {
         // Returns a copy of the map, with the specified key/value added or replaced.
             return t.prototype.ot = function(e, n) {
             return new t(this.D, this.root.ot(e, n, this.D).copy(null, null, yt.at, null, null));
-        },
+        }, 
         // Returns a copy of the map, with the specified key removed.
         t.prototype.remove = function(e) {
             return new t(this.D, this.root.remove(e, this.D).copy(null, null, yt.at, null, null));
-        },
+        }, 
         // Returns the value of the node with the given key, or null.
         t.prototype.get = function(t) {
             for (var e = this.root; !e.P(); ) {
@@ -8726,7 +8726,7 @@ var app = (function () {
                 n < 0 ? e = e.left : n > 0 && (e = e.right);
             }
             return null;
-        },
+        }, 
         // Returns the index of the element in this sorted map, or -1 if it doesn't
         // exist.
         t.prototype.indexOf = function(t) {
@@ -8750,15 +8750,15 @@ var app = (function () {
             },
             enumerable: !1,
             configurable: !0
-        }),
+        }), 
         // Returns the minimum key in the map.
         t.prototype.ht = function() {
             return this.root.ht();
-        },
+        }, 
         // Returns the maximum key in the map.
         t.prototype.ct = function() {
             return this.root.ct();
-        },
+        }, 
         // Traverses the map in key order and calls the specified action function
         // for each key/value pair. If action returns true, traversal is aborted.
         // Returns the first truthy value returned by action, or the last falsey
@@ -8774,7 +8774,7 @@ var app = (function () {
             return this.ut((function(e, n) {
                 return t.push(e + ":" + n), !1;
             })), "{" + t.join(", ") + "}";
-        },
+        }, 
         // Traverses the map in reverse key order and calls the specified action
         // function for each key/value pair. If action returns true, traversal is
         // aborted.
@@ -8782,7 +8782,7 @@ var app = (function () {
         // value returned by action.
         t.prototype.lt = function(t) {
             return this.root.lt(t);
-        },
+        }, 
         // Returns an iterator over the SortedMap.
         t.prototype._t = function() {
             return new vt(this.root, null, this.D, !1);
@@ -8796,9 +8796,9 @@ var app = (function () {
     }(), vt = /** @class */ function() {
         function t(t, e, n, r) {
             this.Et = r, this.Tt = [];
-            for (var i = 1; !t.P(); ) if (i = e ? n(t.key, e) : 1,
+            for (var i = 1; !t.P(); ) if (i = e ? n(t.key, e) : 1, 
             // flip the comparison if we're going in reverse
-            r && (i *= -1), i < 0)
+            r && (i *= -1), i < 0) 
             // This node is less than our start key. ignore it
             t = this.Et ? t.left : t.right; else {
                 if (0 === i) {
@@ -8817,7 +8817,7 @@ var app = (function () {
                 key: t.key,
                 value: t.value
             };
-            if (this.Et) for (t = t.left; !t.P(); ) this.Tt.push(t), t = t.right; else for (t = t.right; !t.P(); ) this.Tt.push(t),
+            if (this.Et) for (t = t.left; !t.P(); ) this.Tt.push(t), t = t.right; else for (t = t.right; !t.P(); ) this.Tt.push(t), 
             t = t.left;
             return e;
         }, t.prototype.At = function() {
@@ -8832,7 +8832,7 @@ var app = (function () {
         }, t;
     }(), yt = /** @class */ function() {
         function t(e, n, r, i, o) {
-            this.key = e, this.value = n, this.color = null != r ? r : t.RED, this.left = null != i ? i : t.EMPTY,
+            this.key = e, this.value = n, this.color = null != r ? r : t.RED, this.left = null != i ? i : t.EMPTY, 
             this.right = null != o ? o : t.EMPTY, this.size = this.left.size + 1 + this.right.size;
         }
         // Returns a copy of the current node, optionally replacing pieces of it.
@@ -8840,33 +8840,33 @@ var app = (function () {
             return new t(null != e ? e : this.key, null != n ? n : this.value, null != r ? r : this.color, null != i ? i : this.left, null != o ? o : this.right);
         }, t.prototype.P = function() {
             return !1;
-        },
+        }, 
         // Traverses the tree in key order and calls the specified action function
         // for each node. If action returns true, traversal is aborted.
         // Returns the first truthy value returned by action, or the last falsey
         // value returned by action.
         t.prototype.ut = function(t) {
             return this.left.ut(t) || t(this.key, this.value) || this.right.ut(t);
-        },
+        }, 
         // Traverses the tree in reverse key order and calls the specified action
         // function for each node. If action returns true, traversal is aborted.
         // Returns the first truthy value returned by action, or the last falsey
         // value returned by action.
         t.prototype.lt = function(t) {
             return this.right.lt(t) || t(this.key, this.value) || this.left.lt(t);
-        },
+        }, 
         // Returns the minimum node in the tree.
         t.prototype.min = function() {
             return this.left.P() ? this : this.left.min();
-        },
+        }, 
         // Returns the maximum key in the tree.
         t.prototype.ht = function() {
             return this.min().key;
-        },
+        }, 
         // Returns the maximum key in the tree.
         t.prototype.ct = function() {
             return this.right.P() ? this.key : this.right.ct();
-        },
+        }, 
         // Returns new tree, with the key/value added.
         t.prototype.ot = function(t, e, n) {
             var r = this, i = n(t, r.key);
@@ -8875,13 +8875,13 @@ var app = (function () {
             if (this.left.P()) return t.EMPTY;
             var e = this;
             return e.left.Vt() || e.left.left.Vt() || (e = e.yt()), (e = e.copy(null, null, null, e.left.gt(), null)).Pt();
-        },
+        }, 
         // Returns new tree, with the specified item removed.
         t.prototype.remove = function(e, n) {
             var r, i = this;
-            if (n(e, i.key) < 0) i.left.P() || i.left.Vt() || i.left.left.Vt() || (i = i.yt()),
+            if (n(e, i.key) < 0) i.left.P() || i.left.Vt() || i.left.left.Vt() || (i = i.yt()), 
             i = i.copy(null, null, null, i.left.remove(e, n), null); else {
-                if (i.left.Vt() && (i = i.bt()), i.right.P() || i.right.Vt() || i.right.left.Vt() || (i = i.vt()),
+                if (i.left.Vt() && (i = i.bt()), i.right.P() || i.right.Vt() || i.right.left.Vt() || (i = i.vt()), 
                 0 === n(e, i.key)) {
                     if (i.right.P()) return t.EMPTY;
                     r = i.right.min(), i = i.copy(r.key, r.value, null, null, i.right.gt());
@@ -8891,15 +8891,15 @@ var app = (function () {
             return i.Pt();
         }, t.prototype.Vt = function() {
             return this.color;
-        },
+        }, 
         // Returns new tree after performing any needed rotations.
         t.prototype.Pt = function() {
             var t = this;
-            return t.right.Vt() && !t.left.Vt() && (t = t.St()), t.left.Vt() && t.left.left.Vt() && (t = t.bt()),
+            return t.right.Vt() && !t.left.Vt() && (t = t.St()), t.left.Vt() && t.left.left.Vt() && (t = t.bt()), 
             t.left.Vt() && t.right.Vt() && (t = t.Dt()), t;
         }, t.prototype.yt = function() {
             var t = this.Dt();
-            return t.right.left.Vt() && (t = (t = (t = t.copy(null, null, null, null, t.right.bt())).St()).Dt()),
+            return t.right.left.Vt() && (t = (t = (t = t.copy(null, null, null, null, t.right.bt())).St()).Dt()), 
             t;
         }, t.prototype.vt = function() {
             var t = this.Dt();
@@ -8913,12 +8913,12 @@ var app = (function () {
         }, t.prototype.Dt = function() {
             var t = this.left.copy(null, null, !this.left.color, null, null), e = this.right.copy(null, null, !this.right.color, null, null);
             return this.copy(null, null, !this.color, t, e);
-        },
+        }, 
         // For testing.
         t.prototype.Ct = function() {
             var t = this.Nt();
             return Math.pow(2, t) <= this.size + 1;
-        },
+        }, 
         // In a balanced RB tree, the black-depth (number of black nodes) from root to
         // leaves is equal on both sides.  This function verifies that or asserts.
         t.prototype.Nt = function() {
@@ -8935,7 +8935,7 @@ var app = (function () {
     // end LLRBNode
     // Empty node is shared between all LLRB trees.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    yt.EMPTY = null, yt.RED = !0, yt.at = !1,
+    yt.EMPTY = null, yt.RED = !0, yt.at = !1, 
     // end LLRBEmptyNode
     yt.EMPTY = new (/** @class */ function() {
         function t() {
@@ -8971,15 +8971,15 @@ var app = (function () {
             },
             enumerable: !1,
             configurable: !0
-        }),
+        }), 
         // Returns a copy of the current node.
         t.prototype.copy = function(t, e, n, r, i) {
             return this;
-        },
+        }, 
         // Returns a copy of the tree, with the specified key/value added.
         t.prototype.ot = function(t, e, n) {
             return new yt(t, e);
-        },
+        }, 
         // Returns a copy of the tree, with the specified key removed.
         t.prototype.remove = function(t, e) {
             return this;
@@ -8995,7 +8995,7 @@ var app = (function () {
             return null;
         }, t.prototype.Vt = function() {
             return !1;
-        },
+        }, 
         // For testing.
         t.prototype.Ct = function() {
             return !0;
@@ -9045,26 +9045,26 @@ var app = (function () {
             configurable: !0
         }), t.prototype.indexOf = function(t) {
             return this.data.indexOf(t);
-        },
+        }, 
         /** Iterates elements in order defined by "comparator" */ t.prototype.forEach = function(t) {
             this.data.ut((function(e, n) {
                 return t(e), !1;
             }));
-        },
+        }, 
         /** Iterates over `elem`s such that: range[0] <= elem < range[1]. */ t.prototype.xt = function(t, e) {
             for (var n = this.data.ft(t[0]); n.At(); ) {
                 var r = n.It();
                 if (this.D(r.key, t[1]) >= 0) return;
                 e(r.key);
             }
-        },
+        }, 
         /**
          * Iterates over `elem`s such that: start <= elem until false is returned.
          */
         t.prototype.Ft = function(t, e) {
             var n;
             for (n = void 0 !== e ? this.data.ft(e) : this.data._t(); n.At(); ) if (!t(n.It().key)) return;
-        },
+        }, 
         /** Finds the least element greater than or equal to `elem`. */ t.prototype.kt = function(t) {
             var e = this.data.ft(t);
             return e.At() ? e.It().key : null;
@@ -9072,10 +9072,10 @@ var app = (function () {
             return new gt(this.data._t());
         }, t.prototype.ft = function(t) {
             return new gt(this.data.ft(t));
-        },
+        }, 
         /** Inserts or updates an element */ t.prototype.add = function(t) {
             return this.copy(this.data.remove(t).ot(t, !0));
-        },
+        }, 
         /** Deletes an element */ t.prototype.delete = function(t) {
             return this.has(t) ? this.copy(this.data.remove(t)) : this;
         }, t.prototype.P = function() {
@@ -9198,7 +9198,7 @@ var app = (function () {
             return this.Lt.ct();
         }, t.prototype.P = function() {
             return this.Lt.P();
-        },
+        }, 
         /**
          * Returns the index of the provided key in the document set, or -1 if the
          * document key is not present in the set;
@@ -9212,17 +9212,17 @@ var app = (function () {
             },
             enumerable: !1,
             configurable: !0
-        }),
+        }), 
         /** Iterates documents in order defined by "comparator" */ t.prototype.forEach = function(t) {
             this.Lt.ut((function(e, n) {
                 return t(e), !1;
             }));
-        },
+        }, 
         /** Inserts or updates a document with the same key */ t.prototype.add = function(t) {
             // First remove the element if we have it.
             var e = this.delete(t.key);
             return e.copy(e.$t.ot(t.key, t), e.Lt.ot(t, null));
-        },
+        }, 
         /** Deletes a document with a given key */ t.prototype.delete = function(t) {
             var e = this.get(t);
             return e ? this.copy(this.$t.remove(t), this.Lt.remove(e)) : this;
@@ -9249,7 +9249,7 @@ var app = (function () {
         }
         return t.prototype.track = function(t) {
             var e = t.doc.key, n = this.qt.get(e);
-            n ?
+            n ? 
             // Merge the new change with the existing change.
             0 /* Added */ !== t.type && 3 /* Metadata */ === n.type ? this.qt = this.qt.ot(e, t) : 3 /* Metadata */ === t.type && 1 /* Removed */ !== n.type ? this.qt = this.qt.ot(e, {
                 type: n.type,
@@ -9266,7 +9266,7 @@ var app = (function () {
             }) : 0 /* Added */ === t.type && 1 /* Removed */ === n.type ? this.qt = this.qt.ot(e, {
                 type: 2 /* Modified */ ,
                 doc: t.doc
-            }) :
+            }) : 
             // This includes these cases, which don't make sense:
             // Added->Added
             // Removed->Removed
@@ -9283,7 +9283,7 @@ var app = (function () {
         }, t;
     }(), Pt = /** @class */ function() {
         function t(t, e, n, r, i, o, u, s) {
-            this.query = t, this.docs = e, this.Kt = n, this.docChanges = r, this.Qt = i, this.fromCache = o,
+            this.query = t, this.docs = e, this.Kt = n, this.docChanges = r, this.Qt = i, this.fromCache = o, 
             this.Wt = u, this.jt = s
             /** Returns a view snapshot as if all documents in the snapshot were added. */;
         }
@@ -9294,8 +9294,8 @@ var app = (function () {
                     type: 0 /* Added */ ,
                     doc: t
                 });
-            })), new t(e, n, xt.Bt(n), o, r, i,
-            /* syncStateChanged= */ !0,
+            })), new t(e, n, xt.Bt(n), o, r, i, 
+            /* syncStateChanged= */ !0, 
             /* excludesMetadataChanges= */ !1);
         }, Object.defineProperty(t.prototype, "hasPendingWrites", {
             get: function() {
@@ -9315,21 +9315,21 @@ var app = (function () {
         /**
          * The snapshot version this event brings us up to, or MIN if not set.
          */
-        t,
+        t, 
         /**
          * A map from target to changes to the target. See TargetChange.
          */
-        e,
+        e, 
         /**
          * A set of targets that is known to be inconsistent. Listens for these
          * targets should be re-established without resume tokens.
          */
-        n,
+        n, 
         /**
          * A set of which documents have changed or been deleted, along with the
          * doc's new values (if not deleted).
          */
-        r,
+        r, 
         /**
          * A set of which document updates are due only to limbo resolution targets.
          */
@@ -9355,23 +9355,23 @@ var app = (function () {
          * query. The resume token essentially identifies a point in time from which
          * the server should resume sending results.
          */
-        t,
+        t, 
         /**
          * The "current" (synced) status of this target. Note that "current"
          * has special meaning in the RPC protocol that implies that a target is
          * both up-to-date and consistent with the rest of the watch stream.
          */
-        e,
+        e, 
         /**
          * The set of documents that were newly assigned to this target as part of
          * this remote event.
          */
-        n,
+        n, 
         /**
          * The set of documents that were already assigned to this target but received
          * an update during this remote event.
          */
-        r,
+        r, 
         /**
          * The set of documents that were removed from this target as part of this
          * remote event.
@@ -9389,11 +9389,11 @@ var app = (function () {
         }, t;
     }(), Vt = function(
     /** The new document applies to all of these targets. */
-    t,
+    t, 
     /** The new document is removed from all of these targets. */
-    e,
+    e, 
     /** The key of the document for this change. */
-    n,
+    n, 
     /**
          * The new document or NoDocument if it was deleted. Is null if the
          * document went out of view without the server sending a new document.
@@ -9404,9 +9404,9 @@ var app = (function () {
         this.targetId = t, this.oe = e;
     }, Ct = function(
     /** What kind of change occurred to the watch target. */
-    t,
+    t, 
     /** The target IDs that were added/removed/set. */
-    e,
+    e, 
     /**
          * An opaque, server-assigned token that allows watching a target to be
          * resumed after disconnecting without retransmitting all the data that
@@ -9415,7 +9415,7 @@ var app = (function () {
          */
     n
     /** An RPC error indicating why the watch failed. */ , r) {
-        void 0 === n && (n = C$1.u), void 0 === r && (r = null), this.state = t, this.targetIds = e,
+        void 0 === n && (n = C$1.u), void 0 === r && (r = null), this.state = t, this.targetIds = e, 
         this.resumeToken = n, this.cause = r;
     }, Ut = /** @class */ function() {
         function t() {
@@ -9423,16 +9423,16 @@ var app = (function () {
              * The number of pending responses (adds or removes) that we are waiting on.
              * We only consider targets active that have no pending responses.
              */
-            this.ae = 0,
+            this.ae = 0, 
             /**
                  * Keeps track of the document changes since the last raised snapshot.
                  *
                  * These changes are continuously updated as we receive document updates and
                  * always reflect the current set of changes against the last issued snapshot.
                  */
-            this.he = Ft(),
+            this.he = Ft(), 
             /** See public getters for explanations of these fields. */
-            this.ce = C$1.u, this.ue = !1,
+            this.ce = C$1.u, this.ue = !1, 
             /**
                  * Whether this target state should be included in the next snapshot. We
                  * initialize to true so that newly-added targets are included in the next
@@ -9472,14 +9472,14 @@ var app = (function () {
             },
             enumerable: !1,
             configurable: !0
-        }),
+        }), 
         /**
          * Applies the resume token to the TargetChange, but only when it has a new
          * value. Empty resumeTokens are discarded.
          */
         t.prototype.de = function(t) {
             t.o() > 0 && (this.le = !0, this.ce = t);
-        },
+        }, 
         /**
          * Creates a target change from the current set of changes.
          *
@@ -9506,7 +9506,7 @@ var app = (function () {
                     S$1();
                 }
             })), new Lt(this.ce, this.ue, t, e, n);
-        },
+        }, 
         /**
          * Resets the document changes and sets `hasPendingChanges` to false.
          */
@@ -9525,13 +9525,13 @@ var app = (function () {
         }, t;
     }(), Mt = /** @class */ function() {
         function t(t) {
-            this.Pe = t,
+            this.Pe = t, 
             /** The internal state of all tracked targets. */
-            this.ge = new Map,
+            this.ge = new Map, 
             /** Keeps track of the documents to update since the last raised snapshot. */
-            this.Ve = bt(),
+            this.Ve = bt(), 
             /** A mapping of document keys to their set of target IDs. */
-            this.ye = qt(),
+            this.ye = qt(), 
             /**
                  * A list of targets with existence filter mismatches. These targets are
                  * known to be inconsistent and their listens needs to be re-established by
@@ -9551,7 +9551,7 @@ var app = (function () {
                 var u = o[i];
                 this.Se(u, t.key, t.re);
             }
-        },
+        }, 
         /** Processes and adds the WatchTargetChange to the current set of changes. */ t.prototype.De = function(t) {
             var e = this;
             this.Ce(t, (function(n) {
@@ -9564,7 +9564,7 @@ var app = (function () {
                   case 1 /* Added */ :
                     // We need to decrement the number of pending acks needed from watch
                     // for this targetId.
-                    r.Ae(), r._e ||
+                    r.Ae(), r._e || 
                     // We have a freshly added target, so we need to reset any state
                     // that we had previously. This can happen e.g. when remove and add
                     // back a target for existence filter mismatches.
@@ -9595,7 +9595,7 @@ var app = (function () {
                     S$1();
                 }
             }));
-        },
+        }, 
         /**
          * Iterates over all targetIds that the watch change applies to: either the
          * targetIds explicitly listed in the change or the targetIds of all currently
@@ -9606,7 +9606,7 @@ var app = (function () {
             t.targetIds.length > 0 ? t.targetIds.forEach(e) : this.ge.forEach((function(t, r) {
                 n.xe(r) && e(r);
             }));
-        },
+        }, 
         /**
          * Handles existence filters and synthesizes deletes for filter mismatches.
          * Targets that are invalidated by filter mismatches are added to
@@ -9630,7 +9630,7 @@ var app = (function () {
                 // snapshot with `isFromCache:true`.
                 this.Fe(e), this.pe = this.pe.add(e));
             }
-        },
+        }, 
         /**
          * Converts the currently accumulated state into a remote event at the
          * provided snapshot version. Resets the accumulated changes before returning.
@@ -9669,7 +9669,7 @@ var app = (function () {
             }));
             var i = new Ot(t, n, this.pe, this.Ve, r);
             return this.Ve = bt(), this.ye = qt(), this.pe = new mt(L$1), i;
-        },
+        }, 
         /**
          * Adds the provided document to the internal list of document updates and
          * its document key to the given target's mapping.
@@ -9680,7 +9680,7 @@ var app = (function () {
                 var n = this.Le(t, e.key) ? 2 /* Modified */ : 0 /* Added */;
                 this.Ne(t).Te(e.key, n), this.Ve = this.Ve.ot(e.key, e), this.ye = this.ye.ot(e.key, this.Be(e.key).add(t));
             }
-        },
+        }, 
         /**
          * Removes the provided document from the target mapping. If the
          * document no longer matches the target, but the document's state is still
@@ -9692,14 +9692,14 @@ var app = (function () {
         t.prototype.Se = function(t, e, n) {
             if (this.xe(t)) {
                 var r = this.Ne(t);
-                this.Le(t, e) ? r.Te(e, 1 /* Removed */) :
+                this.Le(t, e) ? r.Te(e, 1 /* Removed */) : 
                 // The document may have entered and left the target before we raised a
                 // snapshot, so we can just ignore the change.
                 r.Ie(e), this.ye = this.ye.ot(e, this.Be(e).delete(t)), n && (this.Ve = this.Ve.ot(e, n));
             }
         }, t.prototype.removeTarget = function(t) {
             this.ge.delete(t);
-        },
+        }, 
         /**
          * Returns the current count of documents in the target. This includes both
          * the number of documents that the LocalStore considers to be part of the
@@ -9708,7 +9708,7 @@ var app = (function () {
         t.prototype.Me = function(t) {
             var e = this.Ne(t).we();
             return this.Pe.qe(t).size + e.ee.size - e.se.size;
-        },
+        }, 
         /**
          * Increment the number of acks needed from watch before we can consider the
          * server to be 'in-sync' with the client's active targets.
@@ -9721,7 +9721,7 @@ var app = (function () {
         }, t.prototype.Be = function(t) {
             var e = this.ye.get(t);
             return e || (e = new mt(L$1), this.ye = this.ye.ot(t, e)), e;
-        },
+        }, 
         /**
          * Verifies that the user is still interested in this target (by calling
          * `getTargetDataForTarget()`) and that we are not waiting for pending ADDs
@@ -9730,7 +9730,7 @@ var app = (function () {
         t.prototype.xe = function(t) {
             var e = null !== this.Oe(t);
             return e || T$1("WatchChangeAggregator", "Detected inactive target", t), e;
-        },
+        }, 
         /**
          * Returns the TargetData for an active target (i.e. a target that the user
          * is still interested in that has no outstanding target change requests).
@@ -9738,7 +9738,7 @@ var app = (function () {
         t.prototype.Oe = function(t) {
             var e = this.ge.get(t);
             return e && e._e ? null : this.Pe.Ue(t);
-        },
+        }, 
         /**
          * Resets the state of a Watch target to its initial state (e.g. sets
          * 'current' to false, clears the resume token and removes its target mapping
@@ -9749,7 +9749,7 @@ var app = (function () {
             this.ge.set(t, new Ut), this.Pe.qe(t).forEach((function(n) {
                 e.Se(t, n, /*updatedDocument=*/ null);
             }));
-        },
+        }, 
         /**
          * Returns whether the LocalStore considers the document to be part of the
          * specified target.
@@ -9883,7 +9883,7 @@ var app = (function () {
 
           case 3 /* TimestampValue */ :
             return function(t, e) {
-                if ("string" == typeof t.timestampValue && "string" == typeof e.timestampValue && t.timestampValue.length === e.timestampValue.length)
+                if ("string" == typeof t.timestampValue && "string" == typeof e.timestampValue && t.timestampValue.length === e.timestampValue.length) 
                 // Use string equality for ISO 8601 timestamps
                 return t.timestampValue === e.timestampValue;
                 var n = $t(t.timestampValue), r = $t(e.timestampValue);
@@ -9951,7 +9951,7 @@ var app = (function () {
           case 2 /* NumberValue */ :
             return function(t, e) {
                 var n = Zt(t.integerValue || t.doubleValue), r = Zt(e.integerValue || e.doubleValue);
-                return n < r ? -1 : n > r ? 1 : n === r ? 0 :
+                return n < r ? -1 : n > r ? 1 : n === r ? 0 : 
                 // one or both are NaN.
                 isNaN(n) ? isNaN(r) ? 0 : -1 : 1;
             }(t, e);
@@ -10031,7 +10031,7 @@ var app = (function () {
         return "nullValue" in t ? "null" : "booleanValue" in t ? "" + t.booleanValue : "integerValue" in t ? "" + t.integerValue : "doubleValue" in t ? "" + t.doubleValue : "timestampValue" in t ? function(t) {
             var e = $t(t);
             return "time(" + e.seconds + "," + e.nanos + ")";
-        }(t.timestampValue) : "stringValue" in t ? t.stringValue : "bytesValue" in t ? te(t.bytesValue).toBase64() : "referenceValue" in t ? (n = t.referenceValue,
+        }(t.timestampValue) : "stringValue" in t ? t.stringValue : "bytesValue" in t ? te(t.bytesValue).toBase64() : "referenceValue" in t ? (n = t.referenceValue, 
         Z$1.J(n).toString()) : "geoPointValue" in t ? "geo(" + (e = t.geoPointValue).latitude + "," + e.longitude + ")" : "arrayValue" in t ? function(t) {
             for (var e = "[", n = !0, r = 0, i = t.values || []; r < i.length; r++) {
                 n ? n = !1 : e += ",", e += Jt(i[r]);
@@ -10247,7 +10247,7 @@ var app = (function () {
 
     function be(t, e) {
         var n = ge(e);
-        return x$1(n.get(1) === t._.projectId), x$1(!n.get(3) && !t._.database || n.get(3) === t._.database),
+        return x$1(n.get(1) === t._.projectId), x$1(!n.get(3) && !t._.database || n.get(3) === t._.database), 
         new Z$1(Te(n));
     }
 
@@ -10468,7 +10468,7 @@ var app = (function () {
                 value: e
             };
         }(t, e.limit);
-        return null !== u && (n.structuredQuery.limit = u), e.startAt && (n.structuredQuery.startAt = Oe(e.startAt)),
+        return null !== u && (n.structuredQuery.limit = u), e.startAt && (n.structuredQuery.startAt = Oe(e.startAt)), 
         e.endAt && (n.structuredQuery.endAt = Oe(e.endAt)), n;
     }
 
@@ -10484,7 +10484,7 @@ var app = (function () {
         var s = [];
         n.orderBy && (s = n.orderBy.map((function(t) {
             return function(t) {
-                return new ir(Ue(t.field),
+                return new ir(Ue(t.field), 
                 // visible for testing
                 function(t) {
                     switch (t) {
@@ -10820,7 +10820,7 @@ var app = (function () {
      *             containing foo
      */ var tn = /** @class */ function() {
         function t(t) {
-            this.fields = t,
+            this.fields = t, 
             // TODO(dimond): validation of FieldMask
             // Sort the field mask to support `FieldMask.isEqual()` and assert below.
             t.sort($.D)
@@ -10857,7 +10857,7 @@ var app = (function () {
          * Note that these versions can be different: No-op writes will not change
          * the updateTime even though the commitTime advances.
          */
-    t,
+    t, 
     /**
          * The resulting fields returned from the backend after a
          * TransformMutation has been committed. Contains one FieldValue for each
@@ -10874,10 +10874,10 @@ var app = (function () {
         }
         return t.ze = function() {
             return new t;
-        },
+        }, 
         /** Creates a new Precondition with an exists flag. */ t.exists = function(e) {
             return new t(void 0, e);
-        },
+        }, 
         /** Creates a new Precondition based on a version a document exists at. */ t.updateTime = function(e) {
             return new t(e);
         }, Object.defineProperty(t.prototype, "je", {
@@ -10976,7 +10976,7 @@ var app = (function () {
                 hasCommittedMutations: !0
             });
         }(t, 0, n) : t instanceof pn ? function(t, e, n) {
-            if (!on(t.Ge, e))
+            if (!on(t.Ge, e)) 
             // Since the mutation was not rejected, we know that the  precondition
             // matched on the backend. We therefore must not have the expected version
             // of the document in our cache and return an UnknownDocument with the
@@ -10987,13 +10987,13 @@ var app = (function () {
                 hasCommittedMutations: !0
             });
         }(t, e, n) : t instanceof vn ? function(t, e, n) {
-            if (x$1(null != n.transformResults), !on(t.Ge, e))
+            if (x$1(null != n.transformResults), !on(t.Ge, e)) 
             // Since the mutation was not rejected, we know that the  precondition
             // matched on the backend. We therefore must not have the expected version
             // of the document in our cache and return an UnknownDocument with the
             // known updateTime.
             return new An(t.key, n.version);
-            var r = yn(t, e), i =
+            var r = yn(t, e), i = 
             /**
      * Creates a list of "transform results" (a transform result is a field value
      * representing the result of applying a transform) for use after a
@@ -11126,14 +11126,14 @@ var app = (function () {
      */ var ln = /** @class */ function(e) {
         function n(t, n, r) {
             var i = this;
-            return (i = e.call(this) || this).key = t, i.value = n, i.Ge = r, i.type = 0 /* Set */ ,
+            return (i = e.call(this) || this).key = t, i.value = n, i.Ge = r, i.type = 0 /* Set */ , 
             i;
         }
         return __extends(n, e), n;
     }(un), pn = /** @class */ function(e) {
         function n(t, n, r, i) {
             var o = this;
-            return (o = e.call(this) || this).key = t, o.data = n, o.Qe = r, o.Ge = i, o.type = 1 /* Patch */ ,
+            return (o = e.call(this) || this).key = t, o.data = n, o.Qe = r, o.Ge = i, o.type = 1 /* Patch */ , 
             o;
         }
         return __extends(n, e), n;
@@ -11154,7 +11154,7 @@ var app = (function () {
     var vn = /** @class */ function(e) {
         function n(t, n) {
             var r = this;
-            return (r = e.call(this) || this).key = t, r.fieldTransforms = n, r.type = 2 /* Transform */ ,
+            return (r = e.call(this) || this).key = t, r.fieldTransforms = n, r.type = 2 /* Transform */ , 
             // NOTE: We set a precondition of exists: true as a safety-check, since we
             // always combine TransformMutations with a SetMutation or PatchMutation which
             // (if successful) should end up with an existing document.
@@ -11195,7 +11195,7 @@ var app = (function () {
             return new t({
                 mapValue: {}
             });
-        },
+        }, 
         /**
          * Returns the value at the given path or null.
          *
@@ -11217,7 +11217,7 @@ var app = (function () {
          * @param baseObject The object to mutate.
          */
         function t(t) {
-            void 0 === t && (t = bn.empty()), this.Ze = t,
+            void 0 === t && (t = bn.empty()), this.Ze = t, 
             /** A map that contains the accumulated changes in this builder. */
             this.tn = new Map;
         }
@@ -11229,7 +11229,7 @@ var app = (function () {
          * @return The current Builder instance.
          */    return t.prototype.set = function(t, e) {
             return this.en(t, e), this;
-        },
+        }, 
         /**
          * Removes the field at the specified path. If there is no field at the
          * specified path, nothing is changed.
@@ -11239,7 +11239,7 @@ var app = (function () {
          */
         t.prototype.delete = function(t) {
             return this.en(t, null), this;
-        },
+        }, 
         /**
          * Adds `value` to the overlay map at `path`. Creates nested map entries if
          * needed.
@@ -11247,7 +11247,7 @@ var app = (function () {
         t.prototype.en = function(t, e) {
             for (var n = this.tn, r = 0; r < t.length - 1; ++r) {
                 var i = t.get(r), o = n.get(i);
-                o instanceof Map ?
+                o instanceof Map ? 
                 // Re-use a previously created map
                 n = o : o && 10 /* ObjectValue */ === Kt(o) ? (
                 // Convert the existing Protobuf MapValue into a map
@@ -11256,11 +11256,11 @@ var app = (function () {
                 o = new Map, n.set(i, o), n = o);
             }
             n.set(t.O(), e);
-        },
+        }, 
         /** Returns an ObjectValue with all mutations applied. */ t.prototype.Xe = function() {
             var t = this.nn($.U(), this.tn);
             return null != t ? new bn(t) : this.Ze;
-        },
+        }, 
         /**
          * Applies any overlays from `currentOverlays` that exist at `currentPath`
          * and returns the merged data at `currentPath` (or null if there were no
@@ -11298,16 +11298,16 @@ var app = (function () {
             var r = new $([ t ]);
             if (ue(n)) {
                 var i = En(n.mapValue).fields;
-                if (0 === i.length)
+                if (0 === i.length) 
                 // Preserve the empty map by adding it to the FieldMask.
-                e.push(r); else
+                e.push(r); else 
                 // For nested and non-empty ObjectValues, add the FieldPath of the
                 // leaf nodes.
                 for (var o = 0, u = i; o < u.length; o++) {
                     var s = u[o];
                     e.push(r.child(s));
                 }
-            } else
+            } else 
             // For nested and non-empty ObjectValues, add the FieldPath of the leaf
             // nodes.
             e.push(r);
@@ -11339,7 +11339,7 @@ var app = (function () {
     }, Tn = /** @class */ function(e) {
         function n(t, n, r, i) {
             var o = this;
-            return (o = e.call(this, t, n) || this).sn = r, o.Ye = !!i.Ye, o.hasCommittedMutations = !!i.hasCommittedMutations,
+            return (o = e.call(this, t, n) || this).sn = r, o.Ye = !!i.Ye, o.hasCommittedMutations = !!i.hasCommittedMutations, 
             o;
         }
         return __extends(n, e), n.prototype.field = function(t) {
@@ -11362,7 +11362,7 @@ var app = (function () {
     }(_n), Nn = /** @class */ function(e) {
         function n(t, n, r) {
             var i = this;
-            return (i = e.call(this, t, n) || this).hasCommittedMutations = !(!r || !r.hasCommittedMutations),
+            return (i = e.call(this, t, n) || this).hasCommittedMutations = !(!r || !r.hasCommittedMutations), 
             i;
         }
         return __extends(n, e), n.prototype.toString = function() {
@@ -11391,17 +11391,17 @@ var app = (function () {
         }), n.prototype.isEqual = function(t) {
             return t instanceof n && t.version.isEqual(this.version) && t.key.isEqual(this.key);
         }, n;
-    }(_n), Dn =
+    }(_n), Dn = 
     /**
          * Initializes a Query with a path and optional additional query constraints.
          * Path must currently be empty if this is a collection group query.
          */
     function(t, e, n, r, i, o /* First */ , u, s) {
-        void 0 === e && (e = null), void 0 === n && (n = []), void 0 === r && (r = []),
-        void 0 === i && (i = null), void 0 === o && (o = "F"), void 0 === u && (u = null),
-        void 0 === s && (s = null), this.path = t, this.collectionGroup = e, this.on = n,
-        this.filters = r, this.limit = i, this.an = o, this.startAt = u, this.endAt = s,
-        this.hn = null,
+        void 0 === e && (e = null), void 0 === n && (n = []), void 0 === r && (r = []), 
+        void 0 === i && (i = null), void 0 === o && (o = "F"), void 0 === u && (u = null), 
+        void 0 === s && (s = null), this.path = t, this.collectionGroup = e, this.on = n, 
+        this.filters = r, this.limit = i, this.an = o, this.startAt = u, this.endAt = s, 
+        this.hn = null, 
         // The corresponding `Target` of this `Query` instance.
         this.cn = null, this.startAt, this.endAt;
     };
@@ -11463,7 +11463,7 @@ var app = (function () {
         if (null === e.hn) {
             e.hn = [];
             var n = Ln(e), r = On(e);
-            if (null !== n && null === r)
+            if (null !== n && null === r) 
             // In order to implicitly add key ordering, we must also add the
             // inequality filter field for it to be a valid query.
             // Note that the default inequality field and key ordering is ascending.
@@ -11528,15 +11528,15 @@ var app = (function () {
     function Gn(t) {
         return "Query(target=" + function(t) {
             var e = t.path.B();
-            return null !== t.collectionGroup && (e += " collectionGroup=" + t.collectionGroup),
+            return null !== t.collectionGroup && (e += " collectionGroup=" + t.collectionGroup), 
             t.filters.length > 0 && (e += ", filters: [" + t.filters.map((function(t) {
                 return (e = t).field.B() + " " + e.op + " " + Xt(e.value);
                 /** Returns a debug description for `filter`. */            var e;
-                /** Filter that matches on key fields (i.e. '__name__'). */        })).join(", ") + "]"),
+                /** Filter that matches on key fields (i.e. '__name__'). */        })).join(", ") + "]"), 
             tt(t.limit) || (e += ", limit: " + t.limit), t.orderBy.length > 0 && (e += ", orderBy: [" + t.orderBy.map((function(t) {
                 return (e = t).field.B() + " (" + e.dir + ")";
                 var e;
-            })).join(", ") + "]"), t.startAt && (e += ", startAt: " + er(t.startAt)), t.endAt && (e += ", endAt: " + er(t.endAt)),
+            })).join(", ") + "]"), t.startAt && (e += ", startAt: " + er(t.startAt)), t.endAt && (e += ", endAt: " + er(t.endAt)), 
             "Target(" + e + ")";
         }(Cn(t)) + "; limitType=" + t.an + ")";
     }
@@ -11629,7 +11629,7 @@ var app = (function () {
     }(Kn), Qn = /** @class */ function(e) {
         function n(t, n) {
             var r = this;
-            return (r = e.call(this, t, "in" /* IN */ , n) || this).keys = Yn("in" /* IN */ , n),
+            return (r = e.call(this, t, "in" /* IN */ , n) || this).keys = Yn("in" /* IN */ , n), 
             r;
         }
         return __extends(n, e), n.prototype.matches = function(t) {
@@ -11640,7 +11640,7 @@ var app = (function () {
     }(Kn), Hn = /** @class */ function(e) {
         function n(t, n) {
             var r = this;
-            return (r = e.call(this, t, "not-in" /* NOT_IN */ , n) || this).keys = Yn("not-in" /* NOT_IN */ , n),
+            return (r = e.call(this, t, "not-in" /* NOT_IN */ , n) || this).keys = Yn("not-in" /* NOT_IN */ , n), 
             r;
         }
         return __extends(n, e), n.prototype.matches = function(t) {
@@ -11711,7 +11711,7 @@ var app = (function () {
      */ function nr(t, e, n) {
         for (var r = 0, i = 0; i < t.position.length; i++) {
             var o = e[i], u = t.position[i];
-            if (r = o.field.W() ? Z$1.D(Z$1.J(u.referenceValue), n.key) : Ht(u, n.field(o.field)),
+            if (r = o.field.W() ? Z$1.D(Z$1.J(u.referenceValue), n.key) : Ht(u, n.field(o.field)), 
             "desc" /* DESCENDING */ === o.dir && (r *= -1), 0 !== r) break;
         }
         return t.before ? r <= 0 : r < 0;
@@ -11777,11 +11777,11 @@ var app = (function () {
         /**
          * The AsyncQueue to run backoff operations on.
          */
-        t,
+        t, 
         /**
          * The ID to use when scheduling backoff operations on the AsyncQueue.
          */
-        e,
+        e, 
         /**
          * The initial delay (used as the base delay on the first retry attempt).
          * Note that jitter will still be applied, so the actual delay could be as
@@ -11797,8 +11797,8 @@ var app = (function () {
          * Note that jitter will still be applied, so the actual delay could be as
          * much as 1.5*maxDelayMs.
          */ , i) {
-            void 0 === n && (n = 1e3), void 0 === r && (r = 1.5), void 0 === i && (i = 6e4),
-            this.fn = t, this.dn = e, this.wn = n, this.En = r, this.Tn = i, this.In = 0, this.mn = null,
+            void 0 === n && (n = 1e3), void 0 === r && (r = 1.5), void 0 === i && (i = 6e4), 
+            this.fn = t, this.dn = e, this.wn = n, this.En = r, this.Tn = i, this.In = 0, this.mn = null, 
             /** The last backoff attempt, as epoch milliseconds. */
             this.An = Date.now(), this.reset();
         }
@@ -11810,14 +11810,14 @@ var app = (function () {
          * subsequent ones will increase according to the backoffFactor.
          */    return t.prototype.reset = function() {
             this.In = 0;
-        },
+        }, 
         /**
          * Resets the backoff delay to the maximum delay (e.g. for use after a
          * RESOURCE_EXHAUSTED error).
          */
         t.prototype.Rn = function() {
             this.In = this.Tn;
-        },
+        }, 
         /**
          * Returns a promise that resolves after currentDelayMs, and increases the
          * delay for any subsequent attempts. If there was a pending backoff operation
@@ -11831,10 +11831,10 @@ var app = (function () {
             // honored as such).
             var n = Math.floor(this.In + this.gn()), r = Math.max(0, Date.now() - this.An), i = Math.max(0, n - r);
             // Guard against lastAttemptTime being in the future due to a clock change.
-                    i > 0 && T$1("ExponentialBackoff", "Backing off for " + i + " ms (base delay: " + this.In + " ms, delay with jitter: " + n + " ms, last attempt: " + r + " ms ago)"),
+                    i > 0 && T$1("ExponentialBackoff", "Backing off for " + i + " ms (base delay: " + this.In + " ms, delay with jitter: " + n + " ms, last attempt: " + r + " ms ago)"), 
             this.mn = this.fn.Vn(this.dn, i, (function() {
                 return e.An = Date.now(), t();
-            })),
+            })), 
             // Apply backoff factor to determine next delay and ensure it is within
             // bounds.
             this.In *= this.En, this.In < this.wn && (this.In = this.wn), this.In > this.Tn && (this.In = this.Tn);
@@ -11842,7 +11842,7 @@ var app = (function () {
             null !== this.mn && (this.mn.pn(), this.mn = null);
         }, t.prototype.cancel = function() {
             null !== this.mn && (this.mn.cancel(), this.mn = null);
-        },
+        }, 
         /** Returns a random value in the range [-currentBaseMs/2, currentBaseMs/2] */ t.prototype.gn = function() {
             return (Math.random() - .5) * this.In;
         }, t;
@@ -11851,13 +11851,13 @@ var app = (function () {
             var e = this;
             // NOTE: next/catchCallback will always point to our own wrapper functions,
             // not the user's raw next() or catch() callbacks.
-                    this.bn = null, this.vn = null,
+                    this.bn = null, this.vn = null, 
             // When the operation resolves, we'll set result or error and mark isDone.
-            this.result = void 0, this.error = void 0, this.Sn = !1,
+            this.result = void 0, this.error = void 0, this.Sn = !1, 
             // Set to true when .then() or .catch() are called and prevents additional
             // chaining.
             this.Dn = !1, t((function(t) {
-                e.Sn = !0, e.result = t, e.bn &&
+                e.Sn = !0, e.result = t, e.bn && 
                 // value should be defined unless T is Void, but we can't express
                 // that in the type system.
                 e.bn(t);
@@ -11918,7 +11918,7 @@ var app = (function () {
                     }));
                 })), o = !0, i === r && t();
             }));
-        },
+        }, 
         /**
          * Given an array of predicate functions that asynchronously evaluate to a
          * boolean, implements a short-circuiting `or` between the results. Predicates
@@ -11951,7 +11951,7 @@ var app = (function () {
          * objectstores.
          */
         function t(e, n, r) {
-            this.name = e, this.version = n, this.Mn = r,
+            this.name = e, this.version = n, this.Mn = r, 
             // NOTE: According to https://bugs.webkit.org/show_bug.cgi?id=197050, the
             // bug we're checking for should exist in iOS >= 12.2 and < 13, but for
             // whatever reason it's much harder to hit after 12.2 so we only proactively
@@ -11960,7 +11960,7 @@ var app = (function () {
         }
         /** Deletes the specified database. */    return t.delete = function(t) {
             return T$1("SimpleDb", "Removing database:", t), yr(window.indexedDB.deleteDatabase(t)).xn();
-        },
+        }, 
         /** Returns true if IndexedDB is available in the current environment. */ t.Ln = function() {
             if ("undefined" == typeof indexedDB) return !1;
             if (t.Bn()) return !0;
@@ -11981,7 +11981,7 @@ var app = (function () {
             // like Gecko) Chrome/39.0.2171.71 Safari/537.36 Edge/12.0';
             // iOS Safari: Disable for users running iOS version < 10.
                     return !(e.indexOf("MSIE ") > 0 || e.indexOf("Trident/") > 0 || e.indexOf("Edge/") > 0 || r || o);
-        },
+        }, 
         /**
          * Returns true if the backing IndexedDB store is the Node IndexedDBShim
          * (see https://github.com/axemclion/IndexedDBShim).
@@ -11989,22 +11989,22 @@ var app = (function () {
         t.Bn = function() {
             var t;
             return "undefined" != typeof process && "YES" === (null === (t = process.env) || void 0 === t ? void 0 : t.Un);
-        },
+        }, 
         /** Helper to get a typed SimpleDbStore from a transaction. */ t.Kn = function(t, e) {
             return t.store(e);
-        },
+        }, 
         // visible for testing
         /** Parse User Agent to determine iOS version. Returns -1 if not found. */
         t.$n = function(t) {
             var e = t.match(/i(?:phone|pad|pod) os ([\d_]+)/i), n = e ? e[1].split("_").slice(0, 2).join(".") : "-1";
             return Number(n);
-        },
+        }, 
         // visible for testing
         /** Parse User Agent to determine Android version. Returns -1 if not found. */
         t.qn = function(t) {
             var e = t.match(/Android ([\d.]+)/i), n = e ? e[1].split(".").slice(0, 2).join(".") : "-1";
             return Number(n);
-        },
+        }, 
         /**
          * Opens the specified database, creating or upgrading it if necessary.
          */
@@ -12014,7 +12014,7 @@ var app = (function () {
                 return __generator(this, (function(n) {
                     switch (n.label) {
                       case 0:
-                        return this.db ? [ 3 /*break*/ , 2 ] : (T$1("SimpleDb", "Opening database:", this.name),
+                        return this.db ? [ 3 /*break*/ , 2 ] : (T$1("SimpleDb", "Opening database:", this.name), 
                         e = this, [ 4 /*yield*/ , new Promise((function(e, n) {
                             // TODO(mikelehen): Investigate browser compatibility.
                             // https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB
@@ -12086,7 +12086,7 @@ var app = (function () {
                                     n.sent(), s), c) ];
 
                                   case 4:
-                                    return h = n.sent(), f = "FirebaseError" !== h.name && u < 3, T$1("SimpleDb", "Transaction failed with error:", h.message, "Retrying:", f),
+                                    return h = n.sent(), f = "FirebaseError" !== h.name && u < 3, T$1("SimpleDb", "Transaction failed with error:", h.message, "Retrying:", f), 
                                     a.close(), f ? [ 3 /*break*/ , 5 ] : [ 2 /*return*/ , {
                                         value: Promise.reject(h)
                                     } ];
@@ -12137,20 +12137,20 @@ var app = (function () {
             },
             enumerable: !1,
             configurable: !0
-        }),
+        }), 
         /**
          * This function can be called to stop iteration at any point.
          */
         t.prototype.done = function() {
             this.Hn = !0;
-        },
+        }, 
         /**
          * This function can be called to skip to that next key, which could be
          * an index or a primary key.
          */
         t.prototype.Xn = function(t) {
             this.Jn = t;
-        },
+        }, 
         /**
          * Delete the current cursor value from the object store.
          *
@@ -12162,7 +12162,7 @@ var app = (function () {
     }(), lr = /** @class */ function(e) {
         function n(t, n) {
             var r = this;
-            return (r = e.call(this, b.UNAVAILABLE, "IndexedDB transaction '" + t + "' failed: " + n) || this).name = "IndexedDbTransactionError",
+            return (r = e.call(this, b.UNAVAILABLE, "IndexedDB transaction '" + t + "' failed: " + n) || this).name = "IndexedDbTransactionError", 
             r;
         }
         return __extends(n, e), n;
@@ -12205,7 +12205,7 @@ var app = (function () {
      */ var dr = /** @class */ function() {
         function t(t, e) {
             var n = this;
-            this.action = t, this.transaction = e, this.aborted = !1,
+            this.action = t, this.transaction = e, this.aborted = !1, 
             /**
                  * A promise that resolves with the result of the IndexedDb transaction.
                  */
@@ -12231,9 +12231,9 @@ var app = (function () {
             enumerable: !1,
             configurable: !0
         }), t.prototype.abort = function(t) {
-            t && this.Zn.reject(t), this.aborted || (T$1("SimpleDb", "Aborting transaction:", t ? t.message : "Client-initiated abort"),
+            t && this.Zn.reject(t), this.aborted || (T$1("SimpleDb", "Aborting transaction:", t ? t.message : "Client-initiated abort"), 
             this.aborted = !0, this.transaction.abort());
-        },
+        }, 
         /**
          * Returns a SimpleDbStore<KeyType, ValueType> for the specified store. All
          * operations performed on the SimpleDbStore happen within the context of this
@@ -12253,9 +12253,9 @@ var app = (function () {
         }
         return t.prototype.put = function(t, e) {
             var n;
-            return void 0 !== e ? (T$1("SimpleDb", "PUT", this.store.name, t, e), n = this.store.put(e, t)) : (T$1("SimpleDb", "PUT", this.store.name, "<auto-key>", t),
+            return void 0 !== e ? (T$1("SimpleDb", "PUT", this.store.name, t, e), n = this.store.put(e, t)) : (T$1("SimpleDb", "PUT", this.store.name, "<auto-key>", t), 
             n = this.store.put(t)), yr(n);
-        },
+        }, 
         /**
          * Adds a new value into an Object Store and returns the new key. Similar to
          * IndexedDb's `add()`, this method will fail on primary key collisions.
@@ -12265,7 +12265,7 @@ var app = (function () {
          */
         t.prototype.add = function(t) {
             return T$1("SimpleDb", "ADD", this.store.name, t, t), yr(this.store.add(t));
-        },
+        }, 
         /**
          * Gets the object with the specified key from the specified store, or null
          * if no object exists with the specified key.
@@ -12283,7 +12283,7 @@ var app = (function () {
             }));
         }, t.prototype.delete = function(t) {
             return T$1("SimpleDb", "DELETE", this.store.name, t), yr(this.store.delete(t));
-        },
+        }, 
         /**
          * If we ever need more of the count variants, we can add overloads. For now,
          * all we need is to count everything in a store.
@@ -12312,7 +12312,7 @@ var app = (function () {
             e ? n = t : (n = {}, e = t);
             var r = this.cursor(n);
             return this.es(r, e);
-        },
+        }, 
         /**
          * Iterates over a store, but waits for the given callback to complete for
          * each entry before iterating the next entry. This allows the callback to do
@@ -12407,7 +12407,7 @@ var app = (function () {
             if (t.message.indexOf(n) >= 0) {
                 // Wrap error in a more descriptive one.
                 var r = new I$1("internal", "IOS_INDEXEDDB_BUG1: IndexedDb has thrown '" + n + "'. This is likely due to an unavoidable bug in iOS. See https://stackoverflow.com/q/56496296/110915 for details and a potential workaround.");
-                return mr || (mr = !0,
+                return mr || (mr = !0, 
                 // Throw a global exception outside of this promise chain, for the user to
                 // potentially catch.
                 setTimeout((function() {
@@ -12474,8 +12474,8 @@ var app = (function () {
      * IE.
      */ var Ir = /** @class */ function() {
         function t(t, e, n, r, i) {
-            this.hs = t, this.dn = e, this.cs = n, this.op = r, this.us = i, this.ls = new sr,
-            this.then = this.ls.promise.then.bind(this.ls.promise),
+            this.hs = t, this.dn = e, this.cs = n, this.op = r, this.us = i, this.ls = new sr, 
+            this.then = this.ls.promise.then.bind(this.ls.promise), 
             // It's normal for the deferred promise to be canceled (due to cancellation)
             // and so we attach a dummy catch callback to avoid
             // 'UnhandledPromiseRejectionWarning' log spam.
@@ -12498,7 +12498,7 @@ var app = (function () {
         return t._s = function(e, n, r, i, o) {
             var u = new t(e, n, Date.now() + r, i, o);
             return u.start(r), u;
-        },
+        }, 
         /**
          * Starts the timer. This is called immediately after construction by
          * createAndSchedule().
@@ -12508,14 +12508,14 @@ var app = (function () {
             this.fs = setTimeout((function() {
                 return e.ds();
             }), t);
-        },
+        }, 
         /**
          * Queues the operation to run immediately (if it hasn't already been run or
          * canceled).
          */
         t.prototype.pn = function() {
             return this.ds();
-        },
+        }, 
         /**
          * Cancels the operation if it hasn't already been executed or canceled. The
          * promise will be rejected.
@@ -12539,25 +12539,25 @@ var app = (function () {
         function t() {
             var t = this;
             // The last promise in the queue.
-                    this.Es = Promise.resolve(),
+                    this.Es = Promise.resolve(), 
             // A list of retryable operations. Retryable operations are run in order and
             // retried with backoff.
-            this.Ts = [],
+            this.Ts = [], 
             // Is this AsyncQueue being shut down? Once it is set to true, it will not
             // be changed again.
-            this.Is = !1,
+            this.Is = !1, 
             // Operations scheduled to be queued in the future. Operations are
             // automatically removed after they are run or canceled.
-            this.As = [],
+            this.As = [], 
             // visible for testing
-            this.Rs = null,
+            this.Rs = null, 
             // Flag set while there's an outstanding AsyncQueue operation, used for
             // assertion sanity-checks.
-            this.Ps = !1,
+            this.Ps = !1, 
             // List of TimerIds to fast-forward delays for.
-            this.gs = [],
+            this.gs = [], 
             // Backoff timer used to schedule retries for retryable operations
-            this.Vs = new ar(this, "async_queue_retry" /* AsyncQueueRetry */),
+            this.Vs = new ar(this, "async_queue_retry" /* AsyncQueueRetry */), 
             // Visibility handler that triggers an immediate retry of all retryable
             // operations. Meant to speed up recovery when we regain file system access
             // after page comes into foreground.
@@ -12576,7 +12576,7 @@ var app = (function () {
             },
             enumerable: !1,
             configurable: !0
-        }),
+        }), 
         /**
          * Adds a new operation to the queue without waiting for it to complete (i.e.
          * we ignore the Promise result).
@@ -12584,16 +12584,16 @@ var app = (function () {
         t.prototype.ws = function(t) {
             // eslint-disable-next-line @typescript-eslint/no-floating-promises
             this.enqueue(t);
-        },
+        }, 
         /**
          * Regardless if the queue has initialized shutdown, adds a new operation to the
          * queue without waiting for it to complete (i.e. we ignore the Promise result).
          */
         t.prototype.bs = function(t) {
-            this.vs(),
+            this.vs(), 
             // eslint-disable-next-line @typescript-eslint/no-floating-promises
             this.Ss(t);
-        },
+        }, 
         /**
          * Initialize the shutdown of this queue. Once this method is called, the
          * only possible way to request running an operation is through
@@ -12605,14 +12605,14 @@ var app = (function () {
                 var t = br();
                 t && "function" == typeof t.removeEventListener && t.removeEventListener("visibilitychange", this.ys);
             }
-        },
+        }, 
         /**
          * Adds a new operation to the queue. Returns a promise that will be resolved
          * when the promise returned by the new operation is (with its value).
          */
         t.prototype.enqueue = function(t) {
             return this.vs(), this.Is ? new Promise((function(t) {})) : this.Ss(t);
-        },
+        }, 
         /**
          * Enqueue a retryable operation.
          *
@@ -12626,7 +12626,7 @@ var app = (function () {
             this.ws((function() {
                 return e.Ts.push(t), e.Ns();
             }));
-        },
+        }, 
         /**
          * Runs the next operation from the retryable queue. If the operation fails,
          * reschedules with backoff.
@@ -12649,11 +12649,11 @@ var app = (function () {
                       case 3:
                         if (!pr(t = n.sent())) throw t;
                         // Failure will be handled by AsyncQueue
-                                            return T$1("AsyncQueue", "Operation failed with retryable error: " + t),
+                                            return T$1("AsyncQueue", "Operation failed with retryable error: " + t), 
                         [ 3 /*break*/ , 4 ];
 
                       case 4:
-                        this.Ts.length > 0 &&
+                        this.Ts.length > 0 && 
                         // If there are additional operations, we re-schedule `retryNextOp()`.
                         // This is necessary to run retryable operations that failed during
                         // their initial attempt since we don't know whether they are already
@@ -12679,7 +12679,7 @@ var app = (function () {
                     // Re-throw the error so that this.tail becomes a rejected Promise and
                     // all further attempts to chain (via .then) will just short-circuit
                     // and return the rejected Promise.
-                    throw e.Rs = t, e.Ps = !1, N$1("INTERNAL UNHANDLED ERROR: ",
+                    throw e.Rs = t, e.Ps = !1, N$1("INTERNAL UNHANDLED ERROR: ", 
                     /**
      * Chrome includes Error.message in Error.stack. Other browsers do not.
      * This returns expected output of message + stack when available.
@@ -12687,7 +12687,7 @@ var app = (function () {
      */
                     function(t) {
                         var e = t.message || "";
-                        return t.stack && (e = t.stack.includes(t.message) ? t.stack : t.message + "\n" + t.stack),
+                        return t.stack && (e = t.stack.includes(t.message) ? t.stack : t.message + "\n" + t.stack), 
                         e;
                     }(t)), t;
                 })).then((function(t) {
@@ -12695,7 +12695,7 @@ var app = (function () {
                 }));
             }));
             return this.Es = n, n;
-        },
+        }, 
         /**
          * Schedules an operation to be queued on the AsyncQueue once the specified
          * `delayMs` has elapsed. The returned DelayedOperation can be used to cancel
@@ -12703,7 +12703,7 @@ var app = (function () {
          */
         t.prototype.Vn = function(t, e, n) {
             var r = this;
-            this.vs(),
+            this.vs(), 
             // Fast-forward delays for timerIds that have been overriden.
             this.gs.indexOf(t) > -1 && (e = 0);
             var i = Ir._s(this, t, e, n, (function(t) {
@@ -12712,14 +12712,14 @@ var app = (function () {
             return this.As.push(i), i;
         }, t.prototype.vs = function() {
             this.Rs && S$1();
-        },
+        }, 
         /**
          * Verifies there's an operation currently in-progress on the AsyncQueue.
          * Unfortunately we can't verify that the running code is in the promise chain
          * of that operation, so this isn't a foolproof check, but it should be enough
          * to catch some bugs.
          */
-        t.prototype.Fs = function() {},
+        t.prototype.Fs = function() {}, 
         /**
          * Waits until all currently queued tasks are finished executing. Delayed
          * operations are not run.
@@ -12744,7 +12744,7 @@ var app = (function () {
                     }
                 }));
             }));
-        },
+        }, 
         /**
          * For Tests: Determine if a delayed operation with a particular TimerId
          * exists.
@@ -12754,7 +12754,7 @@ var app = (function () {
                 if (n[e].dn === t) return !0;
             }
             return !1;
-        },
+        }, 
         /**
          * For Tests: Runs some or all delayed operations early.
          *
@@ -12776,13 +12776,13 @@ var app = (function () {
                 }
                 return e.ks();
             }));
-        },
+        }, 
         /**
          * For Tests: Skip all subsequent delays for a timer id.
          */
         t.prototype.$s = function(t) {
             this.gs.push(t);
-        },
+        }, 
         /** Called once a DelayedOperation is run or canceled. */ t.prototype.xs = function(t) {
             // NOTE: indexOf / slice are O(n), but delayedOperations is expected to be small.
             var e = this.As.indexOf(t);
@@ -12823,11 +12823,11 @@ var app = (function () {
                     return s.Ls = n.sent(), [ 3 /*break*/ , 4 ];
 
                   case 3:
-                    return a = n.sent(), c = _r(a, "Initialization of query '" + Gn(r.query) + "' failed"),
+                    return a = n.sent(), c = _r(a, "Initialization of query '" + Gn(r.query) + "' failed"), 
                     [ 2 /*return*/ , void r.onError(c) ];
 
                   case 4:
-                    return e.Bs.set(i, u), u.listeners.push(r),
+                    return e.Bs.set(i, u), u.listeners.push(r), 
                     // Run global snapshot listeners if a consistent snapshot has been emitted.
                     r.Ks(e.onlineState), u.Ls && r.Qs(u.Ls) && kr(e), [ 2 /*return*/ ];
                 }
@@ -12839,7 +12839,7 @@ var app = (function () {
         return __awaiter(this, void 0, void 0, (function() {
             var e, i, o, u, s;
             return __generator(this, (function(n) {
-                return e = k$1(t), i = r.query, o = !1, (u = e.Bs.get(i)) && (s = u.listeners.indexOf(r)) >= 0 && (u.listeners.splice(s, 1),
+                return e = k$1(t), i = r.query, o = !1, (u = e.Bs.get(i)) && (s = u.listeners.indexOf(r)) >= 0 && (u.listeners.splice(s, 1), 
                 o = 0 === u.listeners.length), o ? [ 2 /*return*/ , (e.Bs.delete(i), e.Ws(i)) ] : [ 2 /*return*/ ];
             }));
         }));
@@ -12882,7 +12882,7 @@ var app = (function () {
      * It uses an Observer to dispatch events.
      */ var Pr = /** @class */ function() {
         function t(t, e, n) {
-            this.query = t, this.js = e,
+            this.query = t, this.js = e, 
             /**
                  * Initial snapshots (e.g. from cache) may not be propagated to the wrapped
                  * observer. This flag is set to true once we've actually raised an event.
@@ -12903,19 +12903,19 @@ var app = (function () {
                     var i = r[n];
                     3 /* Metadata */ !== i.type && e.push(i);
                 }
-                t = new Pt(t.query, t.docs, t.Kt, e, t.Qt, t.fromCache, t.Wt,
+                t = new Pt(t.query, t.docs, t.Kt, e, t.Qt, t.fromCache, t.Wt, 
                 /* excludesMetadataChanges= */ !0);
             }
             var o = !1;
-            return this.Gs ? this.Hs(t) && (this.js.next(t), o = !0) : this.Js(t, this.onlineState) && (this.Ys(t),
+            return this.Gs ? this.Hs(t) && (this.js.next(t), o = !0) : this.Js(t, this.onlineState) && (this.Ys(t), 
             o = !0), this.zs = t, o;
         }, t.prototype.onError = function(t) {
             this.js.error(t);
-        },
+        }, 
         /** Returns whether a snapshot was raised. */ t.prototype.Ks = function(t) {
             this.onlineState = t;
             var e = !1;
-            return this.zs && !this.Gs && this.Js(this.zs, t) && (this.Ys(this.zs), e = !0),
+            return this.zs && !this.Gs && this.Js(this.zs, t) && (this.Ys(this.zs), e = !0), 
             e;
         }, t.prototype.Js = function(t, e) {
             // Always raise the first event when we're synced
@@ -12947,7 +12947,7 @@ var app = (function () {
         }
         return t.prototype.Zs = function() {
             return null != this.uid;
-        },
+        }, 
         /**
          * Returns a key representing this user, suitable for inclusion in a
          * dictionary.
@@ -12979,7 +12979,7 @@ var app = (function () {
      * Simple wrapper around a nullable UID. Mostly exists to make code more
      * readable.
      */
-    /** A user with a null UID. */ Or.UNAUTHENTICATED = new Or(null),
+    /** A user with a null UID. */ Or.UNAUTHENTICATED = new Or(null), 
     // TODO(mikelehen): Look into getting a proper uid-equivalent for
     // non-FirebaseAuth providers.
     Or.ei = new Or("google-credentials-uid"), Or.ni = new Or("first-party-uid");
@@ -13065,8 +13065,8 @@ var app = (function () {
         }
         return t.hi = function(e, n, r) {
             var i = JSON.parse(r), o = "object" == typeof i && -1 !== [ "pending", "acknowledged", "rejected" ].indexOf(i.state) && (void 0 === i.error || "object" == typeof i.error), u = void 0;
-            return o && i.error && ((o = "string" == typeof i.error.message && "string" == typeof i.error.code) && (u = new I$1(i.error.code, i.error.message))),
-            o ? new t(e, n, i.state, u) : (N$1("SharedClientState", "Failed to parse mutation state for ID '" + n + "': " + r),
+            return o && i.error && ((o = "string" == typeof i.error.message && "string" == typeof i.error.code) && (u = new I$1(i.error.code, i.error.message))), 
+            o ? new t(e, n, i.state, u) : (N$1("SharedClientState", "Failed to parse mutation state for ID '" + n + "': " + r), 
             null);
         }, t.prototype.ci = function() {
             var t = {
@@ -13088,8 +13088,8 @@ var app = (function () {
         }
         return t.hi = function(e, n) {
             var r = JSON.parse(n), i = "object" == typeof r && -1 !== [ "not-current", "current", "rejected" ].indexOf(r.state) && (void 0 === r.error || "object" == typeof r.error), o = void 0;
-            return i && r.error && ((i = "string" == typeof r.error.message && "string" == typeof r.error.code) && (o = new I$1(r.error.code, r.error.message))),
-            i ? new t(e, r.state, o) : (N$1("SharedClientState", "Failed to parse target state for ID '" + e + "': " + n),
+            return i && r.error && ((i = "string" == typeof r.error.message && "string" == typeof r.error.code) && (o = new I$1(r.error.code, r.error.message))), 
+            i ? new t(e, r.state, o) : (N$1("SharedClientState", "Failed to parse target state for ID '" + e + "': " + n), 
             null);
         }, t.prototype.ci = function() {
             var t = {
@@ -13110,9 +13110,9 @@ var app = (function () {
          */;
         }
         return t.hi = function(e, n) {
-            for (var r = JSON.parse(n), i = "object" == typeof r && r.activeTargetIds instanceof Array, o = St(), u = 0; i && u < r.activeTargetIds.length; ++u) i = nt(r.activeTargetIds[u]),
+            for (var r = JSON.parse(n), i = "object" == typeof r && r.activeTargetIds instanceof Array, o = St(), u = 0; i && u < r.activeTargetIds.length; ++u) i = nt(r.activeTargetIds[u]), 
             o = o.add(r.activeTargetIds[u]);
-            return i ? new t(e, o) : (N$1("SharedClientState", "Failed to parse client data for instance '" + e + "': " + n),
+            return i ? new t(e, o) : (N$1("SharedClientState", "Failed to parse client data for instance '" + e + "': " + n), 
             null);
         }, t;
     }(), Fr = /** @class */ function() {
@@ -13125,7 +13125,7 @@ var app = (function () {
         }
         return t.hi = function(e) {
             var n = JSON.parse(e);
-            return "object" == typeof n && -1 !== [ "Unknown", "Online", "Offline" ].indexOf(n.onlineState) && "string" == typeof n.clientId ? new t(n.clientId, n.onlineState) : (N$1("SharedClientState", "Failed to parse online state: " + e),
+            return "object" == typeof n && -1 !== [ "Unknown", "Online", "Offline" ].indexOf(n.onlineState) && "string" == typeof n.clientId ? new t(n.clientId, n.onlineState) : (N$1("SharedClientState", "Failed to parse online state: " + e), 
             null);
         }, t;
     }(), jr = /** @class */ function() {
@@ -13136,7 +13136,7 @@ var app = (function () {
             this.activeTargetIds = this.activeTargetIds.add(t);
         }, t.prototype.li = function(t) {
             this.activeTargetIds = this.activeTargetIds.delete(t);
-        },
+        }, 
         /**
          * Converts this entry into a JSON-encoded format we can use for WebStorage.
          * Does not encode `clientId` as it is part of the key in WebStorage.
@@ -13150,9 +13150,9 @@ var app = (function () {
         }, t;
     }(), Gr = /** @class */ function() {
         function t(t, e, n, r, i) {
-            this.window = t, this.fn = e, this.persistenceKey = n, this._i = r, this.fi = null,
-            this.di = null, this.si = null, this.wi = this.Ei.bind(this), this.Ti = new dt(L$1),
-            this.Ii = !1,
+            this.window = t, this.fn = e, this.persistenceKey = n, this._i = r, this.fi = null, 
+            this.di = null, this.si = null, this.wi = this.Ei.bind(this), this.Ti = new dt(L$1), 
+            this.Ii = !1, 
             /**
                  * Captures WebStorage events that occur before `start()` is called. These
                  * events are replayed once `WebStorageSharedClientState` is started.
@@ -13161,18 +13161,18 @@ var app = (function () {
             // Escape the special characters mentioned here:
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
             var o = n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-            this.storage = this.window.localStorage, this.currentUser = i, this.Ai = Vr(this.persistenceKey, this._i),
-            this.Ri =
+            this.storage = this.window.localStorage, this.currentUser = i, this.Ai = Vr(this.persistenceKey, this._i), 
+            this.Ri = 
             /** Assembles the key for the current sequence number. */
             function(t) {
                 return "firestore_sequence_number_" + t;
-            }(this.persistenceKey), this.Ti = this.Ti.ot(this._i, new jr), this.Pi = new RegExp("^firestore_clients_" + o + "_([^_]*)$"),
-            this.gi = new RegExp("^firestore_mutations_" + o + "_(\\d+)(?:_(.*))?$"), this.Vi = new RegExp("^firestore_targets_" + o + "_(\\d+)$"),
-            this.yi =
+            }(this.persistenceKey), this.Ti = this.Ti.ot(this._i, new jr), this.Pi = new RegExp("^firestore_clients_" + o + "_([^_]*)$"), 
+            this.gi = new RegExp("^firestore_mutations_" + o + "_(\\d+)(?:_(.*))?$"), this.Vi = new RegExp("^firestore_targets_" + o + "_(\\d+)$"), 
+            this.yi = 
             /** Assembles the key for the online state of the primary tab. */
             function(t) {
                 return "firestore_online_state_" + t;
-            }(this.persistenceKey),
+            }(this.persistenceKey), 
             // Rather than adding the storage observer during start(), we add the
             // storage observer during initialization. This ensures that we collect
             // events before other components populate their initial state (during their
@@ -13193,9 +13193,9 @@ var app = (function () {
 
                       case 1:
                         for (t = n.sent(), e = 0, r = t; e < r.length; e++) (i = r[e]) !== this._i && (o = this.getItem(Vr(this.persistenceKey, i))) && (u = qr.hi(i, o)) && (this.Ti = this.Ti.ot(u.clientId, u));
-                        for (this.bi(), (s = this.storage.getItem(this.yi)) && (a = this.vi(s)) && this.Si(a),
+                        for (this.bi(), (s = this.storage.getItem(this.yi)) && (a = this.vi(s)) && this.Si(a), 
                         c = 0, h = this.mi; c < h.length; c++) f = h[c], this.Ei(f);
-                        return this.mi = [],
+                        return this.mi = [], 
                         // Register a window unload hook to remove the client metadata entry from
                         // WebStorage even if `shutdown()` was not called.
                         this.window.addEventListener("unload", (function() {
@@ -13216,7 +13216,7 @@ var app = (function () {
         }, t.prototype.Fi = function(t) {
             this.ki(t, "pending");
         }, t.prototype.Oi = function(t, e, n) {
-            this.ki(t, e, n),
+            this.ki(t, e, n), 
             // Once a final mutation result is observed by other clients, they no longer
             // access the mutation's metadata entry. Since WebStorage replays events
             // in order, it is safe to delete the entry right after updating it.
@@ -13251,7 +13251,7 @@ var app = (function () {
         }, t.prototype.ji = function(t) {
             this.Gi(t);
         }, t.prototype.Di = function() {
-            this.Ii && (this.window.removeEventListener("storage", this.wi), this.removeItem(this.Ai),
+            this.Ii && (this.window.removeEventListener("storage", this.wi), this.removeItem(this.Ai), 
             this.Ii = !1);
         }, t.prototype.getItem = function(t) {
             var e = this.storage.getItem(t);
@@ -13319,7 +13319,7 @@ var app = (function () {
         }, t.prototype.Qi = function(t, e, n) {
             var r = Cr(this.persistenceKey, t), i = new Mr(t, e, n);
             this.setItem(r, i.ci());
-        },
+        }, 
         /**
          * Parses a client state key in WebStorage. Returns null if the key does not
          * match the expected key format.
@@ -13327,7 +13327,7 @@ var app = (function () {
         t.prototype.zi = function(t) {
             var e = this.Pi.exec(t);
             return e ? e[1] : null;
-        },
+        }, 
         /**
          * Parses a client state in WebStorage. Returns 'null' if the value could not
          * be parsed.
@@ -13335,7 +13335,7 @@ var app = (function () {
         t.prototype.Ji = function(t, e) {
             var n = this.zi(t);
             return qr.hi(n, e);
-        },
+        }, 
         /**
          * Parses a mutation batch state in WebStorage. Returns 'null' if the value
          * could not be parsed.
@@ -13343,7 +13343,7 @@ var app = (function () {
         t.prototype.Yi = function(t, e) {
             var n = this.gi.exec(t), r = Number(n[1]), i = void 0 !== n[2] ? n[2] : null;
             return Ur.hi(new Or(i), r, e);
-        },
+        }, 
         /**
          * Parses a query target state from WebStorage. Returns 'null' if the value
          * could not be parsed.
@@ -13351,7 +13351,7 @@ var app = (function () {
         t.prototype.Zi = function(t, e) {
             var n = this.Vi.exec(t), r = Number(n[1]);
             return Mr.hi(r, e);
-        },
+        }, 
         /**
          * Parses an online state from WebStorage. Returns 'null' if the value
          * could not be parsed.
@@ -13361,7 +13361,7 @@ var app = (function () {
         }, t.prototype.Xi = function(t) {
             return __awaiter(this, void 0, void 0, (function() {
                 return __generator(this, (function(e) {
-                    return t.user.uid === this.currentUser.uid ? [ 2 /*return*/ , this.fi.er(t.batchId, t.state, t.error) ] : (T$1("SharedClientState", "Ignoring mutation for non-active user " + t.user.uid),
+                    return t.user.uid === this.currentUser.uid ? [ 2 /*return*/ , this.fi.er(t.batchId, t.state, t.error) ] : (T$1("SharedClientState", "Ignoring mutation for non-active user " + t.user.uid), 
                     [ 2 /*return*/ ]);
                 }));
             }));
@@ -13448,7 +13448,7 @@ var app = (function () {
                 o.key.isEqual(t) && (e = sn(o, e, r[i]));
             }
             return e;
-        },
+        }, 
         /**
          * Computes the local view of a document given all the mutations in this
          * batch.
@@ -13469,7 +13469,7 @@ var app = (function () {
                 a.key.isEqual(t) && (e = an(a, e, o, this.ar));
             }
             return e;
-        },
+        }, 
         /**
          * Computes the local view for all provided documents given the mutations in
          * this batch.
@@ -13495,7 +13495,7 @@ var app = (function () {
             }));
         }, t;
     }(), Kr = /** @class */ function() {
-        function t(t, e, n,
+        function t(t, e, n, 
         /**
          * A pre-computed mapping from each mutated document to the resulting
          * version.
@@ -13532,7 +13532,7 @@ var app = (function () {
             },
             enumerable: !1,
             configurable: !0
-        }),
+        }), 
         /**
          * Buffers a `RemoteDocumentCache.addEntry()` call.
          *
@@ -13541,7 +13541,7 @@ var app = (function () {
          */
         t.prototype.Ir = function(t, e) {
             this.mr(), this.readTime = e, this.wr.set(t.key, t);
-        },
+        }, 
         /**
          * Buffers a `RemoteDocumentCache.removeEntry()` call.
          *
@@ -13550,7 +13550,7 @@ var app = (function () {
          */
         t.prototype.Ar = function(t, e) {
             this.mr(), e && (this.readTime = e), this.wr.set(t, null);
-        },
+        }, 
         /**
          * Looks up an entry in the cache. The buffered changes will first be checked,
          * and if no buffered change applies, this will forward to
@@ -13566,7 +13566,7 @@ var app = (function () {
             this.mr();
             var n = this.wr.get(e);
             return void 0 !== n ? cr.resolve(n) : this.Pr(t, e);
-        },
+        }, 
         /**
          * Looks up several entries in the cache, forwarding to
          * `RemoteDocumentCache.getEntry()`.
@@ -13580,15 +13580,15 @@ var app = (function () {
          */
         t.prototype.getEntries = function(t, e) {
             return this.gr(t, e);
-        },
+        }, 
         /**
          * Applies buffered changes to the underlying RemoteDocumentCache, using
          * the provided transaction.
          */
         t.prototype.apply = function(t) {
             return this.mr(), this.Er = !0, this.Vr(t);
-        },
-        /** Helper to assert this.changes is not null  */ t.prototype.mr = function() {},
+        }, 
+        /** Helper to assert this.changes is not null  */ t.prototype.mr = function() {}, 
         t;
     }(), Qr = "The current tab is not in the required state to perform this operation. It might be necessary to refresh the browser tab.", Hr = /** @class */ function() {
         function t() {
@@ -13616,7 +13616,7 @@ var app = (function () {
             return this.Sr.Nr(t, e).next((function(r) {
                 return n.Fr(t, e, r);
             }));
-        },
+        }, 
         /** Internal version of `getDocument` that allows reusing batches. */ t.prototype.Fr = function(t, e, n) {
             return this.vr.Rr(t, e).next((function(t) {
                 for (var r = 0, i = n; r < i.length; r++) {
@@ -13624,7 +13624,7 @@ var app = (function () {
                 }
                 return t;
             }));
-        },
+        }, 
         // Returns the view of the given `docs` as they would appear after applying
         // all mutations in the given `batches`.
         t.prototype.kr = function(t, e, n) {
@@ -13635,7 +13635,7 @@ var app = (function () {
                 }
                 r = r.ot(t, e);
             })), r;
-        },
+        }, 
         /**
          * Gets the local view of the documents identified by `keys`.
          *
@@ -13647,7 +13647,7 @@ var app = (function () {
             return this.vr.getEntries(t, e).next((function(e) {
                 return n.Mr(t, e);
             }));
-        },
+        }, 
         /**
          * Similar to `getDocuments`, but creates the local view from the given
          * `baseDocs` without retrieving documents from the local store.
@@ -13661,7 +13661,7 @@ var app = (function () {
                     e || (e = new Nn(t, H$1.min())), o = o.ot(t, e);
                 })), o;
             }));
-        },
+        }, 
         /**
          * Performs a query against the local view of all documents.
          *
@@ -13689,7 +13689,7 @@ var app = (function () {
             return this.Dr.Kr(t, i).next((function(u) {
                 return cr.forEach(u, (function(u) {
                     var s = function(t, e) {
-                        return new Dn(e,
+                        return new Dn(e, 
                         /*collectionGroup=*/ null, t.on.slice(), t.filters.slice(), t.limit, t.an, t.startAt, t.endAt);
                     }(e, u.child(i));
                     return r.Ur(t, s, n).next((function(t) {
@@ -13818,9 +13818,9 @@ var app = (function () {
         function t(
         // When we attempt to collect, we will only do so if the cache size is greater than this
         // threshold. Passing `COLLECTION_DISABLED` here will cause collection to always be skipped.
-        t,
+        t, 
         // The percentage of sequence numbers that we will attempt to collect
-        e,
+        e, 
         // A cap on the total number of sequence numbers that will be collected. This prevents
         // us from collecting a huge number of sequence numbers if the cache has grown very large.
         n) {
@@ -13831,7 +13831,7 @@ var app = (function () {
         }, t;
     }();
 
-    ti.uo = -1, ti.lo = 1048576, ti._o = 41943040, ti.ho = 10, ti.co = 1e3, ti.fo = new ti(ti._o, ti.ho, ti.co),
+    ti.uo = -1, ti.lo = 1048576, ti._o = 41943040, ti.ho = 10, ti.co = 1e3, ti.fo = new ti(ti._o, ti.ho, ti.co), 
     ti.do = new ti(ti.uo, 0, 0);
 
     /**
@@ -13869,7 +13869,7 @@ var app = (function () {
                             return n.sent(), [ 3 /*break*/ , 7 ];
 
                           case 3:
-                            return pr(e = n.sent()) ? (T$1("LruGarbageCollector", "Ignoring IndexedDB error during garbage collection: ", e),
+                            return pr(e = n.sent()) ? (T$1("LruGarbageCollector", "Ignoring IndexedDB error during garbage collection: ", e), 
                             [ 3 /*break*/ , 6 ]) : [ 3 /*break*/ , 4 ];
 
                           case 4:
@@ -13900,7 +13900,7 @@ var app = (function () {
             return this.Ao.Po(t).next((function(t) {
                 return Math.floor(e / 100 * t);
             }));
-        },
+        }, 
         /** Returns the nth sequence number, counting in order from the smallest. */ t.prototype.Vo = function(t, e) {
             var n = this;
             if (0 === e) return cr.resolve(Lr.ai);
@@ -13914,14 +13914,14 @@ var app = (function () {
             })).next((function() {
                 return r.maxValue;
             }));
-        },
+        }, 
         /**
          * Removes targets with a sequence number equal to or less than the given upper bound, and removes
          * document associations with those targets.
          */
         t.prototype.po = function(t, e, n) {
             return this.Ao.po(t, e, n);
-        },
+        }, 
         /**
          * Removes documents that have a sequence number equal to or less than the upper bound and are not
          * otherwise pinned.
@@ -13930,9 +13930,9 @@ var app = (function () {
             return this.Ao.bo(t, e);
         }, t.prototype.vo = function(t, e) {
             var n = this;
-            return this.params.io === ti.uo ? (T$1("LruGarbageCollector", "Garbage collection skipped; disabled"),
+            return this.params.io === ti.uo ? (T$1("LruGarbageCollector", "Garbage collection skipped; disabled"), 
             cr.resolve(Zr)) : this.So(t).next((function(r) {
-                return r < n.params.io ? (T$1("LruGarbageCollector", "Garbage collection skipped; Cache size " + r + " is lower than threshold " + n.params.io),
+                return r < n.params.io ? (T$1("LruGarbageCollector", "Garbage collection skipped; Cache size " + r + " is lower than threshold " + n.params.io), 
                 Zr) : n.Do(t, e);
             }));
         }, t.prototype.So = function(t) {
@@ -13941,14 +13941,14 @@ var app = (function () {
             var n, r, i, o, s, a, c, h = this, f = Date.now();
             return this.Ro(t, this.params.ro).next((function(e) {
                 // Cap at the configured max
-                return e > h.params.oo ? (T$1("LruGarbageCollector", "Capping sequence numbers to collect down to the maximum of " + h.params.oo + " from " + e),
+                return e > h.params.oo ? (T$1("LruGarbageCollector", "Capping sequence numbers to collect down to the maximum of " + h.params.oo + " from " + e), 
                 r = h.params.oo) : r = e, o = Date.now(), h.Vo(t, r);
             })).next((function(r) {
                 return n = r, s = Date.now(), h.po(t, n, e);
             })).next((function(e) {
                 return i = e, a = Date.now(), h.bo(t, n);
             })).next((function(t) {
-                return c = Date.now(), _() <= LogLevel.DEBUG && T$1("LruGarbageCollector", "LRU Garbage Collection\n\tCounted targets in " + (o - f) + "ms\n\tDetermined least recently used " + r + " in " + (s - o) + "ms\n\tRemoved " + i + " targets in " + (a - s) + "ms\n\tRemoved " + t + " documents in " + (c - a) + "ms\nTotal Duration: " + (c - f) + "ms"),
+                return c = Date.now(), _() <= LogLevel.DEBUG && T$1("LruGarbageCollector", "LRU Garbage Collection\n\tCounted targets in " + (o - f) + "ms\n\tDetermined least recently used " + r + " in " + (s - o) + "ms\n\tRemoved " + i + " targets in " + (a - s) + "ms\n\tRemoved " + t + " documents in " + (c - a) + "ms\nTotal Duration: " + (c - f) + "ms"), 
                 cr.resolve({
                     Zr: !0,
                     eo: r,
@@ -14026,7 +14026,7 @@ var app = (function () {
             switch ((u < 0 || u > n) && S$1(), t.charAt(u + 1)) {
               case "":
                 var s = t.substring(o, u), a = void 0;
-                0 === i.length ?
+                0 === i.length ? 
                 // Avoid copying for the common case of a segment that excludes \0
                 // and \001
                 a = s : (a = i += s, i = ""), r.push(a);
@@ -14104,20 +14104,20 @@ var app = (function () {
                 };
             }(t.Co, e), u = e.hasCommittedMutations;
             return new qi(
-            /* unknownDocument= */ null,
+            /* unknownDocument= */ null, 
             /* noDocument= */ null, o, u, r, i);
         }
         if (e instanceof Nn) {
             var s = e.key.path.L(), a = li(e.version), c = e.hasCommittedMutations;
             return new qi(
-            /* unknownDocument= */ null, new Ui(s, a),
+            /* unknownDocument= */ null, new Ui(s, a), 
             /* document= */ null, c, r, i);
         }
         if (e instanceof An) {
             var h = e.key.path.L(), f = li(e.version);
-            return new qi(new Mi(h, f),
-            /* noDocument= */ null,
-            /* document= */ null,
+            return new qi(new Mi(h, f), 
+            /* noDocument= */ null, 
+            /* document= */ null, 
             /* hasCommittedMutations= */ !0, r, i);
         }
         return S$1();
@@ -14155,7 +14155,7 @@ var app = (function () {
 
     /** Decodes a DbTarget into TargetData */ function vi(t) {
         var e, n, r = pi(t.readTime), i = void 0 !== t.lastLimboFreeSnapshotVersion ? pi(t.lastLimboFreeSnapshotVersion) : H$1.min();
-        return void 0 !== t.query.documents ? (x$1(1 === (n = t.query).documents.length),
+        return void 0 !== t.query.documents ? (x$1(1 === (n = t.query).documents.length), 
         e = Cn(xn(Ee(n.documents[0])))) : e = ke(t.query), new ht(e, t.targetId, 0 /* Listen */ , t.lastListenSequenceNumber, r, i, C$1.fromBase64String(t.resumeToken))
         /** Encodes TargetData into a DbTarget for storage locally. */;
     }
@@ -14196,7 +14196,7 @@ var app = (function () {
          * retrieve mutations.
          */
         t, e, n, r) {
-            this.userId = t, this.serializer = e, this.Dr = n, this.No = r,
+            this.userId = t, this.serializer = e, this.Dr = n, this.No = r, 
             /**
                  * Caches the document keys for pending mutation batches. If the mutation
                  * has been removed from IndexedDb, the cached value may continue to
@@ -14271,7 +14271,7 @@ var app = (function () {
             return bi(t).get(e).next((function(t) {
                 return t ? (x$1(t.userId === n.userId), di(n.serializer, t)) : null;
             }));
-        },
+        }, 
         /**
          * Returns the document keys for the mutation batch with the given batchId.
          * For primary clients, this method returns `null` after
@@ -14331,7 +14331,7 @@ var app = (function () {
                 // the rows for documentKey will occur before any rows for
                 // documents nested in a subcollection beneath documentKey so we
                 // can stop as soon as we hit any such row.
-                            if (s === n.userId && e.path.isEqual(h))
+                            if (s === n.userId && e.path.isEqual(h)) 
                 // Look up the mutation batch in the store.
                 return bi(t).get(c).next((function(t) {
                     if (!t) throw S$1();
@@ -14367,7 +14367,7 @@ var app = (function () {
                 range: u
             }, (function(t, e, o) {
                 var u = t[0], a = t[1], c = t[2], h = ui(a);
-                u === n.userId && r.M(h) ?
+                u === n.userId && r.M(h) ? 
                 // Rows with document keys more than one segment longer than the
                 // query path can't be matches. For example, a query on 'rooms'
                 // can't match the document /rooms/abc/messages/xyx.
@@ -14397,7 +14397,7 @@ var app = (function () {
                     return n.No.Go(t, e);
                 }));
             }));
-        },
+        }, 
         /**
          * Clears the cached keys for a mutation batch. This method should be
          * called by secondary clients after they process mutation updates.
@@ -14429,13 +14429,13 @@ var app = (function () {
             }));
         }, t.prototype.Ho = function(t, e) {
             return gi(t, this.userId, e);
-        },
+        }, 
         // PORTING NOTE: Multi-tab only (state is held in memory in other clients).
         /** Returns the mutation queue's metadata from IndexedDb. */
         t.prototype.Jo = function(t) {
             var e = this;
             return Ei(t).get(this.userId).next((function(t) {
-                return t || new Vi(e.userId, -1,
+                return t || new Vi(e.userId, -1, 
                 /*lastStreamToken=*/ "");
             }));
         }, t;
@@ -14533,7 +14533,7 @@ var app = (function () {
         }
         return t.prototype.Ir = function(t, e, n) {
             return Ai(t).put(Di(e), n);
-        },
+        }, 
         /**
          * Removes a document from the cache.
          *
@@ -14543,7 +14543,7 @@ var app = (function () {
         t.prototype.Ar = function(t, e) {
             var n = Ai(t), r = Di(e);
             return n.delete(r);
-        },
+        }, 
         /**
          * Updates the current cache size.
          *
@@ -14560,7 +14560,7 @@ var app = (function () {
             return Ai(t).get(Di(e)).next((function(t) {
                 return n.Xo(t);
             }));
-        },
+        }, 
         /**
          * Looks up an entry in the cache.
          *
@@ -14584,7 +14584,7 @@ var app = (function () {
             })).next((function() {
                 return r;
             }));
-        },
+        }, 
         /**
          * Looks up several entries in the cache.
          *
@@ -14614,7 +14614,7 @@ var app = (function () {
                 for (var u = Z$1.Z(t); o && Z$1.D(o, u) < 0; ) n(o, null), o = i.It();
                 o && o.isEqual(u) && (
                 // Key found in cache.
-                n(o, e), o = i.At() ? i.It() : null),
+                n(o, e), o = i.At() ? i.It() : null), 
                 // Skip to the next key (if there is one).
                 o ? r.Xn(o.path.L()) : r.done();
             })).next((function() {
@@ -14634,7 +14634,7 @@ var app = (function () {
                 // since all document changes to queries that have a
                 // lastLimboFreeSnapshotVersion (`sinceReadTime`) have a read time set.
                 var a = e.path.L(), c = hi(n);
-                u.range = IDBKeyRange.lowerBound([ a, c ],
+                u.range = IDBKeyRange.lowerBound([ a, c ], 
                 /* open= */ !0), u.index = qi.collectionReadTimeIndex;
             }
             return Ai(t).rs(u, (function(t, n, u) {
@@ -14662,7 +14662,7 @@ var app = (function () {
             }));
         }, t.prototype.Yo = function(t, e) {
             return Ni(t).put(Fi.key, e);
-        },
+        }, 
         /**
          * Decodes `remoteDoc` and returns the document (or null, if the document
          * corresponds to the format used for sentinel deletes).
@@ -14682,7 +14682,7 @@ var app = (function () {
          */
         function n(t, n) {
             var r = this;
-            return (r = e.call(this) || this).ha = t, r.oa = n,
+            return (r = e.call(this) || this).ha = t, r.oa = n, 
             // A map of document sizes prior to applying the changes in this buffer.
             r.ca = new W$1((function(t) {
                 return t.toString();
@@ -14856,8 +14856,8 @@ var app = (function () {
          */
                 return function(t) {
                     var e = t.store(Bi.store), n = new Bi(
-                    /*highestTargetId=*/ 0,
-                    /*lastListenSequenceNumber=*/ 0, H$1.min().v(),
+                    /*highestTargetId=*/ 0, 
+                    /*lastListenSequenceNumber=*/ 0, H$1.min().v(), 
                     /*targetCount=*/ 0);
                     return e.put(Bi.key, n);
                 }(o);
@@ -14938,7 +14938,7 @@ var app = (function () {
                     }));
                 }));
             }));
-        },
+        }, 
         /**
          * Ensures that every document in the remote document cache has a corresponding sentinel row
          * with a sequence number. Missing rows are given the most recently used sequence number.
@@ -14999,7 +14999,7 @@ var app = (function () {
         }, t;
     }(), Oi = function(t, e) {
         this.seconds = t, this.nanoseconds = e;
-    }, Li = function(t,
+    }, Li = function(t, 
     /** Whether to allow shared access from multiple tabs. */
     e, n) {
         this.ownerId = t, this.allowTabSynchronization = e, this.leaseTimestampMs = n;
@@ -15017,7 +15017,7 @@ var app = (function () {
      * older clients that only supported single locked access to the persistence
      * layer.
      */
-    Li.store = "owner",
+    Li.store = "owner", 
     /**
          * The key string used for the single object that exists in the
          * DbPrimaryClient store.
@@ -15028,7 +15028,7 @@ var app = (function () {
     /**
          * The normalized user ID to which this queue belongs.
          */
-    t,
+    t, 
     /**
          * An identifier for the highest numbered batch that has been acknowledged
          * by the server. All MutationBatches in this queue with batchIds less
@@ -15037,7 +15037,7 @@ var app = (function () {
          *
          * NOTE: this is deprecated and no longer used by the code.
          */
-    e,
+    e, 
     /**
          * A stream token that was previously sent by the server.
          *
@@ -15053,7 +15053,7 @@ var app = (function () {
         this.userId = t, this.lastAcknowledgedBatchId = e, this.lastStreamToken = n;
     };
 
-    /** Name of the IndexedDb object store.  */ Vi.store = "mutationQueues",
+    /** Name of the IndexedDb object store.  */ Vi.store = "mutationQueues", 
     /** Keys are automatically assigned via the userId property. */
     Vi.keyPath = "userId";
 
@@ -15068,16 +15068,16 @@ var app = (function () {
     /**
          * The normalized user ID to which this batch belongs.
          */
-    t,
+    t, 
     /**
          * An identifier for this batch, allocated using an auto-generated key.
          */
-    e,
+    e, 
     /**
          * The local write time of the batch, stored as milliseconds since the
          * epoch.
          */
-    n,
+    n, 
     /**
          * A list of "mutations" that represent a partial base state from when this
          * write batch was initially created. During local application of the write
@@ -15090,22 +15090,22 @@ var app = (function () {
          *
          * These mutations are never sent to the backend.
          */
-    r,
+    r, 
     /**
          * A list of mutations to apply. All mutations will be applied atomically.
          *
          * Mutations are serialized via toMutation().
          */
     i) {
-        this.userId = t, this.batchId = e, this.localWriteTimeMs = n, this.baseMutations = r,
+        this.userId = t, this.batchId = e, this.localWriteTimeMs = n, this.baseMutations = r, 
         this.mutations = i;
     };
 
-    /** Name of the IndexedDb object store.  */ Ri.store = "mutations",
+    /** Name of the IndexedDb object store.  */ Ri.store = "mutations", 
     /** Keys are automatically assigned via the userId, batchId properties. */
-    Ri.keyPath = "batchId",
+    Ri.keyPath = "batchId", 
     /** The index name for lookup of mutations by user. */
-    Ri.userMutationsIndex = "userMutationsIndex",
+    Ri.userMutationsIndex = "userMutationsIndex", 
     /** The user mutations index is keyed by [userId, batchId] pairs. */
     Ri.userMutationsKeyPath = [ "userId", "batchId" ];
 
@@ -15116,14 +15116,14 @@ var app = (function () {
          * over all of a user's document mutations.
          */    return t.prefixForUser = function(t) {
             return [ t ];
-        },
+        }, 
         /**
          * Creates a [userId, encodedPath] key for use in the DbDocumentMutations
          * index to iterate over all at document mutations for a given path or lower.
          */
         t.prefixForPath = function(t, e) {
             return [ t, ri(e) ];
-        },
+        }, 
         /**
          * Creates a full index key of [userId, encodedPath, batchId] for inserting
          * and deleting into the DbDocumentMutations index.
@@ -15133,7 +15133,7 @@ var app = (function () {
         }, t;
     }();
 
-    Ci.store = "documentMutations",
+    Ci.store = "documentMutations", 
     /**
          * Because we store all the useful information for this store in the key,
          * there is no useful information to store as the value. The raw (unencoded)
@@ -15146,7 +15146,7 @@ var app = (function () {
         this.path = t, this.readTime = e;
     }, Mi = function(t, e) {
         this.path = t, this.version = e;
-    }, qi =
+    }, qi = 
     // TODO: We are currently storing full document keys almost three times
     // (once as part of the primary key, once - partly - as `parentPath` and once
     // inside the encoded documents). During our next migration, we should
@@ -15158,49 +15158,49 @@ var app = (function () {
          * not known, but it is known that a document exists at the specified
          * version (e.g. it had a successful update applied to it)
          */
-    t,
+    t, 
     /**
          * Set to an instance of a DbNoDocument if it is known that no document
          * exists.
          */
-    e,
+    e, 
     /**
          * Set to an instance of a Document if there's a cached version of the
          * document.
          */
-    n,
+    n, 
     /**
          * Documents that were written to the remote document store based on
          * a write acknowledgment are marked with `hasCommittedMutations`. These
          * documents are potentially inconsistent with the backend's copy and use
          * the write's commit version as their document version.
          */
-    r,
+    r, 
     /**
          * When the document was read from the backend. Undefined for data written
          * prior to schema version 9.
          */
-    i,
+    i, 
     /**
          * The path of the collection this document is part of. Undefined for data
          * written prior to schema version 9.
          */
     o) {
-        this.unknownDocument = t, this.noDocument = e, this.document = n, this.hasCommittedMutations = r,
+        this.unknownDocument = t, this.noDocument = e, this.document = n, this.hasCommittedMutations = r, 
         this.readTime = i, this.parentPath = o;
     };
 
     /**
      * Represents a document that is known to exist but whose data is unknown.
      * Stored in IndexedDb as part of a DbRemoteDocument object.
-     */ qi.store = "remoteDocuments",
+     */ qi.store = "remoteDocuments", 
     /**
          * An index that provides access to all entries sorted by read time (which
          * corresponds to the last modification time of each row).
          *
          * This index is used to provide a changelog for Multi-Tab.
          */
-    qi.readTimeIndex = "readTimeIndex", qi.readTimeIndexPath = "readTime",
+    qi.readTimeIndex = "readTimeIndex", qi.readTimeIndexPath = "readTime", 
     /**
          * An index that provides access to documents in a collection sorted by read
          * time.
@@ -15213,7 +15213,7 @@ var app = (function () {
     /**
      * Contains a single entry that has metadata about the remote document cache.
      */
-    var Fi =
+    var Fi = 
     /**
          * @param byteSize Approximately the total size in bytes of all the documents in the document
          * cache.
@@ -15233,17 +15233,17 @@ var app = (function () {
          * queryId which can be used by referenced data structures (e.g.
          * indexes) to minimize the on-disk cost.
          */
-    t,
+    t, 
     /**
          * The canonical string representing this query. This is not unique.
          */
-    e,
+    e, 
     /**
          * The last readTime received from the Watch Service for this query.
          *
          * This is the same value as TargetChange.read_time in the protos.
          */
-    n,
+    n, 
     /**
          * An opaque, server-assigned token that allows watching a query to be
          * resumed after disconnecting without retransmitting all the data
@@ -15261,7 +15261,7 @@ var app = (function () {
          *
          * This is the same value as TargetChange.resume_token in the protos.
          */
-    r,
+    r, 
     /**
          * A sequence number representing the last time this query was
          * listened to, used for garbage collection purposes.
@@ -15276,13 +15276,13 @@ var app = (function () {
          * lastListenSequenceNumber is updated every time the query is
          * listened to.
          */
-    i,
+    i, 
     /**
          * Denotes the maximum snapshot version at which the associated query view
          * contained no limbo documents.  Undefined for data written prior to
          * schema version 9.
          */
-    o,
+    o, 
     /**
          * The query for this target.
          *
@@ -15291,15 +15291,15 @@ var app = (function () {
          * duplicate translation logic to and from a `Query` object.
          */
     u) {
-        this.targetId = t, this.canonicalId = e, this.readTime = n, this.resumeToken = r,
+        this.targetId = t, this.canonicalId = e, this.readTime = n, this.resumeToken = r, 
         this.lastListenSequenceNumber = i, this.lastLimboFreeSnapshotVersion = o, this.query = u;
     };
 
-    ji.store = "targets",
+    ji.store = "targets", 
     /** Keys are automatically assigned via the targetId property. */
-    ji.keyPath = "targetId",
+    ji.keyPath = "targetId", 
     /** The name of the queryTargets index. */
-    ji.queryTargetsIndexName = "queryTargetsIndex",
+    ji.queryTargetsIndexName = "queryTargetsIndex", 
     /**
          * The index of all canonicalIds to the targets that they match. This is not
          * a unique mapping because canonicalId does not promise a unique name for all
@@ -15321,11 +15321,11 @@ var app = (function () {
     /**
          * The targetId identifying a target or 0 for a sentinel row.
          */
-    t,
+    t, 
     /**
          * The path to the document, as encoded in the key.
          */
-    e,
+    e, 
     /**
          * If this is a sentinel row, this should be the sequence number of the last
          * time the document specified by `path` was used. Otherwise, it should be
@@ -15335,11 +15335,11 @@ var app = (function () {
         this.targetId = t, this.path = e, this.sequenceNumber = n;
     };
 
-    /** Name of the IndexedDb object store.  */ Gi.store = "targetDocuments",
+    /** Name of the IndexedDb object store.  */ Gi.store = "targetDocuments", 
     /** Keys are automatically assigned via the targetId, path properties. */
-    Gi.keyPath = [ "targetId", "path" ],
+    Gi.keyPath = [ "targetId", "path" ], 
     /** The index name for the reverse index. */
-    Gi.documentTargetsIndex = "documentTargetsIndex",
+    Gi.documentTargetsIndex = "documentTargetsIndex", 
     /** We also need to create the reverse index for these properties. */
     Gi.documentTargetsKeyPath = [ "path", "targetId" ];
 
@@ -15355,13 +15355,13 @@ var app = (function () {
          *
          * See DbTarget.targetId.
          */
-    t,
+    t, 
     /**
          * The highest numbered lastListenSequenceNumber across all targets.
          *
          * See DbTarget.lastListenSequenceNumber.
          */
-    e,
+    e, 
     /**
          * A global snapshot version representing the last consistent snapshot we
          * received from the backend. This is monotonically increasing and any
@@ -15370,12 +15370,12 @@ var app = (function () {
          * until the backend has caught up to this snapshot version again. This
          * prevents our cache from ever going backwards in time.
          */
-    n,
+    n, 
     /**
          * The number of targets persisted.
          */
     r) {
-        this.highestTargetId = t, this.highestListenSequenceNumber = e, this.lastRemoteSnapshotVersion = n,
+        this.highestTargetId = t, this.highestListenSequenceNumber = e, this.lastRemoteSnapshotVersion = n, 
         this.targetCount = r;
     };
 
@@ -15394,7 +15394,7 @@ var app = (function () {
     /**
          * The collectionId (e.g. 'messages')
          */
-    t,
+    t, 
     /**
          * The path to the parent (either a document location or an empty path for
          * a root-level collection).
@@ -15408,7 +15408,7 @@ var app = (function () {
             keyPath: Gi.keyPath
         }).createIndex(Gi.documentTargetsIndex, Gi.documentTargetsKeyPath, {
             unique: !0
-        }),
+        }), 
         // NOTE: This is unique only because the TargetId is the suffix.
         t.createObjectStore(ji.store, {
             keyPath: ji.keyPath
@@ -15417,7 +15417,7 @@ var app = (function () {
         }), t.createObjectStore(Bi.store);
     }
 
-    zi.store = "collectionParents",
+    zi.store = "collectionParents", 
     /** Keys are automatically assigned via the collectionId, parent properties. */
     zi.keyPath = [ "collectionId", "parent" ];
 
@@ -15425,17 +15425,17 @@ var app = (function () {
     // Note: Previous schema versions included a field
     // "lastProcessedDocumentChangeId". Don't use anymore.
     /** The auto-generated client id assigned at client startup. */
-    t,
+    t, 
     /** The last time this state was updated. */
-    e,
+    e, 
     /** Whether the client's network connection is enabled. */
-    n,
+    n, 
     /** Whether this client is running in a foreground tab. */
     r) {
         this.clientId = t, this.updateTimeMs = e, this.networkEnabled = n, this.inForeground = r;
     };
 
-    /** Name of the IndexedDb object store. */ Wi.store = "clientMetadata",
+    /** Name of the IndexedDb object store. */ Wi.store = "clientMetadata", 
     /** Keys are automatically assigned via the clientId properties. */
     Wi.keyPath = "clientId";
 
@@ -15473,8 +15473,8 @@ var app = (function () {
             }
             return cr.resolve();
         }, t.prototype.Kr = function(t, e) {
-            var n = [], r = IDBKeyRange.bound([ e, "" ], [ R$1(e), "" ],
-            /*lowerOpen=*/ !1,
+            var n = [], r = IDBKeyRange.bound([ e, "" ], [ R$1(e), "" ], 
+            /*lowerOpen=*/ !1, 
             /*upperOpen=*/ !0);
             return Yi(t).ts(r).next((function(t) {
                 for (var r = 0, i = t; r < i.length; r++) {
@@ -15595,7 +15595,7 @@ var app = (function () {
         }, t.prototype.Aa = function(t, e, n) {
             var r = this;
             return this.Ea(t).next((function(i) {
-                return i.highestListenSequenceNumber = e, n && (i.lastRemoteSnapshotVersion = n.v()),
+                return i.highestListenSequenceNumber = e, n && (i.lastRemoteSnapshotVersion = n.v()), 
                 e > i.highestListenSequenceNumber && (i.highestListenSequenceNumber = e), r.Ta(t, i);
             }));
         }, t.prototype.Ra = function(t, e) {
@@ -15616,7 +15616,7 @@ var app = (function () {
             })).next((function(e) {
                 return x$1(e.targetCount > 0), e.targetCount -= 1, n.Ta(t, e);
             }));
-        },
+        }, 
         /**
          * Drops any targets with sequence number less than or equal to the upper bound, excepting those
          * present in `activeTargetIds`. Document associations for the removed targets are also removed.
@@ -15632,7 +15632,7 @@ var app = (function () {
             })).next((function() {
                 return i;
             }));
-        },
+        }, 
         /**
          * Call provided function with each `TargetData` that we have cached.
          */
@@ -15649,7 +15649,7 @@ var app = (function () {
             return Zi(t).put(Bi.key, e);
         }, t.prototype.Pa = function(t, e) {
             return $i(t).put(yi(this.serializer, e));
-        },
+        }, 
         /**
          * In-place updates the provided metadata to account for values in the given
          * TargetData. Saving is done separately. Returns true if there were any
@@ -15657,8 +15657,8 @@ var app = (function () {
          */
         t.prototype.ga = function(t, e) {
             var n = !1;
-            return t.targetId > e.highestTargetId && (e.highestTargetId = t.targetId, n = !0),
-            t.sequenceNumber > e.highestListenSequenceNumber && (e.highestListenSequenceNumber = t.sequenceNumber,
+            return t.targetId > e.highestTargetId && (e.highestTargetId = t.targetId, n = !0), 
+            t.sequenceNumber > e.highestListenSequenceNumber && (e.highestListenSequenceNumber = t.sequenceNumber, 
             n = !0), n;
         }, t.prototype.ba = function(t) {
             return this.Ea(t).next((function(t) {
@@ -15697,13 +15697,13 @@ var app = (function () {
                 return cr.kn([ i.delete([ n, o ]), r.No.Na(t, n, e) ]);
             }));
         }, t.prototype.pa = function(t, e) {
-            var n = to(t), r = IDBKeyRange.bound([ e ], [ e + 1 ],
-            /*lowerOpen=*/ !1,
+            var n = to(t), r = IDBKeyRange.bound([ e ], [ e + 1 ], 
+            /*lowerOpen=*/ !1, 
             /*upperOpen=*/ !0);
             return n.delete(r);
         }, t.prototype.xa = function(t, e) {
-            var n = IDBKeyRange.bound([ e ], [ e + 1 ],
-            /*lowerOpen=*/ !1,
+            var n = IDBKeyRange.bound([ e ], [ e + 1 ], 
+            /*lowerOpen=*/ !1, 
             /*upperOpen=*/ !0), r = to(t), i = At();
             return r.rs({
                 range: n,
@@ -15715,8 +15715,8 @@ var app = (function () {
                 return i;
             }));
         }, t.prototype.Ho = function(t, e) {
-            var n = ri(e.path), r = IDBKeyRange.bound([ n ], [ R$1(n) ],
-            /*lowerOpen=*/ !1,
+            var n = ri(e.path), r = IDBKeyRange.bound([ n ], [ R$1(n) ], 
+            /*lowerOpen=*/ !1, 
             /*upperOpen=*/ !0), i = 0;
             return to(t).rs({
                 index: Gi.documentTargetsIndex,
@@ -15732,7 +15732,7 @@ var app = (function () {
             })).next((function() {
                 return i > 0;
             }));
-        },
+        }, 
         /**
          * Looks up a TargetData entry by target ID.
          *
@@ -15810,37 +15810,37 @@ var app = (function () {
          * Whether to synchronize the in-memory state of multiple tabs and share
          * access to local persistence.
          */
-        e, n, r, i, o, u, s, a, c,
+        e, n, r, i, o, u, s, a, c, 
         /**
          * If set to true, forcefully obtains database access. Existing tabs will
          * no longer be able to access IndexedDB.
          */
         h) {
-            if (this.allowTabSynchronization = e, this.persistenceKey = n, this.clientId = r,
-            this.fn = o, this.window = u, this.document = s, this.ka = c, this.Oa = h, this.Ma = null,
-            this.$a = !1, this.isPrimary = !1, this.networkEnabled = !0,
+            if (this.allowTabSynchronization = e, this.persistenceKey = n, this.clientId = r, 
+            this.fn = o, this.window = u, this.document = s, this.ka = c, this.Oa = h, this.Ma = null, 
+            this.$a = !1, this.isPrimary = !1, this.networkEnabled = !0, 
             /** Our window.unload handler, if registered. */
-            this.La = null, this.inForeground = !1,
+            this.La = null, this.inForeground = !1, 
             /** Our 'visibilitychange' listener if registered. */
-            this.Ba = null,
+            this.Ba = null, 
             /** The client metadata refresh task. */
-            this.qa = null,
+            this.qa = null, 
             /** The last time we garbage collected the client metadata object store. */
-            this.Ua = Number.NEGATIVE_INFINITY,
+            this.Ua = Number.NEGATIVE_INFINITY, 
             /** A listener to notify on primary state changes. */
             this.Ka = function(t) {
                 return Promise.resolve();
             }, !t.Ln()) throw new I$1(b.UNIMPLEMENTED, "This platform is either missing IndexedDB or is known to have an incomplete implementation. Offline persistence has been disabled.");
-            this.No = new uo(this, i), this.Qa = n + "main", this.serializer = new si(a), this.Wa = new hr(this.Qa, 10, new Pi(this.serializer)),
+            this.No = new uo(this, i), this.Qa = n + "main", this.serializer = new si(a), this.Wa = new hr(this.Qa, 10, new Pi(this.serializer)), 
             this.ja = new Ji(this.No, this.serializer), this.Dr = new Hi, this.vr = function(t, e) {
                 return new _i(t, e);
-            }(this.serializer, this.Dr), this.window && this.window.localStorage ? this.Ga = this.window.localStorage : (this.Ga = null,
+            }(this.serializer, this.Dr), this.window && this.window.localStorage ? this.Ga = this.window.localStorage : (this.Ga = null, 
             !1 === h && N$1("IndexedDbPersistence", "LocalStorage is unavailable. As a result, persistence may not work reliably. In particular enablePersistence() could fail immediately after refreshing the page."));
         }
         return t.Kn = function(t, e) {
             if (t instanceof no) return hr.Kn(t.Wo, e);
             throw S$1();
-        },
+        }, 
         /**
          * Attempt to start IndexedDb persistence.
          *
@@ -15852,7 +15852,7 @@ var app = (function () {
             // already having the persistence lock), so it's the first thing we should
             // do.
                     return this.za().then((function() {
-                if (!t.isPrimary && !t.allowTabSynchronization)
+                if (!t.isPrimary && !t.allowTabSynchronization) 
                 // Fail `start()` if `synchronizeTabs` is disabled and we cannot
                 // obtain the primary lease.
                 throw new I$1(b.FAILED_PRECONDITION, eo);
@@ -15866,7 +15866,7 @@ var app = (function () {
             })).catch((function(e) {
                 return t.Wa && t.Wa.close(), Promise.reject(e);
             }));
-        },
+        }, 
         /**
          * Registers a listener that gets called when the primary state of the
          * instance changes. Upon registering, this listener is invoked immediately
@@ -15883,7 +15883,7 @@ var app = (function () {
                     }));
                 }));
             }, t(this.isPrimary);
-        },
+        }, 
         /**
          * Registers a listener that gets called when the database receives a
          * version change event indicating that it has deleted.
@@ -15908,7 +15908,7 @@ var app = (function () {
                     }));
                 }));
             }));
-        },
+        }, 
         /**
          * Adjusts the current network state in the client's metadata, potentially
          * affecting the primary lease.
@@ -15917,7 +15917,7 @@ var app = (function () {
          */
         t.prototype.th = function(t) {
             var r = this;
-            this.networkEnabled !== t && (this.networkEnabled = t,
+            this.networkEnabled !== t && (this.networkEnabled = t, 
             // Schedule a primary lease refresh for immediate execution. The eventual
             // lease update will be propagated via `primaryStateListener`.
             this.fn.ws((function() {
@@ -15936,7 +15936,7 @@ var app = (function () {
                     }));
                 }));
             })));
-        },
+        }, 
         /**
          * Updates the client metadata in IndexedDb and attempts to either obtain or
          * extend the primary lease for the local client. Asynchronously notifies the
@@ -15962,12 +15962,12 @@ var app = (function () {
                     }));
                 }));
             })).catch((function(e) {
-                if (pr(e))
+                if (pr(e)) 
                 // Proceed with the existing state. Any subsequent access to
                 // IndexedDB will verify the lease.
                 return T$1("IndexedDbPersistence", "Failed to extend owner lease: ", e), t.isPrimary;
                 if (!t.allowTabSynchronization) throw e;
-                return T$1("IndexedDbPersistence", "Releasing owner lease after error during lease refresh", e),
+                return T$1("IndexedDbPersistence", "Releasing owner lease after error during lease refresh", e), 
                 /* isPrimary= */ !1;
             })).then((function(e) {
                 t.isPrimary !== e && t.fn.Cs((function() {
@@ -15981,7 +15981,7 @@ var app = (function () {
             }));
         }, t.prototype.oh = function(t) {
             return oo(t).delete(this.clientId);
-        },
+        }, 
         /**
          * If the garbage collection threshold has passed, prunes the
          * RemoteDocumentChanges and the ClientMetadata store based on the last update
@@ -15993,7 +15993,7 @@ var app = (function () {
                 return __generator(this, (function(n) {
                     switch (n.label) {
                       case 0:
-                        return !this.isPrimary || this.hh(this.Ua, 18e5) ? [ 3 /*break*/ , 2 ] : (this.Ua = Date.now(),
+                        return !this.isPrimary || this.hh(this.Ua, 18e5) ? [ 3 /*break*/ , 2 ] : (this.Ua = Date.now(), 
                         [ 4 /*yield*/ , this.runTransaction("maybeGarbageCollectMultiClientState", "readwrite-primary", (function(e) {
                             var n = t.Kn(e, Wi.store);
                             return n.ts().next((function(t) {
@@ -16025,7 +16025,7 @@ var app = (function () {
                     }
                 }));
             }));
-        },
+        }, 
         /**
          * Schedules a recurring timer to update the client metadata and to either
          * extend or acquire the primary lease if the client is eligible.
@@ -16039,10 +16039,10 @@ var app = (function () {
                     return t.Ya();
                 }));
             }));
-        },
+        }, 
         /** Checks whether `client` is the local client. */ t.prototype.rh = function(t) {
             return !!t && t.ownerId === this.clientId;
-        },
+        }, 
         /**
          * Evaluate the state of all active clients and determine whether the local
          * client is or can act as the holder of the primary lease. Returns whether
@@ -16065,7 +16065,7 @@ var app = (function () {
                 if (null !== n && e.hh(n.leaseTimestampMs, 5e3) && !e._h(n.ownerId)) {
                     if (e.rh(n) && e.networkEnabled) return !0;
                     if (!e.rh(n)) {
-                        if (!n.allowTabSynchronization)
+                        if (!n.allowTabSynchronization) 
                         // Fail the `canActAsPrimary` check if the current leaseholder has
                         // not opted into multi-tab synchronization. If this happens at
                         // client startup, we reject the Promise returned by
@@ -16091,7 +16091,7 @@ var app = (function () {
                     }));
                 }));
             })).next((function(t) {
-                return e.isPrimary !== t && T$1("IndexedDbPersistence", "Client " + (t ? "is" : "is not") + " eligible for a primary lease."),
+                return e.isPrimary !== t && T$1("IndexedDbPersistence", "Client " + (t ? "is" : "is not") + " eligible for a primary lease."), 
                 t;
             }));
         }, t.prototype.Di = function() {
@@ -16104,7 +16104,7 @@ var app = (function () {
                         // has obtained the primary lease.
                         // The shutdown() operations are idempotent and can be called even when
                         // start() aborted (e.g. because it couldn't acquire the persistence lease).
-                        return this.$a = !1, this.fh(), this.qa && (this.qa.cancel(), this.qa = null), this.dh(),
+                        return this.$a = !1, this.fh(), this.qa && (this.qa.cancel(), this.qa = null), this.dh(), 
                         this.wh(), [ 4 /*yield*/ , this.Wa.runTransaction("shutdown", "readwrite", [ Li.store, Wi.store ], (function(e) {
                             var n = new no(e, Lr.ai);
                             return t.sh(n).next((function() {
@@ -16117,14 +16117,14 @@ var app = (function () {
                         // start() aborted (e.g. because it couldn't acquire the persistence lease).
                         // Use `SimpleDb.runTransaction` directly to avoid failing if another tab
                         // has obtained the primary lease.
-                        return e.sent(), this.Wa.close(),
+                        return e.sent(), this.Wa.close(), 
                         // Remove the entry marking the client as zombied from LocalStorage since
                         // we successfully deleted its metadata from IndexedDb.
                         this.Eh(), [ 2 /*return*/ ];
                     }
                 }));
             }));
-        },
+        }, 
         /**
          * Returns clients that are not zombied and have an updateTime within the
          * provided threshold.
@@ -16134,7 +16134,7 @@ var app = (function () {
             return t.filter((function(t) {
                 return n.hh(t.updateTimeMs, e) && !n._h(t.clientId);
             }));
-        },
+        }, 
         /**
          * Returns the IDs of the clients that are currently active. If multi-tab
          * is not supported, returns an array that only contains the local client's
@@ -16175,7 +16175,7 @@ var app = (function () {
                 return i = new no(o, r.Ma ? r.Ma.next() : Lr.ai), "readwrite-primary" === e ? r.eh(i).next((function(t) {
                     return !!t || r.nh(i);
                 })).next((function(e) {
-                    if (!e) throw N$1("Failed to obtain primary lease for action '" + t + "'."), r.isPrimary = !1,
+                    if (!e) throw N$1("Failed to obtain primary lease for action '" + t + "'."), r.isPrimary = !1, 
                     r.fn.Cs((function() {
                         return r.Ka(!1);
                     })), new I$1(b.FAILED_PRECONDITION, Qr);
@@ -16190,7 +16190,7 @@ var app = (function () {
             })).then((function(t) {
                 return i.br(), t;
             }));
-        },
+        }, 
         /**
          * Verifies that the current tab is the primary leaseholder or alternatively
          * that the leaseholder has opted into multi-tab synchronization.
@@ -16202,7 +16202,7 @@ var app = (function () {
             return io(t).get(Li.key).next((function(t) {
                 if (null !== t && e.hh(t.leaseTimestampMs, 5e3) && !e._h(t.ownerId) && !e.rh(t) && !(e.Oa || e.allowTabSynchronization && t.allowTabSynchronization)) throw new I$1(b.FAILED_PRECONDITION, eo);
             }));
-        },
+        }, 
         /**
          * Obtains or extends the new primary lease for the local client. This
          * method does not verify that the client is eligible for this lease.
@@ -16212,16 +16212,16 @@ var app = (function () {
             return io(t).put(Li.key, e);
         }, t.Ln = function() {
             return hr.Ln();
-        },
+        }, 
         /** Checks the primary lease and removes it if we are the current primary. */ t.prototype.sh = function(t) {
             var e = this, n = io(t);
             return n.get(Li.key).next((function(t) {
                 return e.rh(t) ? (T$1("IndexedDbPersistence", "Releasing primary lease."), n.delete(Li.key)) : cr.resolve();
             }));
-        },
+        }, 
         /** Verifies that `updateTimeMs` is within `maxAgeMs`. */ t.prototype.hh = function(t, e) {
             var n = Date.now();
-            return !(t < n - e || t > n && (N$1("Detected an update time that is in the future: " + t + " > " + n),
+            return !(t < n - e || t > n && (N$1("Detected an update time that is in the future: " + t + " > " + n), 
             1));
         }, t.prototype.Ha = function() {
             var t = this;
@@ -16232,7 +16232,7 @@ var app = (function () {
             }, this.document.addEventListener("visibilitychange", this.Ba), this.inForeground = "visible" === this.document.visibilityState);
         }, t.prototype.dh = function() {
             this.Ba && (this.document.removeEventListener("visibilitychange", this.Ba), this.Ba = null);
-        },
+        }, 
         /**
          * Attaches a window.unload handler that will synchronously write our
          * clientId to a "zombie client id" location in LocalStorage. This can be used
@@ -16255,7 +16255,7 @@ var app = (function () {
             }, this.window.addEventListener("unload", this.La));
         }, t.prototype.wh = function() {
             this.La && (this.window.removeEventListener("unload", this.La), this.La = null);
-        },
+        }, 
         /**
          * Returns whether a client is "zombied" based on its LocalStorage entry.
          * Clients become zombied when their tab closes without running all of the
@@ -16265,13 +16265,13 @@ var app = (function () {
             var e;
             try {
                 var n = null !== (null === (e = this.Ga) || void 0 === e ? void 0 : e.getItem(this.lh(t)));
-                return T$1("IndexedDbPersistence", "Client '" + t + "' " + (n ? "is" : "is not") + " zombied in LocalStorage"),
+                return T$1("IndexedDbPersistence", "Client '" + t + "' " + (n ? "is" : "is not") + " zombied in LocalStorage"), 
                 n;
             } catch (t) {
                 // Gracefully handle if LocalStorage isn't working.
                 return N$1("IndexedDbPersistence", "Failed to get zombied client id.", t), !1;
             }
-        },
+        }, 
         /**
          * Record client as zombied (a client that had its tab closed). Zombied
          * clients are ignored during primary tab selection.
@@ -16283,7 +16283,7 @@ var app = (function () {
                 // Gracefully handle if LocalStorage isn't available / working.
                 N$1("Failed to set zombie client id.", t);
             }
-        },
+        }, 
         /** Removes the zombied client entry if it exists. */ t.prototype.Eh = function() {
             if (this.Ga) try {
                 this.Ga.removeItem(this.lh(this.clientId));
@@ -16344,7 +16344,7 @@ var app = (function () {
             return this.db.Ih().po(t, e, n);
         }, t.prototype.Go = function(t, e) {
             return so(t, e);
-        },
+        }, 
         /**
          * Returns true if anything would prevent this document from being garbage
          * collected, given that the document in question is not present in any
@@ -16367,7 +16367,7 @@ var app = (function () {
             return this.gh(t, (function(u, s) {
                 if (s <= e) {
                     var a = n.Vh(t, u).next((function(e) {
-                        if (!e)
+                        if (!e) 
                         // Our size accounting requires us to read all documents before
                         // removing them.
                         return o++, r.Rr(t, u).next((function() {
@@ -16388,7 +16388,7 @@ var app = (function () {
             return this.db.Ih().Va(t, n);
         }, t.prototype.yh = function(t, e) {
             return so(t, e);
-        },
+        }, 
         /**
          * Call provided function for each document in the cache that is 'orphaned'. Orphaned
          * means not a part of any target, so the only entry in the target-document index for
@@ -16404,12 +16404,12 @@ var app = (function () {
                 0 === o ? (
                 // if nextToReport is valid, report it, this is a new key so the
                 // last one must not be a member of any targets.
-                i !== Lr.ai && e(new Z$1(ui(n)), i),
+                i !== Lr.ai && e(new Z$1(ui(n)), i), 
                 // set nextToReport to be this sequence number. It's the next one we
                 // might report, if we don't find any targets for this document.
                 // Note that the sequence number must be defined when the targetId
                 // is 0.
-                i = s, n = u) :
+                i = s, n = u) : 
                 // set nextToReport to be invalid, we know we don't need to report
                 // this one since we found a target for it.
                 i = Lr.ai;
@@ -16460,25 +16460,25 @@ var app = (function () {
         function t(
         /** Manages our in-memory or durable persistence. */
         t, e, n) {
-            this.persistence = t, this.ph = e,
+            this.persistence = t, this.ph = e, 
             /**
                  * Maps a targetID to data about its target.
                  *
                  * PORTING NOTE: We are using an immutable data structure on Web to make re-runs
                  * of `applyRemoteEvent()` idempotent.
                  */
-            this.bh = new dt(L$1),
+            this.bh = new dt(L$1), 
             /** Maps a target to its targetID. */
             // TODO(wuandy): Evaluate if TargetId can be part of Target.
             this.Sh = new W$1((function(t) {
                 return ot(t);
-            }), ut),
+            }), ut), 
             /**
                  * The read time of the last entry processed by `getNewDocumentChanges()`.
                  *
                  * PORTING NOTE: This is only used for multi-tab synchronization.
                  */
-            this.Dh = H$1.min(), this.Sr = t.Th(n), this.Ch = t.mh(), this.ja = t.Ih(), this.Nh = new Yr(this.Ch, this.Sr, this.persistence.Ah()),
+            this.Dh = H$1.min(), this.Sr = t.Th(n), this.Ch = t.mh(), this.ja = t.Ih(), this.Nh = new Yr(this.Ch, this.Sr, this.persistence.Ah()), 
             this.ph.xh(this.Nh);
         }
         return t.prototype.mo = function(t) {
@@ -16515,7 +16515,7 @@ var app = (function () {
                         return r.Rr(e, t);
                     })).next((function(e) {
                         var o = e, u = n.dr.get(t);
-                        x$1(null !== u), (!o || o.version.h(u) < 0) && ((o = i.hr(t, o, n)) &&
+                        x$1(null !== u), (!o || o.version.h(u) < 0) && ((o = i.hr(t, o, n)) && 
                         // We use the commitVersion as the readTime rather than the
                         // document's updateTime since the updateTime is not advanced
                         // for updates that do not modify the underlying document.
@@ -16579,7 +16579,7 @@ var app = (function () {
                     // Update the resume token if the change includes one.
                                     if (a.o() > 0) {
                         var c = s.it(a, r).st(t.Fa);
-                        i = i.ot(o, c),
+                        i = i.ot(o, c), 
                         // Update the target data if there are target changes (or if
                         // sufficient time has passed since the last update).
                         /**
@@ -16613,7 +16613,7 @@ var app = (function () {
             // limbo.
                     if (e.Jt.forEach((function(t, e) {
                 a = a.add(t);
-            })),
+            })), 
             // Each loop iteration only affects its "own" doc, so it's safe to get all the remote
             // documents in advance in a single call.
             u.push(o.getEntries(t, a).next((function(i) {
@@ -16627,8 +16627,8 @@ var app = (function () {
                     // NoDocuments with SnapshotVersion.min() are used in manufactured
                     // events. We remove these documents from cache since we lost
                     // access.
-                    o.Ar(a, r), s = s.ot(a, c)) : null == h || c.version.h(h.version) > 0 || 0 === c.version.h(h.version) && h.hasPendingWrites ? (o.Ir(c, r),
-                    s = s.ot(a, c)) : T$1("LocalStore", "Ignoring outdated watch update for ", a, ". Current version:", h.version, " Watch version:", c.version),
+                    o.Ar(a, r), s = s.ot(a, c)) : null == h || c.version.h(h.version) > 0 || 0 === c.version.h(h.version) && h.hasPendingWrites ? (o.Ir(c, r), 
+                    s = s.ot(a, c)) : T$1("LocalStore", "Ignoring outdated watch update for ", a, ". Current version:", h.version, " Watch version:", c.version), 
                     e.Yt.has(a) && u.push(n.persistence.No.yh(t, a));
                 }));
             }))), !r.isEqual(H$1.min())) {
@@ -16689,7 +16689,7 @@ var app = (function () {
             // If Multi-Tab is enabled, the existing target data may be newer than
             // the in-memory data
             var r = n.bh.get(t.targetId);
-            return (null === r || t.nt.h(r.nt) > 0) && (n.bh = n.bh.ot(t.targetId, t), n.Sh.set(e, t.targetId)),
+            return (null === r || t.nt.h(r.nt) > 0) && (n.bh = n.bh.ot(t.targetId, t), n.Sh.set(e, t.targetId)), 
             t;
         }));
     }
@@ -16733,7 +16733,7 @@ var app = (function () {
                     // activity. If we lose this write this could cause a very slight
                     // difference in the order of target deletion during GC, but we
                     // don't define exact LRU semantics so this is acceptable.
-                                    return T$1("LocalStore", "Failed to update sequence numbers for target " + r + ": " + s),
+                                    return T$1("LocalStore", "Failed to update sequence numbers for target " + r + ": " + s), 
                     [ 3 /*break*/ , 5 ];
 
                   case 5:
@@ -16895,24 +16895,24 @@ var app = (function () {
      */ var Eo = /** @class */ function() {
         function t() {
             // A set of outstanding references to a document sorted by key.
-            this.Oh = new mt(_o.Mh),
+            this.Oh = new mt(_o.Mh), 
             // A set of outstanding references to a document sorted by target id.
             this.$h = new mt(_o.Lh)
             /** Returns true if the reference set contains no references. */;
         }
         return t.prototype.P = function() {
             return this.Oh.P();
-        },
+        }, 
         /** Adds a reference to the given document key for the given ID. */ t.prototype.Da = function(t, e) {
             var n = new _o(t, e);
             this.Oh = this.Oh.add(n), this.$h = this.$h.add(n);
-        },
+        }, 
         /** Add references to the given document keys for the given ID. */ t.prototype.Bh = function(t, e) {
             var n = this;
             t.forEach((function(t) {
                 return n.Da(t, e);
             }));
-        },
+        }, 
         /**
          * Removes a reference to the given document key for the given
          * ID.
@@ -16924,7 +16924,7 @@ var app = (function () {
             t.forEach((function(t) {
                 return n.Na(t, e);
             }));
-        },
+        }, 
         /**
          * Clears all references with a given ID. Calls removeRef() for each key
          * removed.
@@ -16957,12 +16957,12 @@ var app = (function () {
         }
         return t.Mh = function(t, e) {
             return Z$1.D(t.key, e.key) || L$1(t.jh, e.jh);
-        },
+        }, 
         /** Compare by ID then by key */ t.Lh = function(t, e) {
             return L$1(t.jh, e.jh) || Z$1.D(t.key, e.key);
         }, t;
     }(), To = function(t, e) {
-        this.user = e, this.type = "OAuth", this.Gh = {},
+        this.user = e, this.type = "OAuth", this.Gh = {}, 
         // Set the headers using Object Literal notation to avoid minification
         this.Gh.Authorization = "Bearer " + t;
     }, No = /** @class */ function() {
@@ -16977,7 +16977,7 @@ var app = (function () {
         return t.prototype.getToken = function() {
             return Promise.resolve(null);
         }, t.prototype.Hh = function() {}, t.prototype.Jh = function(t) {
-            this.zh = t,
+            this.zh = t, 
             // Fire with initial user.
             t(Or.UNAUTHENTICATED);
         }, t.prototype.Yh = function() {
@@ -16989,14 +16989,14 @@ var app = (function () {
             /**
              * The auth token listener registered with FirebaseApp, retained here so we
              * can unregister it.
-             */        this.Xh = null,
+             */        this.Xh = null, 
             /** Tracks the current User. */
-            this.currentUser = Or.UNAUTHENTICATED, this.Zh = !1,
+            this.currentUser = Or.UNAUTHENTICATED, this.Zh = !1, 
             /**
                  * Counter used to detect if the token changed while a getToken request was
                  * outstanding.
                  */
-            this.tc = 0,
+            this.tc = 0, 
             /** The listener registered with setChangeListener(). */
             this.zh = null, this.forceRefresh = !1, this.Xh = function() {
                 e.tc++, e.currentUser = e.ec(), e.Zh = !0, e.zh && e.zh(e.currentUser);
@@ -17005,7 +17005,7 @@ var app = (function () {
             }), this.auth ? this.auth.addAuthTokenListener(this.Xh) : (
             // if auth is not available, invoke tokenListener once with null token
             this.Xh(null), t.get().then((function(t) {
-                e.auth = t, e.Xh &&
+                e.auth = t, e.Xh && 
                 // tokenListener can be removed by removeChangeListener()
                 e.auth.addAuthTokenListener(e.Xh);
             }), (function() {})));
@@ -17019,18 +17019,18 @@ var app = (function () {
                 // Cancel the request since the token changed while the request was
                 // outstanding so the response is potentially for a previous user (which
                 // user, we can't be sure).
-                return t.tc !== e ? (T$1("FirebaseCredentialsProvider", "getToken aborted due to token change."),
+                return t.tc !== e ? (T$1("FirebaseCredentialsProvider", "getToken aborted due to token change."), 
                 t.getToken()) : n ? (x$1("string" == typeof n.accessToken), new To(n.accessToken, t.currentUser)) : null;
             })) : Promise.resolve(null);
         }, t.prototype.Hh = function() {
             this.forceRefresh = !0;
         }, t.prototype.Jh = function(t) {
-            this.zh = t,
+            this.zh = t, 
             // Fire the initial event
             this.Zh && t(this.currentUser);
         }, t.prototype.Yh = function() {
             this.auth && this.auth.removeAuthTokenListener(this.Xh), this.Xh = null, this.zh = null;
-        },
+        }, 
         // Auth.getUid() can return null even with a user logged in. It is because
         // getUid() is synchronous, but the auth code populating Uid is asynchronous.
         // This method should only be called in the AuthTokenListener callback
@@ -17066,7 +17066,7 @@ var app = (function () {
         }, t.prototype.Yh = function() {}, t.prototype.Hh = function() {}, t;
     }(), xo = /** @class */ function() {
         function t(t, e, n, r, i, o) {
-            this.fn = t, this.ic = n, this.rc = r, this.oc = i, this.listener = o, this.state = 0 /* Initial */ ,
+            this.fn = t, this.ic = n, this.rc = r, this.oc = i, this.listener = o, this.state = 0 /* Initial */ , 
             /**
                  * A close count that's incremented every time the stream is closed; used by
                  * getCloseGuardedDispatcher() to invalidate callbacks that happen after
@@ -17083,14 +17083,14 @@ var app = (function () {
         }
         return t.prototype.cc = function() {
             return 1 /* Starting */ === this.state || 2 /* Open */ === this.state || 4 /* Backoff */ === this.state;
-        },
+        }, 
         /**
          * Returns true if the underlying RPC is open (the onOpen() listener has been
          * called) and the stream is ready for outbound requests.
          */
         t.prototype.uc = function() {
             return 2 /* Open */ === this.state;
-        },
+        }, 
         /**
          * Starts the RPC. Only allowed if isStarted() returns false. The stream is
          * not immediately ready for use: onOpen() will be invoked when the RPC is
@@ -17100,7 +17100,7 @@ var app = (function () {
          */
         t.prototype.start = function() {
             3 /* Error */ !== this.state ? this.auth() : this.lc();
-        },
+        }, 
         /**
          * Stops the RPC. This call is idempotent and allowed regardless of the
          * current isStarted() state.
@@ -17122,7 +17122,7 @@ var app = (function () {
                     }
                 }));
             }));
-        },
+        }, 
         /**
          * After an error the stream will usually back off on the next attempt to
          * start it. If the error warrants an immediate restart of the stream, the
@@ -17133,7 +17133,7 @@ var app = (function () {
          */
         t.prototype._c = function() {
             this.state = 0 /* Initial */ , this.Vs.reset();
-        },
+        }, 
         /**
          * Marks this stream as idle. If no further actions are performed on the
          * stream for one minute, the stream will automatically close itself and
@@ -17151,20 +17151,20 @@ var app = (function () {
                     this.uc() && null === this.hc && (this.hc = this.fn.Vn(this.ic, 6e4, (function() {
                 return t.dc();
             })));
-        },
+        }, 
         /** Sends a message to the underlying stream. */ t.prototype.wc = function(t) {
             this.Ec(), this.stream.send(t);
-        },
+        }, 
         /** Called by the idle timer when the stream should close due to inactivity. */ t.prototype.dc = function() {
             return __awaiter(this, void 0, void 0, (function() {
                 return __generator(this, (function(t) {
                     return this.uc() ? [ 2 /*return*/ , this.close(0 /* Initial */) ] : [ 2 /*return*/ ];
                 }));
             }));
-        },
+        }, 
         /** Marks the stream as active again. */ t.prototype.Ec = function() {
             this.hc && (this.hc.cancel(), this.hc = null);
-        },
+        }, 
         /**
          * Closes the stream and cleans up as necessary:
          *
@@ -17185,20 +17185,20 @@ var app = (function () {
                       case 0:
                         // Notify the listener that the stream closed.
                         // Cancel any outstanding timers (they're guaranteed not to execute).
-                        return this.Ec(), this.Vs.cancel(),
+                        return this.Ec(), this.Vs.cancel(), 
                         // Invalidates any stream-related callbacks (e.g. from auth or the
                         // underlying stream), guaranteeing they won't execute.
-                        this.ac++, 3 /* Error */ !== t ?
+                        this.ac++, 3 /* Error */ !== t ? 
                         // If this is an intentional close ensure we don't delay our next connection attempt.
                         this.Vs.reset() : r && r.code === b.RESOURCE_EXHAUSTED ? (
                         // Log the error. (Probably either 'quota exceeded' or 'max queue length reached'.)
-                        N$1(r.toString()), N$1("Using maximum backoff delay to prevent overloading the backend."),
-                        this.Vs.Rn()) : r && r.code === b.UNAUTHENTICATED &&
+                        N$1(r.toString()), N$1("Using maximum backoff delay to prevent overloading the backend."), 
+                        this.Vs.Rn()) : r && r.code === b.UNAUTHENTICATED && 
                         // "unauthenticated" error means the token was rejected. Try force refreshing it in case it
                         // just expired.
-                        this.oc.Hh(),
+                        this.oc.Hh(), 
                         // Clean up the underlying stream because we are no longer interested in events.
-                        null !== this.stream && (this.Tc(), this.stream.close(), this.stream = null),
+                        null !== this.stream && (this.Tc(), this.stream.close(), this.stream = null), 
                         // This state must be assigned before calling onClose() to allow the callback to
                         // inhibit backoff or otherwise manipulate the state in its non-started state.
                         this.state = t, [ 4 /*yield*/ , this.listener.Ic(r) ];
@@ -17210,7 +17210,7 @@ var app = (function () {
                     }
                 }));
             }));
-        },
+        }, 
         /**
          * Can be overridden to perform additional cleanup before the stream is closed.
          * Calling super.tearDown() is not required.
@@ -17225,7 +17225,7 @@ var app = (function () {
                 // TODO(mikelehen): We really should just use dispatchIfNotClosed
                 // and let this dispatch onto the queue, but that opened a spec test can
                 // of worms that I don't want to deal with in this PR.
-                t.ac === n &&
+                t.ac === n && 
                 // Normally we'd have to schedule the callback on the AsyncQueue.
                 // However, the following calls are safe to be called outside the
                 // AsyncQueue since they don't chain asynchronous calls
@@ -17260,7 +17260,7 @@ var app = (function () {
                     }));
                 }));
             }));
-        },
+        }, 
         // Visible for tests
         t.prototype.Rc = function(t) {
             // In theory the stream could close cleanly, however, in our current model
@@ -17268,7 +17268,7 @@ var app = (function () {
             // this callback will never be called. To prevent cases where we retry
             // without a backoff accidentally, we set the stream to error in all cases.
             return T$1("PersistentStream", "close with error: " + t), this.stream = null, this.close(3 /* Error */ , t);
-        },
+        }, 
         /**
          * Returns a "dispatcher" function that dispatches operations onto the
          * AsyncQueue but only runs them if closeCount remains unchanged. This allows
@@ -17279,7 +17279,7 @@ var app = (function () {
             var e = this;
             return function(n) {
                 e.fn.ws((function() {
-                    return e.ac === t ? n() : (T$1("PersistentStream", "stream callback skipped by getCloseGuardedDispatcher."),
+                    return e.ac === t ? n() : (T$1("PersistentStream", "stream callback skipped by getCloseGuardedDispatcher."), 
                     Promise.resolve());
                 }));
             };
@@ -17287,7 +17287,7 @@ var app = (function () {
     }(), ko = /** @class */ function(e) {
         function n(t, n, r, i, o) {
             var u = this;
-            return (u = e.call(this, t, "listen_stream_connection_backoff" /* ListenStreamConnectionBackoff */ , "listen_stream_idle" /* ListenStreamIdle */ , n, r, o) || this).serializer = i,
+            return (u = e.call(this, t, "listen_stream_connection_backoff" /* ListenStreamConnectionBackoff */ , "listen_stream_idle" /* ListenStreamIdle */ , n, r, o) || this).serializer = i, 
             u;
         }
         return __extends(n, e), n.prototype.Pc = function(t) {
@@ -17304,7 +17304,7 @@ var app = (function () {
                     var r = function(t) {
                         return "NO_CHANGE" === t ? 0 /* NoChange */ : "ADD" === t ? 1 /* Added */ : "REMOVE" === t ? 2 /* Removed */ : "CURRENT" === t ? 3 /* Current */ : "RESET" === t ? 4 /* Reset */ : S$1();
                     }(e.targetChange.targetChangeType || "NO_CHANGE"), i = e.targetChange.targetIds || [], o = function(t, e) {
-                        return t.Ke ? (x$1(void 0 === e || "string" == typeof e), C$1.fromBase64String(e || "")) : (x$1(void 0 === e || e instanceof Uint8Array),
+                        return t.Ke ? (x$1(void 0 === e || "string" == typeof e), C$1.fromBase64String(e || "")) : (x$1(void 0 === e || e instanceof Uint8Array), 
                         C$1.fromUint8Array(e || new Uint8Array));
                     }(t, e.targetChange.resumeToken), u = e.targetChange.cause, s = u && function(t) {
                         var e = void 0 === t.code ? b.UNKNOWN : pt(t.code);
@@ -17351,7 +17351,7 @@ var app = (function () {
                 return e.targetIds && e.targetIds.length ? H$1.min() : e.readTime ? ye(e.readTime) : H$1.min();
             }(t);
             return this.listener.yc(e, n);
-        },
+        }, 
         /**
          * Registers interest in the results of the given target. If the target
          * includes a resumeToken it will be included in the request. Results that
@@ -17366,7 +17366,7 @@ var app = (function () {
                     documents: Se(t, r)
                 } : {
                     query: xe(t, r)
-                }).targetId = e.targetId, e.resumeToken.o() > 0 && (n.resumeToken = de(t, e.resumeToken)),
+                }).targetId = e.targetId, e.resumeToken.o() > 0 && (n.resumeToken = de(t, e.resumeToken)), 
                 n;
             }(this.serializer, t);
             var n = function(t, e) {
@@ -17390,7 +17390,7 @@ var app = (function () {
                 };
             }(this.serializer, t);
             n && (e.labels = n), this.wc(e);
-        },
+        }, 
         /**
          * Unregisters interest in the results of the target associated with the
          * given targetId.
@@ -17402,7 +17402,7 @@ var app = (function () {
     }(xo), Po = /** @class */ function(e) {
         function n(t, n, r, i, o) {
             var u = this;
-            return (u = e.call(this, t, "write_stream_connection_backoff" /* WriteStreamConnectionBackoff */ , "write_stream_idle" /* WriteStreamIdle */ , n, r, o) || this).serializer = i,
+            return (u = e.call(this, t, "write_stream_connection_backoff" /* WriteStreamConnectionBackoff */ , "write_stream_idle" /* WriteStreamIdle */ , n, r, o) || this).serializer = i, 
             u.Sc = !1, u;
         }
         return __extends(n, e), Object.defineProperty(n.prototype, "Dc", {
@@ -17415,7 +17415,7 @@ var app = (function () {
             },
             enumerable: !1,
             configurable: !0
-        }),
+        }), 
         // Override of PersistentStream.start
         n.prototype.start = function() {
             this.Sc = !1, this.lastStreamToken = void 0, e.prototype.start.call(this);
@@ -17444,7 +17444,7 @@ var app = (function () {
                             // TODO(#2149): Remove this when Emulator is fixed
                             n = ye(e));
                             var r = null;
-                            return t.transformResults && t.transformResults.length > 0 && (r = t.transformResults),
+                            return t.transformResults && t.transformResults.length > 0 && (r = t.transformResults), 
                             new nn(n, r);
                         }(t, e);
                     }))) : [];
@@ -17452,9 +17452,9 @@ var app = (function () {
                 return this.listener.Nc(n, e);
             }
             // The first response is always the handshake response
-                    return x$1(!t.writeResults || 0 === t.writeResults.length), this.Sc = !0,
+                    return x$1(!t.writeResults || 0 === t.writeResults.length), this.Sc = !0, 
             this.listener.xc();
-        },
+        }, 
         /**
          * Sends an initial streamToken to the server, performing the handshake
          * required to make the StreamingWrite RPC work. Subsequent
@@ -17465,7 +17465,7 @@ var app = (function () {
             // stream token on the handshake, ignoring any stream token we might have.
             var t = {};
             t.database = _e(this.serializer), this.wc(t);
-        },
+        }, 
         /** Sends a group of mutations to the Firestore backend to apply. */ n.prototype.Cc = function(t) {
             var e = this, n = {
                 streamToken: this.lastStreamToken,
@@ -17478,12 +17478,12 @@ var app = (function () {
     }(xo), Oo = /** @class */ function(e) {
         function n(t, n, r) {
             var i = this;
-            return (i = e.call(this) || this).credentials = t, i.rc = n, i.serializer = r, i.kc = !1,
+            return (i = e.call(this) || this).credentials = t, i.rc = n, i.serializer = r, i.kc = !1, 
             i;
         }
         return __extends(n, e), n.prototype.Oc = function() {
             if (this.kc) throw new I$1(b.FAILED_PRECONDITION, "The client has already been terminated.");
-        },
+        }, 
         /** Gets an auth token and invokes the provided RPC. */ n.prototype.Mc = function(t, e, n) {
             var r = this;
             return this.Oc(), this.credentials.getToken().then((function(i) {
@@ -17491,7 +17491,7 @@ var app = (function () {
             })).catch((function(t) {
                 throw t.code === b.UNAUTHENTICATED && r.credentials.Hh(), t;
             }));
-        },
+        }, 
         /** Gets an auth token and invokes the provided RPC with streamed results. */ n.prototype.$c = function(t, e, n) {
             var r = this;
             return this.Oc(), this.credentials.getToken().then((function(i) {
@@ -17504,21 +17504,21 @@ var app = (function () {
         }, n;
     }((function() {})), Lo = /** @class */ function() {
         function t(t, e) {
-            this.hs = t, this.di = e,
+            this.hs = t, this.di = e, 
             /** The current OnlineState. */
-            this.state = "Unknown" /* Unknown */ ,
+            this.state = "Unknown" /* Unknown */ , 
             /**
                  * A count of consecutive failures to open the stream. If it reaches the
                  * maximum defined by MAX_WATCH_STREAM_FAILURES, we'll set the OnlineState to
                  * Offline.
                  */
-            this.Lc = 0,
+            this.Lc = 0, 
             /**
                  * A timer that elapses after ONLINE_STATE_TIMEOUT_MS, at which point we
                  * transition from OnlineState.Unknown to OnlineState.Offline without waiting
                  * for the stream to actually fail (MAX_WATCH_STREAM_FAILURES times).
                  */
-            this.Bc = null,
+            this.Bc = null, 
             /**
                  * Whether the client should log a warning message if it fails to connect to
                  * the backend (initially true, cleared after a successful stream, or if we've
@@ -17536,10 +17536,10 @@ var app = (function () {
         return t.prototype.Uc = function() {
             var t = this;
             0 === this.Lc && (this.Kc("Unknown" /* Unknown */), this.Bc = this.hs.Vn("online_state_timeout" /* OnlineStateTimeout */ , 1e4, (function() {
-                return t.Bc = null, t.Qc("Backend didn't respond within 10 seconds."), t.Kc("Offline" /* Offline */),
+                return t.Bc = null, t.Qc("Backend didn't respond within 10 seconds."), t.Kc("Offline" /* Offline */), 
                 Promise.resolve();
             })));
-        },
+        }, 
         /**
          * Updates our OnlineState as appropriate after the watch stream reports a
          * failure. The first failure moves us to the 'Unknown' state. We then may
@@ -17547,10 +17547,10 @@ var app = (function () {
          * actually transition to the 'Offline' state.
          */
         t.prototype.Wc = function(t) {
-            "Online" /* Online */ === this.state ? this.Kc("Unknown" /* Unknown */) : (this.Lc++,
-            this.Lc >= 1 && (this.jc(), this.Qc("Connection failed 1 times. Most recent error: " + t.toString()),
+            "Online" /* Online */ === this.state ? this.Kc("Unknown" /* Unknown */) : (this.Lc++, 
+            this.Lc >= 1 && (this.jc(), this.Qc("Connection failed 1 times. Most recent error: " + t.toString()), 
             this.Kc("Offline" /* Offline */)));
-        },
+        }, 
         /**
          * Explicitly sets the OnlineState to the specified state.
          *
@@ -17575,11 +17575,11 @@ var app = (function () {
     /**
          * The local store, used to fill the write pipeline with outbound mutations.
          */
-    t,
+    t, 
     /** The client-side proxy for interacting with the backend. */
     r, i, o, u) {
         var s = this;
-        this.Gc = t, this.zc = r, this.hs = i, this.Hc = {},
+        this.Gc = t, this.zc = r, this.hs = i, this.Hc = {}, 
         /**
                  * A list of up to MAX_PENDING_WRITES writes that we have fetched from the
                  * LocalStore via fillWritePipeline() and have or will send to the write
@@ -17597,7 +17597,7 @@ var app = (function () {
                  * purely based on order, and so we can just shift() writes from the front of
                  * the writePipeline as we receive responses.
                  */
-        this.Jc = [],
+        this.Jc = [], 
         /**
                  * A mapping of watched targets that the client cares about tracking and the
                  * user has explicitly called a 'listen' for this target.
@@ -17607,12 +17607,12 @@ var app = (function () {
                  * to the server. The targets removed with unlistens are removed eagerly
                  * without waiting for confirmation from the listen stream.
                  */
-        this.Yc = new Map,
+        this.Yc = new Map, 
         /**
                  * A set of reasons for why the RemoteStore may be offline. If empty, the
                  * RemoteStore may start its network connections.
                  */
-        this.Xc = new Set,
+        this.Xc = new Set, 
         /**
                  * Event handlers that get called when the network is disabled or enabled.
                  *
@@ -17626,7 +17626,7 @@ var app = (function () {
                     return __generator(this, (function(t) {
                         switch (t.label) {
                           case 0:
-                            return zo(this) ? (T$1("RemoteStore", "Restarting streams for network reachability change."),
+                            return zo(this) ? (T$1("RemoteStore", "Restarting streams for network reachability change."), 
                             [ 4 /*yield*/ , function(t) {
                                 return __awaiter(this, void 0, void 0, (function() {
                                     var e;
@@ -17636,7 +17636,7 @@ var app = (function () {
                                             return (e = k$1(t)).Xc.add(4 /* ConnectivityChange */), [ 4 /*yield*/ , Co(e) ];
 
                                           case 1:
-                                            return n.sent(), e.nu.set("Unknown" /* Unknown */), e.Xc.delete(4 /* ConnectivityChange */),
+                                            return n.sent(), e.nu.set("Unknown" /* Unknown */), e.Xc.delete(4 /* ConnectivityChange */), 
                                             [ 4 /*yield*/ , Ro(e) ];
 
                                           case 2:
@@ -17716,11 +17716,11 @@ var app = (function () {
             return __generator(this, (function(n) {
                 switch (n.label) {
                   case 0:
-                    return e = k$1(t), T$1("RemoteStore", "RemoteStore shutting down."), e.Xc.add(5 /* Shutdown */),
+                    return e = k$1(t), T$1("RemoteStore", "RemoteStore shutting down."), e.Xc.add(5 /* Shutdown */), 
                     [ 4 /*yield*/ , Co(e) ];
 
                   case 1:
-                    return n.sent(), e.tu.Di(),
+                    return n.sent(), e.tu.Di(), 
                     // Set the OnlineState to Unknown (rather than Offline) to avoid potentially
                     // triggering spurious listener events with cached data, etc.
                     e.nu.set("Unknown" /* Unknown */), [ 2 /*return*/ ];
@@ -17736,7 +17736,7 @@ var app = (function () {
         var n = k$1(t);
         n.Yc.has(e.targetId) || (
         // Mark this as something the client is currently listening for.
-        n.Yc.set(e.targetId, e), Bo(n) ?
+        n.Yc.set(e.targetId, e), Bo(n) ? 
         // The listen will be sent in onWatchStreamOpen
         Go(n) : ou(n).uc() && Fo(n, e));
     }
@@ -17746,7 +17746,7 @@ var app = (function () {
      * not being listened to.
      */ function qo(t, e) {
         var n = k$1(t), r = ou(n);
-        n.Yc.delete(e), r.uc() && jo(n, e), 0 === n.Yc.size && (r.uc() ? r.fc() : zo(n) &&
+        n.Yc.delete(e), r.uc() && jo(n, e), 0 === n.Yc.size && (r.uc() ? r.fc() : zo(n) && 
         // Revert to OnlineState.Unknown if the watch stream is not open and we
         // have no listeners, since without any listens to send we cannot
         // confirm if the stream is healthy and upgrade to OnlineState.Online.
@@ -17809,9 +17809,9 @@ var app = (function () {
     function Qo(t, r) {
         return __awaiter(this, void 0, void 0, (function() {
             return __generator(this, (function(e) {
-                return Ko(t),
+                return Ko(t), 
                 // If we still need the watch stream, retry the connection.
-                Bo(t) ? (t.nu.Wc(r), Go(t)) :
+                Bo(t) ? (t.nu.Wc(r), Go(t)) : 
                 // No need to restart watch stream because there are no active targets.
                 // The online state is set to unknown because there is no active attempt
                 // at establishing a connection
@@ -17826,13 +17826,13 @@ var app = (function () {
             return __generator(this, (function(a) {
                 switch (a.label) {
                   case 0:
-                    if (t.nu.set("Online" /* Online */), !(r instanceof Ct && 2 /* Removed */ === r.state && r.cause))
+                    if (t.nu.set("Online" /* Online */), !(r instanceof Ct && 2 /* Removed */ === r.state && r.cause)) 
                     // Mark the client as online since we got a message from the server
                     return [ 3 /*break*/ , 6 ];
                     a.label = 1;
 
                   case 1:
-                    return a.trys.push([ 1, 3, , 5 ]), [ 4 /*yield*/ ,
+                    return a.trys.push([ 1, 3, , 5 ]), [ 4 /*yield*/ , 
                     /** Handles an error on a target */
                     function(t, r) {
                         return __awaiter(this, void 0, void 0, (function() {
@@ -17865,7 +17865,7 @@ var app = (function () {
                     return a.sent(), [ 3 /*break*/ , 5 ];
 
                   case 3:
-                    return o = a.sent(), T$1("RemoteStore", "Failed to remove targets %s: %s ", r.targetIds.join(","), o),
+                    return o = a.sent(), T$1("RemoteStore", "Failed to remove targets %s: %s ", r.targetIds.join(","), o), 
                     [ 4 /*yield*/ , Yo(t, o) ];
 
                   case 4:
@@ -17882,7 +17882,7 @@ var app = (function () {
                     return a.trys.push([ 7, 11, , 13 ]), [ 4 /*yield*/ , fo(t.Gc) ];
 
                   case 8:
-                    return u = a.sent(), i.h(u) >= 0 ? [ 4 /*yield*/ ,
+                    return u = a.sent(), i.h(u) >= 0 ? [ 4 /*yield*/ , 
                     /**
                      * Takes a batch of changes from the Datastore, repackages them as a
                      * RemoteEvent, and passes that on to the listener, which is typically the
@@ -17898,7 +17898,7 @@ var app = (function () {
                                 // A watched target might have been removed already.
                                                             i && t.Yc.set(r, i.it(n.resumeToken, e));
                             }
-                        })),
+                        })), 
                         // Re-establish listens for the targets that have been invalidated by
                         // existence filter mismatches.
                         n.Ht.forEach((function(e) {
@@ -17906,7 +17906,7 @@ var app = (function () {
                             if (n) {
                                 // Clear the resume token for the target, since we're in a known mismatch
                                 // state.
-                                t.Yc.set(e, n.it(C$1.u, n.nt)),
+                                t.Yc.set(e, n.it(C$1.u, n.nt)), 
                                 // Cause a hard reset by unwatching and rewatching immediately, but
                                 // deliberately don't send a resume token so that we get a full update.
                                 jo(t, e);
@@ -17969,7 +17969,7 @@ var app = (function () {
                     // RemoteStore only has access to persistence through LocalStore.
                     i = function() {
                         return fo(t.Gc);
-                    }),
+                    }), 
                     // Probe IndexedDB periodically and re-enable network
                     t.hs.Cs((function() {
                         return __awaiter(o, void 0, void 0, (function() {
@@ -18028,7 +18028,7 @@ var app = (function () {
                     return n.trys.push([ 2, 4, , 6 ]), [ 4 /*yield*/ , po(e.Gc, i) ];
 
                   case 3:
-                    return null === (o = n.sent()) ? (0 === e.Jc.length && r.fc(), [ 3 /*break*/ , 7 ]) : (i = o.batchId,
+                    return null === (o = n.sent()) ? (0 === e.Jc.length && r.fc(), [ 3 /*break*/ , 7 ]) : (i = o.batchId, 
                     function(t, e) {
                         t.Jc.push(e);
                         var n = uu(t);
@@ -18113,7 +18113,7 @@ var app = (function () {
                             return __generator(this, (function(n) {
                                 switch (n.label) {
                                   case 0:
-                                    return lt(i = r.code) && i !== b.ABORTED ? (e = t.Jc.shift(),
+                                    return lt(i = r.code) && i !== b.ABORTED ? (e = t.Jc.shift(), 
                                     // In this case it's also unlikely that the server itself is melting
                                     // down -- this was just a bad request so inhibit backoff on the next
                                     // restart.
@@ -18260,7 +18260,7 @@ var app = (function () {
                         return [ 4 /*yield*/ , t.cu.stop() ];
 
                       case 3:
-                        e.sent(), t.Jc.length > 0 && (T$1("RemoteStore", "Stopping write stream with " + t.Jc.length + " pending writes"),
+                        e.sent(), t.Jc.length > 0 && (T$1("RemoteStore", "Stopping write stream with " + t.Jc.length + " pending writes"), 
                         t.Jc = []), e.label = 4;
 
                       case 4:
@@ -18292,19 +18292,19 @@ var app = (function () {
     }, au = function(t) {
         this.key = t;
     }, cu = /** @class */ function() {
-        function t(t,
+        function t(t, 
         /** Documents included in the remote target */
         e) {
-            this.query = t, this.uu = e, this.lu = null,
+            this.query = t, this.uu = e, this.lu = null, 
             /**
                  * A flag whether the view is current with the backend. A view is considered
                  * current after it has seen the current flag from the backend and did not
                  * lose consistency within the watch stream (e.g. because of an existence
                  * filter mismatch).
                  */
-            this.te = !1,
+            this.te = !1, 
             /** Documents in the view but not in the remote target */
-            this._u = At(),
+            this._u = At(), 
             /** Document Keys that have local changes */
             this.Qt = At(), this.fu = zn(t), this.du = new xt(this.fu);
         }
@@ -18318,7 +18318,7 @@ var app = (function () {
             },
             enumerable: !1,
             configurable: !0
-        }),
+        }), 
         /**
          * Iterates over a set of doc changes, applies the query limit, and computes
          * what the new results should be, what the changes were, and whether we may
@@ -18335,7 +18335,7 @@ var app = (function () {
             if (t.ut((function(t, e) {
                 var h = i.get(t), f = e instanceof Tn ? e : null;
                 f && (f = Bn(n.query, f) ? f : null);
-                var l = !!h && n.Qt.has(h.key), p = !!f && (f.Ye ||
+                var l = !!h && n.Qt.has(h.key), p = !!f && (f.Ye || 
                 // We only consider committed mutations for documents that were
                 // mutated during the lifetime of the view.
                 n.Qt.has(f.key) && f.hasCommittedMutations), d = !1;
@@ -18360,7 +18360,7 @@ var app = (function () {
                 // A doc was removed from a full limit query. We'll need to
                 // requery from the local cache to see if we know about some other
                 // doc that should be in the results.
-                s = !0)), d && (f ? (u = u.add(f), o = p ? o.add(t) : o.delete(t)) : (u = u.delete(t),
+                s = !0)), d && (f ? (u = u.add(f), o = p ? o.add(t) : o.delete(t)) : (u = u.delete(t), 
                 o = o.delete(t)));
             })), kn(this.query) || Pn(this.query)) for (;u.size > this.query.limit; ) {
                 var h = kn(this.query) ? u.last() : u.first();
@@ -18384,7 +18384,7 @@ var app = (function () {
             // (one with `hasPendingWrites`, the modified document with
             // `hasPendingWrites` and the final state of the document).
             return t.Ye && e.hasCommittedMutations && !e.Ye;
-        },
+        }, 
         /**
          * Updates the view with the given ViewDocumentChanges and optionally updates
          * limbo docs and sync state from the provided target change.
@@ -18427,14 +18427,14 @@ var app = (function () {
             })), this.Au(n);
             var u = e ? this.Ru() : [], s = 0 === this._u.size && this.te ? 1 /* Synced */ : 0 /* Local */ , a = s !== this.lu;
             return this.lu = s, 0 !== o.length || a ? {
-                snapshot: new Pt(this.query, t.du, i, o, t.Qt, 0 /* Local */ === s, a,
+                snapshot: new Pt(this.query, t.du, i, o, t.Qt, 0 /* Local */ === s, a, 
                 /* excludesMetadataChanges= */ !1),
                 Pu: u
             } : {
                 Pu: u
             };
             // no changes
-            },
+            }, 
         /**
          * Applies an OnlineState change to the view, potentially generating a
          * ViewChange if the view's syncState changes as a result.
@@ -18450,20 +18450,20 @@ var app = (function () {
                 Tu: new kt,
                 Qt: this.Qt,
                 mu: !1
-            },
+            }, 
             /* updateLimboDocuments= */ !1)) : {
                 Pu: []
             };
-        },
+        }, 
         /**
          * Returns whether the doc for the given key should be in limbo.
          */
         t.prototype.gu = function(t) {
             // If the remote end says it's part of this query, it's not in limbo.
-            return !this.uu.has(t) &&
+            return !this.uu.has(t) && 
             // The local store doesn't think it's a result, so it shouldn't be in limbo.
             !!this.du.has(t) && !this.du.get(t).Ye;
-        },
+        }, 
         /**
          * Updates syncedDocuments, current, and limbo docs based on the given change.
          * Returns the list of changes to which docs are in limbo.
@@ -18492,7 +18492,7 @@ var app = (function () {
             })), this._u.forEach((function(t) {
                 e.has(t) || n.push(new su(t));
             })), n;
-        },
+        }, 
         /**
          * Update the in-memory state of the current view with the state read from
          * persistence.
@@ -18517,7 +18517,7 @@ var app = (function () {
             this.uu = t.Fh, this._u = At();
             var e = this.Eu(t.documents);
             return this.Vr(e, /*updateLimboDocuments=*/ !0);
-        },
+        }, 
         /**
          * Returns a view snapshot as if this query was just listened to. Contains
          * a document add for every existing document and the `fromCache` and
@@ -18531,12 +18531,12 @@ var app = (function () {
     /**
          * The query itself.
          */
-    t,
+    t, 
     /**
          * The target number created by the client that is used in the watch
          * stream to identify this query.
          */
-    e,
+    e, 
     /**
          * The view is responsible for computing the final merged truth of what
          * docs are in the query. It gets notified of local and remote changes,
@@ -18546,7 +18546,7 @@ var app = (function () {
     n) {
         this.query = t, this.targetId = e, this.view = n;
     }, fu = function(t) {
-        this.key = t,
+        this.key = t, 
         /**
                  * Set to true once we've received a document. This is used in
                  * getRemoteKeysForTarget() and ultimately used by WatchChangeAggregator to
@@ -18555,32 +18555,32 @@ var app = (function () {
                  */
         this.pu = !1;
     }, lu = /** @class */ function() {
-        function t(t, e, n,
+        function t(t, e, n, 
         // PORTING NOTE: Manages state synchronization in multi-tab environments.
         r, i, o) {
-            this.Gc = t, this.bu = e, this.vu = n, this.Su = r, this.currentUser = i, this.Du = o,
+            this.Gc = t, this.bu = e, this.vu = n, this.Su = r, this.currentUser = i, this.Du = o, 
             this.Cu = {}, this.Nu = new W$1((function(t) {
                 return jn(t);
-            }), Fn), this.xu = new Map,
+            }), Fn), this.xu = new Map, 
             /**
                  * The keys of documents that are in limbo for which we haven't yet started a
                  * limbo resolution query.
                  */
-            this.Fu = [],
+            this.Fu = [], 
             /**
                  * Keeps track of the target ID for each document that is in limbo with an
                  * active target.
                  */
-            this.ku = new dt(Z$1.D),
+            this.ku = new dt(Z$1.D), 
             /**
                  * Keeps track of the information about an active limbo resolution for each
                  * active target ID that was started for the purpose of limbo resolution.
                  */
-            this.Ou = new Map, this.Mu = new Eo,
+            this.Ou = new Map, this.Mu = new Eo, 
             /** Stores user completion handlers, indexed by User and BatchId. */
-            this.$u = {},
+            this.$u = {}, 
             /** Stores user callbacks waiting for all pending writes to be acknowledged. */
-            this.Lu = new Map, this.Bu = Xi.da(), this.onlineState = "Unknown" /* Unknown */ ,
+            this.Lu = new Map, this.Bu = Xi.da(), this.onlineState = "Unknown" /* Unknown */ , 
             // The primary state is set to `true` or `false` immediately after Firestore
             // startup. In the interim, a client should only be considered primary if
             // `isPrimary` is true.
@@ -18650,7 +18650,7 @@ var app = (function () {
                                 return __generator(this, (function(n) {
                                     switch (n.label) {
                                       case 0:
-                                        return e = r.view.Eu(i), e.mu ? [ 4 /*yield*/ , mo(t.Gc, r.query,
+                                        return e = r.view.Eu(i), e.mu ? [ 4 /*yield*/ , mo(t.Gc, r.query, 
                                         /* usePreviousResults= */ !1).then((function(t) {
                                             var n = t.documents;
                                             return r.view.Eu(n, e);
@@ -18663,20 +18663,20 @@ var app = (function () {
                                         e = n.sent(), n.label = 2;
 
                                       case 2:
-                                        return u = o && o.zt.get(r.targetId), s = r.view.Vr(e,
-                                        /* updateLimboDocuments= */ t.Uu, u), [ 2 /*return*/ , (Nu(t, r.targetId, s.Pu),
+                                        return u = o && o.zt.get(r.targetId), s = r.view.Vr(e, 
+                                        /* updateLimboDocuments= */ t.Uu, u), [ 2 /*return*/ , (Nu(t, r.targetId, s.Pu), 
                                         s.snapshot) ];
                                     }
                                 }));
                             }));
                         }(t, r, i, o);
-                    }, [ 4 /*yield*/ , mo(t.Gc, r,
+                    }, [ 4 /*yield*/ , mo(t.Gc, r, 
                     /* usePreviousResults= */ !0) ];
 
                   case 1:
-                    return u = l.sent(), s = new cu(r, u.Fh), a = s.Eu(u.documents), c = Lt.Zt(i, o && "Offline" /* Offline */ !== t.onlineState),
-                    h = s.Vr(a,
-                    /* updateLimboDocuments= */ t.Uu, c), Nu(t, i, h.Pu), f = new hu(r, i, s), [ 2 /*return*/ , (t.Nu.set(r, f),
+                    return u = l.sent(), s = new cu(r, u.Fh), a = s.Eu(u.documents), c = Lt.Zt(i, o && "Offline" /* Offline */ !== t.onlineState), 
+                    h = s.Vr(a, 
+                    /* updateLimboDocuments= */ t.Uu, c), Nu(t, i, h.Pu), f = new hu(r, i, s), [ 2 /*return*/ , (t.Nu.set(r, f), 
                     t.xu.has(i) ? t.xu.get(i).push(r) : t.xu.set(i, [ r ]), h.snapshot) ];
                 }
             }));
@@ -18694,7 +18694,7 @@ var app = (function () {
                     }))), void e.Nu.delete(r)) ] : e.Uu ? (
                     // We need to remove the local query target first to allow us to verify
                     // whether any other client is still interested in this target.
-                    e.Su.Bi(i.targetId), e.Su.xi(i.targetId) ? [ 3 /*break*/ , 2 ] : [ 4 /*yield*/ , yo(e.Gc, i.targetId,
+                    e.Su.Bi(i.targetId), e.Su.xi(i.targetId) ? [ 3 /*break*/ , 2 ] : [ 4 /*yield*/ , yo(e.Gc, i.targetId, 
                     /*keepPersistedTargetData=*/ !1).then((function() {
                         e.Su.Ui(i.targetId), qo(e.bu, i.targetId), _u(e, i.targetId);
                     })).catch(Io) ]) : [ 3 /*break*/ , 3 ];
@@ -18706,7 +18706,7 @@ var app = (function () {
                     return [ 3 /*break*/ , 5 ];
 
                   case 3:
-                    return _u(e, i.targetId), [ 4 /*yield*/ , yo(e.Gc, i.targetId,
+                    return _u(e, i.targetId), [ 4 /*yield*/ , yo(e.Gc, i.targetId, 
                     /*keepPersistedTargetData=*/ !0) ];
 
                   case 4:
@@ -18746,14 +18746,14 @@ var app = (function () {
                     return n.trys.push([ 1, 4, , 6 ]), [ 4 /*yield*/ , lo(e.Gc, r) ];
 
                   case 2:
-                    return i = n.sent(),
+                    return i = n.sent(), 
                     // Update `receivedDocument` as appropriate for any limbo targets.
                     r.zt.forEach((function(t, n) {
                         var r = e.Ou.get(n);
                         r && (
                         // Since this is a limbo resolution lookup, it's for a single document
                         // and it could be added, modified, or removed, but not a combination.
-                        x$1(t.ee.size + t.ne.size + t.se.size <= 1), t.ee.size > 0 ? r.pu = !0 : t.ne.size > 0 ? x$1(r.pu) : t.se.size > 0 && (x$1(r.pu),
+                        x$1(t.ee.size + t.ne.size + t.se.size <= 1), t.ee.size > 0 ? r.pu = !0 : t.ne.size > 0 ? x$1(r.pu) : t.se.size > 0 && (x$1(r.pu), 
                         r.pu = !1));
                     })), [ 4 /*yield*/ , Su(e, i, r) ];
 
@@ -18819,13 +18819,13 @@ var app = (function () {
                 switch (n.label) {
                   case 0:
                     // PORTING NOTE: Multi-tab only.
-                    return (e = k$1(t)).Su.Ki(r, "rejected", i), o = e.Ou.get(r), (u = o && o.key) ? (s = (s = new dt(Z$1.D)).ot(u, new Nn(u, H$1.min())),
-                    a = At().add(u), c = new Ot(H$1.min(),
-                    /* targetChanges= */ new Map,
+                    return (e = k$1(t)).Su.Ki(r, "rejected", i), o = e.Ou.get(r), (u = o && o.key) ? (s = (s = new dt(Z$1.D)).ot(u, new Nn(u, H$1.min())), 
+                    a = At().add(u), c = new Ot(H$1.min(), 
+                    /* targetChanges= */ new Map, 
                     /* targetMismatches= */ new mt(L$1), s, a), [ 4 /*yield*/ , yu(e, c) ]) : [ 3 /*break*/ , 2 ];
 
                   case 1:
-                    return n.sent(),
+                    return n.sent(), 
                     // Since this query failed, we won't want to manually unlisten to it.
                     // We only remove it from bookkeeping after we successfully applied the
                     // RemoteEvent. If `applyRemoteEvent()` throws, we want to re-listen to
@@ -18834,7 +18834,7 @@ var app = (function () {
                     e.ku = e.ku.remove(u), e.Ou.delete(r), Du(e), [ 3 /*break*/ , 4 ];
 
                   case 2:
-                    return [ 4 /*yield*/ , yo(e.Gc, r,
+                    return [ 4 /*yield*/ , yo(e.Gc, r, 
                     /* keepPersistedTargetData */ !1).then((function() {
                         return _u(e, r, i);
                     })).catch(Io) ];
@@ -18861,7 +18861,7 @@ var app = (function () {
                     return n.trys.push([ 1, 4, , 6 ]), [ 4 /*yield*/ , ho(e.Gc, r) ];
 
                   case 2:
-                    return o = n.sent(),
+                    return o = n.sent(), 
                     // The local store may or may not be able to apply the write result and
                     // raise events immediately (depending on whether the watcher is caught
                     // up), so we raise user callbacks first so that they consistently happen
@@ -18912,7 +18912,7 @@ var app = (function () {
                     }(e.Gc, r) ];
 
                   case 2:
-                    return o = n.sent(),
+                    return o = n.sent(), 
                     // The local store may or may not be able to apply the write result and
                     // raise events immediately (depending on whether the watcher is caught up),
                     // so we raise user callbacks first so that they consistently happen before
@@ -18971,7 +18971,7 @@ var app = (function () {
             t.Nu.delete(o), n && t.Cu.Qu(o, n);
         }
         t.xu.delete(e), t.Uu && t.Mu.Kh(e).forEach((function(e) {
-            t.Mu.Ho(e) ||
+            t.Mu.Ho(e) || 
             // We removed the last reference for this key
             Tu(t, e);
         }));
@@ -18987,8 +18987,8 @@ var app = (function () {
     function Nu(t, e, n) {
         for (var r = 0, i = n; r < i.length; r++) {
             var o = i[r];
-            o instanceof su ? (t.Mu.Da(o.key, e), Au(t, o)) : o instanceof au ? (T$1("SyncEngine", "Document no longer in limbo: " + o.key),
-            t.Mu.Na(o.key, e), t.Mu.Ho(o.key) ||
+            o instanceof su ? (t.Mu.Da(o.key, e), Au(t, o)) : o instanceof au ? (T$1("SyncEngine", "Document no longer in limbo: " + o.key), 
+            t.Mu.Na(o.key, e), t.Mu.Ho(o.key) || 
             // We removed the last reference for this key
             Tu(t, o.key)) : S$1();
         }
@@ -19060,12 +19060,12 @@ var app = (function () {
                                     // number for the documents that were included in this transaction.
                                     // This might trigger them to be deleted earlier than they otherwise
                                     // would have, but it should not invalidate the integrity of the data.
-                                                                    return T$1("LocalStore", "Failed to update sequence numbers: " + i),
+                                                                    return T$1("LocalStore", "Failed to update sequence numbers: " + i), 
                                     [ 3 /*break*/ , 4 ];
 
                                   case 4:
-                                    for (o = 0, u = r; o < u.length; o++) s = u[o], a = s.targetId, s.fromCache || (c = e.bh.get(a),
-                                    h = c.nt, f = c.rt(h),
+                                    for (o = 0, u = r; o < u.length; o++) s = u[o], a = s.targetId, s.fromCache || (c = e.bh.get(a), 
+                                    h = c.nt, f = c.rt(h), 
                                     // Advance the last limbo free snapshot version
                                     e.bh = e.bh.ot(a, f));
                                     return [ 2 /*return*/ ];
@@ -19090,8 +19090,8 @@ var app = (function () {
             return __generator(this, (function(u) {
                 switch (u.label) {
                   case 0:
-                    return (i = k$1(t)).currentUser.isEqual(r) ? [ 3 /*break*/ , 3 ] : (T$1("SyncEngine", "User change. New user:", r.ti()),
-                    [ 4 /*yield*/ ,
+                    return (i = k$1(t)).currentUser.isEqual(r) ? [ 3 /*break*/ , 3 ] : (T$1("SyncEngine", "User change. New user:", r.ti()), 
+                    [ 4 /*yield*/ , 
                     /**
                      * Tells the LocalStore that the currently authenticated user has changed.
                      *
@@ -19111,7 +19111,7 @@ var app = (function () {
                                         // before and after.
                                         var n;
                                         return e.Sr.Uo(t).next((function(u) {
-                                            return n = u, i = e.persistence.Th(r),
+                                            return n = u, i = e.persistence.Th(r), 
                                             // Recreate our LocalDocumentsView using the new
                                             // MutationQueue.
                                             o = new Yr(e.Ch, i, e.persistence.Ah()), i.Uo(t);
@@ -19154,7 +19154,7 @@ var app = (function () {
                     }(i.Gc, r) ]);
 
                   case 1:
-                    return o = u.sent(), i.currentUser = r,
+                    return o = u.sent(), i.currentUser = r, 
                     // Fails tasks waiting for pending writes requested by previous user.
                     function(t, e) {
                         t.Lu.forEach((function(t) {
@@ -19162,7 +19162,7 @@ var app = (function () {
                                 t.reject(new I$1(b.CANCELLED, "'waitForPendingWrites' promise is rejected due to a user change."));
                             }));
                         })), t.Lu.clear();
-                    }(i),
+                    }(i), 
                     // TODO(b/114226417): Consider calling this only in the primary tab.
                     i.Su.Wi(r, o.ju, o.Gu), [ 4 /*yield*/ , Su(i, o.Wu) ];
 
@@ -19197,11 +19197,11 @@ var app = (function () {
             return __generator(this, (function(n) {
                 switch (n.label) {
                   case 0:
-                    return [ 4 /*yield*/ , mo((e = k$1(t)).Gc, r.query,
+                    return [ 4 /*yield*/ , mo((e = k$1(t)).Gc, r.query, 
                     /* usePreviousResults= */ !0) ];
 
                   case 1:
-                    return i = n.sent(), o = r.view.Vu(i), [ 2 /*return*/ , (e.Uu && Nu(e, r.targetId, o.Pu),
+                    return i = n.sent(), o = r.view.Vu(i), [ 2 /*return*/ , (e.Uu && Nu(e, r.targetId, o.Pu), 
                     o) ];
                 }
             }));
@@ -19273,7 +19273,7 @@ var app = (function () {
             return __generator(this, (function(n) {
                 switch (n.label) {
                   case 0:
-                    return qu(e = k$1(t)), Fu(e), !0 !== r || !0 === e.qu ? [ 3 /*break*/ , 3 ] : (i = e.Su.Ci(),
+                    return qu(e = k$1(t)), Fu(e), !0 !== r || !0 === e.qu ? [ 3 /*break*/ , 3 ] : (i = e.Su.Ci(), 
                     [ 4 /*yield*/ , Vu(e, i.L()) ]);
 
                   case 1:
@@ -19284,10 +19284,10 @@ var app = (function () {
                     return [ 3 /*break*/ , 7 ];
 
                   case 3:
-                    return !1 !== r || !1 === e.qu ? [ 3 /*break*/ , 7 ] : (c = [], h = Promise.resolve(),
+                    return !1 !== r || !1 === e.qu ? [ 3 /*break*/ , 7 ] : (c = [], h = Promise.resolve(), 
                     e.xu.forEach((function(t, n) {
                         e.Su.qi(n) ? c.push(n) : h = h.then((function() {
-                            return _u(e, n), yo(e.Gc, n,
+                            return _u(e, n), yo(e.Gc, n, 
                             /*keepPersistedTargetData=*/ !0);
                         })), qo(e.bu, n);
                     })), [ 4 /*yield*/ , h ]);
@@ -19296,7 +19296,7 @@ var app = (function () {
                     return n.sent(), [ 4 /*yield*/ , Vu(e, c) ];
 
                   case 5:
-                    return n.sent(),
+                    return n.sent(), 
                     // PORTING NOTE: Multi-Tab only.
                     function(t) {
                         var e = k$1(t);
@@ -19352,7 +19352,7 @@ var app = (function () {
                     return y = n.sent(), [ 4 /*yield*/ , vo(e.Gc, y) ];
 
                   case 9:
-                    return c = n.sent(), [ 4 /*yield*/ , du(e, Ru(y), a,
+                    return c = n.sent(), [ 4 /*yield*/ , du(e, Ru(y), a, 
                     /*current=*/ !1) ];
 
                   case 10:
@@ -19428,7 +19428,7 @@ var app = (function () {
                     return n.sent(), [ 3 /*break*/ , 8 ];
 
                   case 5:
-                    return [ 4 /*yield*/ , yo(e.Gc, r,
+                    return [ 4 /*yield*/ , yo(e.Gc, r, 
                     /* keepPersistedTargetData */ !0) ];
 
                   case 6:
@@ -19462,7 +19462,7 @@ var app = (function () {
                     return a = d.sent(), [ 4 /*yield*/ , vo(e.Gc, a) ];
 
                   case 3:
-                    return c = d.sent(), [ 4 /*yield*/ , du(e, Ru(a), c.targetId,
+                    return c = d.sent(), [ 4 /*yield*/ , du(e, Ru(a), c.targetId, 
                     /*current=*/ !1) ];
 
                   case 4:
@@ -19476,7 +19476,7 @@ var app = (function () {
                         return __generator(this, (function(n) {
                             switch (n.label) {
                               case 0:
-                                return e.xu.has(t) ? [ 4 /*yield*/ , yo(e.Gc, t,
+                                return e.xu.has(t) ? [ 4 /*yield*/ , yo(e.Gc, t, 
                                 /* keepPersistedTargetData */ !1).then((function() {
                                     qo(e.bu, t), _u(e, t);
                                 })).catch(Io) ] : [ 3 /*break*/ , 2 ];
@@ -19510,7 +19510,7 @@ var app = (function () {
 
     function qu(t) {
         var e = k$1(t);
-        return e.bu.Hc.ru = yu.bind(null, e), e.bu.Hc.qe = ku.bind(null, e), e.bu.Hc.iu = gu.bind(null, e),
+        return e.bu.Hc.ru = yu.bind(null, e), e.bu.Hc.qe = ku.bind(null, e), e.bu.Hc.iu = gu.bind(null, e), 
         e.Cu.yc = Sr.bind(null, e.vu), e.Cu.Qu = xr.bind(null, e.vu), e;
     }
 
@@ -19566,7 +19566,7 @@ var app = (function () {
                 return 0 === t.filters.length && null === t.limit && null == t.startAt && null == t.endAt && (0 === t.on.length || 1 === t.on.length && t.on[0].field.W());
             }(e) || n.isEqual(H$1.min()) ? this.Hu(t, e) : this.zu.Or(t, r).next((function(o) {
                 var s = i.Ju(e, o);
-                return (kn(e) || Pn(e)) && i.mu(e.an, s, r, n) ? i.Hu(t, e) : (_() <= LogLevel.DEBUG && T$1("IndexFreeQueryEngine", "Re-using previous result from %s to execute query: %s", n.toString(), Gn(e)),
+                return (kn(e) || Pn(e)) && i.mu(e.an, s, r, n) ? i.Hu(t, e) : (_() <= LogLevel.DEBUG && T$1("IndexFreeQueryEngine", "Re-using previous result from %s to execute query: %s", n.toString(), Gn(e)), 
                 i.zu.Lr(t, e, n).next((function(t) {
                     // We merge `previousResults` into `updateResults`, since
                     // `updateResults` is already a DocumentMap. If a document is
@@ -19578,7 +19578,7 @@ var app = (function () {
             }));
             // Queries that have never seen a snapshot without limbo free documents
             // should also be run as a full collection scan.
-            },
+            }, 
         /** Applies the query filter and sorting to the provided documents.  */ t.prototype.Ju = function(t, e) {
             // Sort the documents and re-apply the query filter since previously
             // matching documents do not necessarily still match the query.
@@ -19586,7 +19586,7 @@ var app = (function () {
             return e.forEach((function(e, r) {
                 r instanceof Tn && Bn(t, r) && (n = n.add(r));
             })), n;
-        },
+        }, 
         /**
          * Determines if a limit query needs to be refilled from cache, making it
          * ineligible for index-free execution.
@@ -19613,19 +19613,19 @@ var app = (function () {
                     var i = "F" /* First */ === t ? e.last() : e.first();
             return !!i && (i.hasPendingWrites || i.version.h(r) > 0);
         }, t.prototype.Hu = function(t, e) {
-            return _() <= LogLevel.DEBUG && T$1("IndexFreeQueryEngine", "Using full collection scan to execute query:", Gn(e)),
+            return _() <= LogLevel.DEBUG && T$1("IndexFreeQueryEngine", "Using full collection scan to execute query:", Gn(e)), 
             this.zu.Lr(t, e, H$1.min());
         }, t;
     }(), Gu = /** @class */ function() {
         function t(t, e) {
-            this.Dr = t, this.No = e,
+            this.Dr = t, this.No = e, 
             /**
                  * The set of all mutations that have been sent but not yet been applied to
                  * the backend.
                  */
-            this.Sr = [],
+            this.Sr = [], 
             /** Next value to use when assigning sequential IDs to each mutation batch. */
-            this.Yu = 1,
+            this.Yu = 1, 
             /** An ordered mapping between documents and the mutations batch IDs. */
             this.Xu = new mt(_o.Mh);
         }
@@ -19714,7 +19714,7 @@ var app = (function () {
             return cr.resolve(e.isEqual(r && r.key));
         }, t.prototype.zo = function(t) {
             return this.Sr.length, cr.resolve();
-        },
+        }, 
         /**
          * Finds the index of the given batchId in the mutation queue and asserts that
          * the resulting index is within the bounds of the queue.
@@ -19725,7 +19725,7 @@ var app = (function () {
          */
         t.prototype.nl = function(t, e) {
             return this.tl(t);
-        },
+        }, 
         /**
          * Finds the index of the given batchId in the mutation queue. This operation
          * is O(1).
@@ -19741,7 +19741,7 @@ var app = (function () {
             // batchId and indexes in the array. Note that since the queue is ordered
             // by batchId, if the first batch has a larger batchId then the requested
             // batchId doesn't exist in the queue.
-            },
+            }, 
         /**
          * A version of lookupMutationBatch that doesn't return a promise, this makes
          * other functions that uses this code easier to read and more efficent.
@@ -19756,9 +19756,9 @@ var app = (function () {
          * return 0 to avoid unnecessarily doing the work of calculating the size.
          */
         function t(t, e) {
-            this.Dr = t, this.sl = e,
+            this.Dr = t, this.sl = e, 
             /** Underlying cache of documents and their read times. */
-            this.docs = new dt(Z$1.D),
+            this.docs = new dt(Z$1.D), 
             /** Size of all cached documents. */
             this.size = 0
             /**
@@ -19775,7 +19775,7 @@ var app = (function () {
                 size: u,
                 readTime: n
             }), this.size += u - o, this.Dr.Mo(t, r.path.F());
-        },
+        }, 
         /**
          * Removes the specified entry from the cache and updates the cache size as appropriate.
          *
@@ -19832,19 +19832,19 @@ var app = (function () {
         }, n;
     }(Wr), Ku = /** @class */ function() {
         function t(t) {
-            this.persistence = t,
+            this.persistence = t, 
             /**
                  * Maps a target to the data about that target
                  */
             this.rl = new W$1((function(t) {
                 return ot(t);
-            }), ut),
+            }), ut), 
             /** The last received snapshot version. */
-            this.lastRemoteSnapshotVersion = H$1.min(),
+            this.lastRemoteSnapshotVersion = H$1.min(), 
             /** The highest numbered target ID encountered. */
-            this.highestTargetId = 0,
+            this.highestTargetId = 0, 
             /** The highest sequence number encountered. */
-            this.ol = 0,
+            this.ol = 0, 
             /**
                  * A ordered bidirectional mapping between documents and the remote target
                  * IDs.
@@ -19862,7 +19862,7 @@ var app = (function () {
         }, t.prototype.wa = function(t) {
             return this.highestTargetId = this.hl.next(), cr.resolve(this.highestTargetId);
         }, t.prototype.Aa = function(t, e, n) {
-            return n && (this.lastRemoteSnapshotVersion = n), e > this.ol && (this.ol = e),
+            return n && (this.lastRemoteSnapshotVersion = n), e > this.ol && (this.ol = e), 
             cr.resolve();
         }, t.prototype.Pa = function(t) {
             this.rl.set(t.target, t);
@@ -19873,12 +19873,12 @@ var app = (function () {
         }, t.prototype.Va = function(t, e) {
             return this.Pa(e), cr.resolve();
         }, t.prototype.ya = function(t, e) {
-            return this.rl.delete(e.target), this.al.Kh(e.targetId), this.targetCount -= 1,
+            return this.rl.delete(e.target), this.al.Kh(e.targetId), this.targetCount -= 1, 
             cr.resolve();
         }, t.prototype.po = function(t, e, n) {
             var r = this, i = 0, o = [];
             return this.rl.forEach((function(u, s) {
-                s.sequenceNumber <= e && null === n.get(s.targetId) && (r.rl.delete(u), o.push(r.pa(t, s.targetId)),
+                s.sequenceNumber <= e && null === n.get(s.targetId) && (r.rl.delete(u), o.push(r.pa(t, s.targetId)), 
                 i++);
             })), cr.kn(o).next((function() {
                 return i;
@@ -19913,7 +19913,7 @@ var app = (function () {
          */
         function t(t) {
             var e = this;
-            this.cl = {}, this.Ma = new Lr(0), this.$a = !1, this.$a = !0, this.No = t(this),
+            this.cl = {}, this.Ma = new Lr(0), this.$a = !1, this.$a = !0, this.No = t(this), 
             this.ja = new Ku(this), this.Dr = new xi, this.vr = function(t, n) {
                 return new Bu(t, (function(t) {
                     return e.No.ul(t);
@@ -19970,9 +19970,9 @@ var app = (function () {
         return __extends(n, e), n;
     }(Hr), Hu = /** @class */ function() {
         function t(t) {
-            this.persistence = t,
+            this.persistence = t, 
             /** Tracks all documents that are active in Query views. */
-            this.dl = new Eo,
+            this.dl = new Eo, 
             /** The list of documents that are potentially GCed after each transaction. */
             this.wl = null;
         }
@@ -20063,7 +20063,7 @@ var app = (function () {
     }, Ju = /** @class */ function(e) {
         function n(t) {
             var n = this;
-            return (n = e.call(this, t) || this).forceLongPolling = t.forceLongPolling, n.T = t.T,
+            return (n = e.call(this, t) || this).forceLongPolling = t.forceLongPolling, n.T = t.T, 
             n;
         }
         /**
@@ -20087,7 +20087,7 @@ var app = (function () {
 
                           case ErrorCode.HTTP_ERROR:
                             var n = u.getStatus();
-                            if (T$1("Connection", 'RPC "' + t + '" failed with status:', n, "response text:", u.getResponseText()),
+                            if (T$1("Connection", 'RPC "' + t + '" failed with status:', n, "response text:", u.getResponseText()), 
                             n > 0) {
                                 var r = u.getResponseJson().error;
                                 if (r && r.status && r.message) {
@@ -20097,7 +20097,7 @@ var app = (function () {
                                     }(r.status);
                                     o(new I$1(s, r.message));
                                 } else o(new I$1(b.UNKNOWN, "Server responded with status " + u.getStatus()));
-                            } else
+                            } else 
                             // If we received an HTTP_ERROR but there's no status code,
                             // it's most probably a connection issue
                             o(new I$1(b.UNAVAILABLE, "Connection failed."));
@@ -20138,7 +20138,7 @@ var app = (function () {
                 forceLongPolling: this.forceLongPolling,
                 detectBufferingProxy: this.T
             };
-            this.Cl(i.initMessageHeaders, e),
+            this.Cl(i.initMessageHeaders, e), 
             // Sending the custom headers we just added to request.initMessageHeaders
             // (Authorization, etc.) will trigger the browser to make a CORS preflight
             // request because the XHR will no longer meet the criteria for a "simple"
@@ -20159,7 +20159,7 @@ var app = (function () {
             T$1("Connection", "Creating WebChannel: " + o, i);
             var u = r.createWebChannel(o, i), s = !1, d = !1, v = new Yu({
                 ml: function(t) {
-                    d ? T$1("Connection", "Not sending because WebChannel is closed:", t) : (s || (T$1("Connection", "Opening WebChannel transport."),
+                    d ? T$1("Connection", "Not sending because WebChannel is closed:", t) : (s || (T$1("Connection", "Opening WebChannel transport."), 
                     u.open(), s = !0), T$1("Connection", "WebChannel sending:", t), u.send(t));
                 },
                 Al: function() {
@@ -20213,7 +20213,7 @@ var app = (function () {
                             var e = at[t];
                             if (void 0 !== e) return pt(e);
                         }(o), a = i.message;
-                        void 0 === s && (s = b.INTERNAL, a = "Unknown error status: " + o + " with message " + i.message),
+                        void 0 === s && (s = b.INTERNAL, a = "Unknown error status: " + o + " with message " + i.message), 
                         // Mark closed so no further events are propagated
                         d = !0, v.yl(new I$1(s, a)), u.close();
                     } else T$1("Connection", "WebChannel received:", n), v.pl(n);
@@ -20239,20 +20239,20 @@ var app = (function () {
             return this.Cl(o, r), this.Nl(t, i, o, n).then((function(t) {
                 return T$1("RestConnection", "Received: ", t), t;
             }), (function(e) {
-                throw A$1("RestConnection", t + " failed with error: ", e, "url: ", i, "request:", n),
+                throw A$1("RestConnection", t + " failed with error: ", e, "url: ", i, "request:", n), 
                 e;
             }));
         }, t.prototype.$c = function(t, e, n, r) {
             // The REST API automatically aggregates all of the streamed results, so we
             // can just use the normal invoke() method.
             return this.Mc(t, e, n, r);
-        },
+        }, 
         /**
          * Modifies the headers for a request, adding any authorization token if
          * present and any additional headers for the request.
          */
         t.prototype.Cl = function(t, e) {
-            if (t["X-Goog-Api-Client"] = "gl-js/ fire/8.0.0",
+            if (t["X-Goog-Api-Client"] = "gl-js/ fire/8.0.0", 
             // Content-Type: text/plain will avoid preflight requests which might
             // mess with CORS and redirects by proxies. If we add custom headers
             // we will need to change this code to potentially use the $httpOverwrite
@@ -20287,7 +20287,7 @@ var app = (function () {
             for (var t = 0, e = this.Ml; t < e.length; t++) {
                 (0, e[t])(1 /* UNAVAILABLE */);
             }
-        },
+        }, 
         // TODO(chenbrian): Consider passing in window either into this component or
         // here for testing via FakeWindow.
         /** Checks that all used attributes of window are available. */
@@ -20420,7 +20420,7 @@ var app = (function () {
     }(), ns = /** @class */ function(r) {
         function i(t, e, n) {
             var i = this;
-            return (i = r.call(this) || this).Wl = t, i.cacheSizeBytes = e, i.forceOwnership = n,
+            return (i = r.call(this) || this).Wl = t, i.cacheSizeBytes = e, i.forceOwnership = n, 
             i.synchronizeTabs = !1, i;
         }
         return __extends(i, r), i.prototype.initialize = function(t) {
@@ -20461,7 +20461,7 @@ var app = (function () {
     }(es), rs = /** @class */ function(r) {
         function i(t, e) {
             var n = this;
-            return (n = r.call(this, t, e, /* forceOwnership= */ !1) || this).Wl = t, n.cacheSizeBytes = e,
+            return (n = r.call(this, t, e, /* forceOwnership= */ !1) || this).Wl = t, n.cacheSizeBytes = e, 
             n.synchronizeTabs = !0, n;
         }
         return __extends(i, r), i.prototype.initialize = function(t) {
@@ -20494,7 +20494,7 @@ var app = (function () {
                                         return [ 4 /*yield*/ , Lu(this.Wl.fi, t) ];
 
                                       case 1:
-                                        return e.sent(), this.ql && (t && !this.ql.Ii ? this.ql.start(this.Gc) : t || this.ql.stop()),
+                                        return e.sent(), this.ql && (t && !this.ql.Ii ? this.ql.start(this.Gc) : t || this.ql.stop()), 
                                         [ 2 /*return*/ ];
                                     }
                                 }));
@@ -20522,8 +20522,8 @@ var app = (function () {
                 return __generator(this, (function(n) {
                     switch (n.label) {
                       case 0:
-                        return this.Gc ? [ 3 /*break*/ , 2 ] : (this.Gc = t.Gc, this.Su = t.Su, this.zc = this.jl(r),
-                        this.bu = this.Gl(r), this.vu = this.zl(r), this.fi = this.Hl(r,
+                        return this.Gc ? [ 3 /*break*/ , 2 ] : (this.Gc = t.Gc, this.Su = t.Su, this.zc = this.jl(r), 
+                        this.bu = this.Gl(r), this.vu = this.zl(r), this.fi = this.Hl(r, 
                         /* startAsPrimary=*/ !t.synchronizeTabs), this.Su.di = function(t) {
                             return mu(e.fi, t, 1 /* SharedClientState */);
                         }, this.bu.Hc.Jl = xu.bind(null, this.fi), [ 4 /*yield*/ , iu(this.bu, this.fi.Uu) ]);
@@ -20549,7 +20549,7 @@ var app = (function () {
                 return mu(u.fi, t, 0 /* RemoteStore */);
             }, o = $u.Ln() ? new $u : new Zu, new Vo(e, n, r, i, o);
         }, t.prototype.Hl = function(t, e) {
-            return function(t, e, n,
+            return function(t, e, n, 
             // PORTING NOTE: Manages state synchronization in multi-tab environments.
             r, i, o, u) {
                 var s = new lu(t, e, n, r, i, o);
@@ -20560,7 +20560,7 @@ var app = (function () {
         }, t;
     }(), os = /** @class */ function() {
         function t(t) {
-            this.observer = t,
+            this.observer = t, 
             /**
                  * When set to true, will not raise future events. Necessary to deal with
                  * async detachment of listener.
@@ -20625,12 +20625,12 @@ var app = (function () {
     /** Returns a string describing the type / value of the provided input. */ function cs(t) {
         if (void 0 === t) return "undefined";
         if (null === t) return "null";
-        if ("string" == typeof t) return t.length > 20 && (t = t.substring(0, 20) + "..."),
+        if ("string" == typeof t) return t.length > 20 && (t = t.substring(0, 20) + "..."), 
         JSON.stringify(t);
         if ("number" == typeof t || "boolean" == typeof t) return "" + t;
         if ("object" == typeof t) {
             if (t instanceof Array) return "an array";
-            var e =
+            var e = 
             /** Hacky method to try to get the constructor name for an object. */
             function(t) {
                 if (t.constructor) {
@@ -20698,7 +20698,7 @@ var app = (function () {
         }, n.prototype.isEqual = function(t) {
             return t instanceof n && this.Zl.isEqual(t.Zl);
         }, n;
-    }(fs), ps = new RegExp("[~\\*/\\[\\]]"), ds =
+    }(fs), ps = new RegExp("[~\\*/\\[\\]]"), ds = 
     /**
          * @param _methodName The public API endpoint that returns this class.
          */
@@ -20763,7 +20763,7 @@ var app = (function () {
             return (r = e.call(this, t) || this).o_ = n, r;
         }
         return __extends(n, e), n.prototype.e_ = function(t) {
-            var e = ys(this, t,
+            var e = ys(this, t, 
             /*array=*/ !0), n = this.o_.map((function(t) {
                 return Vs(t, e);
             })), r = new Qe(n);
@@ -20778,7 +20778,7 @@ var app = (function () {
             return (r = e.call(this, t) || this).o_ = n, r;
         }
         return __extends(n, e), n.prototype.e_ = function(t) {
-            var e = ys(this, t,
+            var e = ys(this, t, 
             /*array=*/ !0), n = this.o_.map((function(t) {
                 return Vs(t, e);
             })), r = new Ye(n);
@@ -20829,7 +20829,7 @@ var app = (function () {
             },
             enumerable: !1,
             configurable: !0
-        }),
+        }), 
         /**
          * Returns true if this `GeoPoint` is equal to the provided one.
          *
@@ -20843,7 +20843,7 @@ var app = (function () {
                 latitude: this.h_,
                 longitude: this.c_
             };
-        },
+        }, 
         /**
          * Actually private to JS consumers of our API, so this function is prefixed
          * with an underscore.
@@ -20861,7 +20861,7 @@ var app = (function () {
         }
         return t.prototype.d_ = function(t, e) {
             var n = [];
-            return null !== this.Qe ? n.push(new pn(t, this.data, this.Qe, e)) : n.push(new ln(t, this.data, e)),
+            return null !== this.Qe ? n.push(new pn(t, this.data, this.Qe, e)) : n.push(new ln(t, this.data, e)), 
             this.fieldTransforms.length > 0 && n.push(new vn(t, this.fieldTransforms)), n;
         }, t;
     }(), As = /** @class */ function() {
@@ -20870,7 +20870,7 @@ var app = (function () {
         }
         return t.prototype.d_ = function(t, e) {
             var n = [ new pn(t, this.data, this.Qe, e) ];
-            return this.fieldTransforms.length > 0 && n.push(new vn(t, this.fieldTransforms)),
+            return this.fieldTransforms.length > 0 && n.push(new vn(t, this.fieldTransforms)), 
             n;
         }, t;
     }();
@@ -20913,7 +20913,7 @@ var app = (function () {
          * compromised).
          */
         function t(t, e, n, r, i, o) {
-            this.settings = t, this._ = e, this.serializer = n, this.ignoreUndefinedProperties = r,
+            this.settings = t, this._ = e, this.serializer = n, this.ignoreUndefinedProperties = r, 
             // Minor hack: If fieldTransforms is undefined, we assume this is an
             // external call and we need to validate the entire path.
             void 0 === i && this.w_(), this.fieldTransforms = i || [], this.Qe = o || [];
@@ -20930,7 +20930,7 @@ var app = (function () {
             },
             enumerable: !1,
             configurable: !0
-        }),
+        }), 
         /** Returns a new context with the specified settings overwritten. */ t.prototype.E_ = function(e) {
             return new t(Object.assign(Object.assign({}, this.settings), e), this._, this.serializer, this.ignoreUndefinedProperties, this.fieldTransforms, this.Qe);
         }, t.prototype.T_ = function(t) {
@@ -20954,7 +20954,7 @@ var app = (function () {
             });
         }, t.prototype.s_ = function(t) {
             return Fs(t, this.settings.methodName, this.settings.R_ || !1, this.path, this.settings.i_);
-        },
+        }, 
         /** Returns 'true' if 'fieldPath' was traversed when creating this context. */ t.prototype.contains = function(t) {
             return void 0 !== this.Qe.find((function(e) {
                 return t.M(e);
@@ -21018,7 +21018,7 @@ var app = (function () {
         var o = [], u = new In;
         z(r, (function(t, r) {
             var s = qs(e, t, n), a = i.m_(s);
-            if (r instanceof vs || r instanceof Es && r.u_ instanceof vs)
+            if (r instanceof vs || r instanceof Es && r.u_ instanceof vs) 
             // Add it to the field mask, but don't add anything to updateData.
             o.push(s); else {
                 var c = Vs(r, a);
@@ -21037,7 +21037,7 @@ var app = (function () {
         // user specified the field multiple times.
         for (var h = [], f = new In, l = s.length - 1; l >= 0; --l) if (!js(h, s[l])) {
             var p = s[l], d = a[l], v = u.m_(p);
-            if (d instanceof vs || d instanceof Es && d.u_ instanceof vs)
+            if (d instanceof vs || d instanceof Es && d.u_ instanceof vs) 
             // Add it to the field mask, but don't add anything to updateData.
             h.push(p); else {
                 var y = Vs(d, v);
@@ -21070,9 +21070,9 @@ var app = (function () {
         if (
         // Unwrap the API type from the Compat SDK. This will return the API type
         // from firestore-exp.
-        t instanceof Es && (t = t.u_), Cs(t)) return Us("Unsupported field value:", e, t),
+        t instanceof Es && (t = t.u_), Cs(t)) return Us("Unsupported field value:", e, t), 
         Rs(t, e);
-        if (t instanceof ds)
+        if (t instanceof ds) 
         // FieldValues usually parse into transforms (except FieldValue.delete())
         // in which case we do not want to include this field in our parsed data
         // (as doing so will overwrite the field directly prior to the transform
@@ -21166,7 +21166,7 @@ var app = (function () {
 
     function Rs(t, e) {
         var n = {};
-        return K$1(t) ?
+        return K$1(t) ? 
         // If we encounter an empty object, we explicitly add it to the update
         // mask to ensure that the server creates a map entry.
         e.path && e.path.length > 0 && e.Qe.push(e.path) : z(t, (function(t, r) {
@@ -21197,8 +21197,8 @@ var app = (function () {
      */ function Ms(t, e, n) {
         if (e instanceof fs) return e.Zl;
         if ("string" == typeof e) return qs(t, e);
-        throw Fs("Field path arguments must be of type string or FieldPath.", t,
-        /* hasConverter= */ !1,
+        throw Fs("Field path arguments must be of type string or FieldPath.", t, 
+        /* hasConverter= */ !1, 
         /* path= */ void 0, n);
     }
 
@@ -21220,8 +21220,8 @@ var app = (function () {
                 }
             }(e).Zl;
         } catch (e) {
-            throw Fs((i = e) instanceof Error ? i.message : i.toString(), t,
-            /* hasConverter= */ !1,
+            throw Fs((i = e) instanceof Error ? i.message : i.toString(), t, 
+            /* hasConverter= */ !1, 
             /* path= */ void 0, n);
         }
         /**
@@ -21234,7 +21234,7 @@ var app = (function () {
         var o = r && !r.P(), u = void 0 !== i, s = "Function " + e + "() called with invalid data";
         n && (s += " (via `toFirestore()`)");
         var a = "";
-        return (o || u) && (a += " (found", o && (a += " in field " + r), u && (a += " in document " + i),
+        return (o || u) && (a += " (found", o && (a += " in field " + r), u && (a += " in document " + i), 
         a += ")"), new I$1(b.INVALID_ARGUMENT, (s += ". ") + t + a);
     }
 
@@ -21265,14 +21265,14 @@ var app = (function () {
      * perform and the base versions for any documents read.
      */ var Gs = /** @class */ function() {
         function t(t) {
-            this.zc = t,
+            this.zc = t, 
             // The version of each document that was read during this transaction.
-            this.g_ = new Map, this.mutations = [], this.V_ = !1,
+            this.g_ = new Map, this.mutations = [], this.V_ = !1, 
             /**
                  * A deferred usage error that occurred previously in this transaction that
                  * will cause the transaction to fail once it actually commits.
                  */
-            this.y_ = null,
+            this.y_ = null, 
             /**
                  * Set of documents that have been written in the transaction.
                  *
@@ -21352,11 +21352,11 @@ var app = (function () {
                     switch (i.label) {
                       case 0:
                         if (this.v_(), this.y_) throw this.y_;
-                        return t = this.g_,
+                        return t = this.g_, 
                         // For each mutation, note that the doc was written.
                         this.mutations.forEach((function(e) {
                             t.delete(e.key.toString());
-                        })),
+                        })), 
                         // For each document that was read but not written to, we want to perform
                         // a `verify` operation.
                         t.forEach((function(t, e) {
@@ -21396,11 +21396,11 @@ var app = (function () {
             }
             var n = this.g_.get(t.key.toString());
             if (n) {
-                if (!e.isEqual(n))
+                if (!e.isEqual(n)) 
                 // This transaction will fail no matter what.
                 throw new I$1(b.ABORTED, "Document version changed between two reads.");
             } else this.g_.set(t.key.toString(), e);
-        },
+        }, 
         /**
          * Returns the version of this document when it was read in this transaction,
          * as a precondition, or no precondition if it was not read.
@@ -21408,7 +21408,7 @@ var app = (function () {
         t.prototype.Ge = function(t) {
             var e = this.g_.get(t.toString());
             return !this.p_.has(t.toString()) && e ? rn.updateTime(e) : rn.ze();
-        },
+        }, 
         /**
          * Returns the precondition for a document if the operation is an update.
          */
@@ -21417,7 +21417,7 @@ var app = (function () {
             // The first time a document is written, we want to take into account the
             // read time and existence
                     if (!this.p_.has(t.toString()) && e) {
-                if (e.isEqual(H$1.min()))
+                if (e.isEqual(H$1.min())) 
                 // The document doesn't exist, so fail the transaction.
                 // This has to be validated locally because you can't send a
                 // precondition that a document does not exist without changing the
@@ -21467,7 +21467,7 @@ var app = (function () {
         }, t.prototype.x_ = function(t) {
             try {
                 var e = this.updateFunction(t);
-                return !tt(e) && e.catch && e.then ? e : (this.ls.reject(Error("Transaction callback must return a Promise")),
+                return !tt(e) && e.catch && e.then ? e : (this.ls.reject(Error("Transaction callback must return a Promise")), 
                 null);
             } catch (t) {
                 // Do not retry errors thrown by user provided updateFunction.
@@ -21488,7 +21488,7 @@ var app = (function () {
             return !1;
         }, t;
     }(), zs = /** @class */ function() {
-        function t(t,
+        function t(t, 
         /**
          * Asynchronous queue responsible for all of our internal processing. When
          * we get incoming work from the user (via public API) or the network
@@ -21498,7 +21498,7 @@ var app = (function () {
          * an async I/O to complete).
          */
         e) {
-            this.credentials = t, this.hs = e, this.clientId = O$1.t(),
+            this.credentials = t, this.hs = e, this.clientId = O$1.t(), 
             // We defer our initialization until we get the current user from
             // setChangeListener(). We block the async queue until we got the initial
             // user and the initialization is completed. This will prevent any scheduled
@@ -21566,15 +21566,15 @@ var app = (function () {
                             return __generator(this, (function(n) {
                                 switch (n.label) {
                                   case 0:
-                                    return (e = k$1(t)).hs.Fs(), T$1("RemoteStore", "RemoteStore received new credentials"),
-                                    i = zo(e),
+                                    return (e = k$1(t)).hs.Fs(), T$1("RemoteStore", "RemoteStore received new credentials"), 
+                                    i = zo(e), 
                                     // Tear down and re-create our network streams. This will ensure we get a
                                     // fresh auth token for the new user and re-fill the write pipeline with
                                     // new mutations from the LocalStore (since mutations are per-user).
                                     e.Xc.add(3 /* CredentialChange */), [ 4 /*yield*/ , Co(e) ];
 
                                   case 1:
-                                    return n.sent(), i &&
+                                    return n.sent(), i && 
                                     // Don't set the network status to Unknown if we are offline.
                                     e.nu.set("Unknown" /* Unknown */), [ 4 /*yield*/ , e.Hc.Jl(r) ];
 
@@ -21591,12 +21591,12 @@ var app = (function () {
                         }));
                     }(o.bu, t);
                 }));
-            })),
+            })), 
             // Block the async queue until initialization is done
             this.hs.ws((function() {
                 return o.O_.promise;
             })), u.promise;
-        },
+        }, 
         /** Enables the network connection and requeues all pending operations. */ t.prototype.enableNetwork = function() {
             var t = this;
             return this.M_(), this.hs.enqueue((function() {
@@ -21605,7 +21605,7 @@ var app = (function () {
                     return e.Xc.delete(0 /* UserDisabled */), Ro(e);
                 }(t.bu);
             }));
-        },
+        }, 
         /**
          * Initializes persistent storage, attempting to use IndexedDB if
          * usePersistence is true or memory-only if false.
@@ -21646,9 +21646,9 @@ var app = (function () {
                         return c.sent(), [ 4 /*yield*/ , r.initialize(t, u) ];
 
                       case 2:
-                        return c.sent(), this.persistence = t.persistence, this.Su = t.Su, this.Gc = t.Gc,
-                        this.ql = t.ql, this.zc = r.zc, this.bu = r.bu, this.fi = r.fi, this.B_ = r.vu,
-                        this.B_.Us = pu.bind(null, this.fi), this.B_.Ws = vu.bind(null, this.fi),
+                        return c.sent(), this.persistence = t.persistence, this.Su = t.Su, this.Gc = t.Gc, 
+                        this.ql = t.ql, this.zc = r.zc, this.bu = r.bu, this.fi = r.fi, this.B_ = r.vu, 
+                        this.B_.Us = pu.bind(null, this.fi), this.B_.Ws = vu.bind(null, this.fi), 
                         // When a user calls clearPersistence() in one client, all other clients
                         // need to be terminated to allow the delete to succeed.
                         this.persistence.Za((function() {
@@ -21667,7 +21667,7 @@ var app = (function () {
 
                       case 3:
                         // An unknown failure on the first stage shuts everything down.
-                        if (s = c.sent(),
+                        if (s = c.sent(), 
                         // Regardless of whether or not the retry succeeds, from an user
                         // perspective, offline persistence has failed.
                         o.reject(s), !
@@ -21678,16 +21678,16 @@ var app = (function () {
                         // TODO(schmidt-sebastian): Remove `export` in
                         // https://github.com/firebase/firebase-js-sdk/pull/3901
                         function(t) {
-                            return "FirebaseError" === t.name ? t.code === b.FAILED_PRECONDITION || t.code === b.UNIMPLEMENTED : !("undefined" != typeof DOMException && t instanceof DOMException) ||
+                            return "FirebaseError" === t.name ? t.code === b.FAILED_PRECONDITION || t.code === b.UNIMPLEMENTED : !("undefined" != typeof DOMException && t instanceof DOMException) || 
                             // When the browser is out of quota we could get either quota exceeded
                             // or an aborted error depending on whether the error happened during
                             // schema migration.
-                            22 === t.code || 20 === t.code ||
+                            22 === t.code || 20 === t.code || 
                             // Firefox Private Browsing mode disables IndexedDb and returns
                             // INVALID_STATE for any usage.
                             11 === t.code;
                         }(s)) throw s;
-                        return [ 2 /*return*/ , (console.warn("Error enabling offline persistence. Falling back to persistence disabled: " + s),
+                        return [ 2 /*return*/ , (console.warn("Error enabling offline persistence. Falling back to persistence disabled: " + s), 
                         this.L_(new es, new is, i, o)) ];
 
                       case 4:
@@ -21695,14 +21695,14 @@ var app = (function () {
                     }
                 }));
             }));
-        },
+        }, 
         /**
          * Checks that the client has not been terminated. Ensures that other methods on
          * this class cannot be called after the client is terminated.
          */
         t.prototype.M_ = function() {
             if (this.hs.ps) throw new I$1(b.FAILED_PRECONDITION, "The client has already been terminated.");
-        },
+        }, 
         /** Disables the network connection. Pending operations will not complete. */ t.prototype.disableNetwork = function() {
             var t = this;
             return this.M_(), this.hs.enqueue((function() {
@@ -21715,7 +21715,7 @@ var app = (function () {
                                 return (e = k$1(t)).Xc.add(0 /* UserDisabled */), [ 4 /*yield*/ , Co(e) ];
 
                               case 1:
-                                return n.sent(),
+                                return n.sent(), 
                                 // Set the OnlineState to Offline so get()s return from cache, etc.
                                 e.nu.set("Offline" /* Offline */), [ 2 /*return*/ ];
                             }
@@ -21733,7 +21733,7 @@ var app = (function () {
                     return __generator(this, (function(n) {
                         switch (n.label) {
                           case 0:
-                            return n.trys.push([ 0, 4, , 5 ]),
+                            return n.trys.push([ 0, 4, , 5 ]), 
                             // PORTING NOTE: LocalStore does not need an explicit shutdown on web.
                             this.ql && this.ql.stop(), [ 4 /*yield*/ , Uo(this.bu) ];
 
@@ -21745,7 +21745,7 @@ var app = (function () {
 
                           case 3:
                             // PORTING NOTE: LocalStore does not need an explicit shutdown on web.
-                            return n.sent(),
+                            return n.sent(), 
                             // `removeChangeListener` must be called after shutting down the
                             // RemoteStore as it will prevent the RemoteStore from retrieving
                             // auth tokens.
@@ -21760,7 +21760,7 @@ var app = (function () {
                     }));
                 }));
             })), r.promise;
-        },
+        }, 
         /**
          * Returns a Promise that resolves when all writes that were pending at the time this
          * method was called received server acknowledgement. An acknowledgement can be either acceptance
@@ -21777,7 +21777,7 @@ var app = (function () {
                         return __generator(this, (function(n) {
                             switch (n.label) {
                               case 0:
-                                zo((e = k$1(t)).bu) || T$1("SyncEngine", "The network is disabled. The task returned by 'awaitPendingWrites()' will not complete until the network is enabled."),
+                                zo((e = k$1(t)).bu) || T$1("SyncEngine", "The network is disabled. The task returned by 'awaitPendingWrites()' will not complete until the network is enabled."), 
                                 n.label = 1;
 
                               case 1:
@@ -21789,11 +21789,11 @@ var app = (function () {
                                 }(e.Gc) ];
 
                               case 2:
-                                return -1 === (i = n.sent()) ? [ 2 /*return*/ , void r.resolve() ] : ((o = e.Lu.get(i) || []).push(r),
+                                return -1 === (i = n.sent()) ? [ 2 /*return*/ , void r.resolve() ] : ((o = e.Lu.get(i) || []).push(r), 
                                 e.Lu.set(i, o), [ 3 /*break*/ , 4 ]);
 
                               case 3:
-                                return u = n.sent(), s = _r(u, "Initialization of waitForPendingWrites() operation failed"),
+                                return u = n.sent(), s = _r(u, "Initialization of waitForPendingWrites() operation failed"), 
                                 r.reject(s), [ 3 /*break*/ , 4 ];
 
                               case 4:
@@ -21838,11 +21838,11 @@ var app = (function () {
                                             }(t, r) ];
 
                                           case 1:
-                                            return (e = n.sent()) instanceof Tn ? i.resolve(e) : e instanceof Nn ? i.resolve(null) : i.reject(new I$1(b.UNAVAILABLE, "Failed to get document from cache. (However, this document may exist on the server. Run again without setting 'source' in the GetOptions to attempt to retrieve the document from the server.)")),
+                                            return (e = n.sent()) instanceof Tn ? i.resolve(e) : e instanceof Nn ? i.resolve(null) : i.reject(new I$1(b.UNAVAILABLE, "Failed to get document from cache. (However, this document may exist on the server. Run again without setting 'source' in the GetOptions to attempt to retrieve the document from the server.)")), 
                                             [ 3 /*break*/ , 3 ];
 
                                           case 2:
-                                            return o = n.sent(), u = _r(o, "Failed to get document '" + r + " from cache"),
+                                            return o = n.sent(), u = _r(o, "Failed to get document '" + r + " from cache"), 
                                             i.reject(u), [ 3 /*break*/ , 3 ];
 
                                           case 3:
@@ -21874,7 +21874,7 @@ var app = (function () {
                                             return Dr(t, u);
                                         }));
                                         var s = o.docs.has(n);
-                                        !s && o.fromCache ?
+                                        !s && o.fromCache ? 
                                         // TODO(dimond): If we're online and the document doesn't
                                         // exist then we resolve with a doc.exists set to false. If
                                         // we're offline however, we reject the Promise in this
@@ -21913,15 +21913,15 @@ var app = (function () {
                                     return __generator(this, (function(n) {
                                         switch (n.label) {
                                           case 0:
-                                            return n.trys.push([ 0, 2, , 3 ]), [ 4 /*yield*/ , mo(t, r,
+                                            return n.trys.push([ 0, 2, , 3 ]), [ 4 /*yield*/ , mo(t, r, 
                                             /* usePreviousResults= */ !0) ];
 
                                           case 1:
-                                            return e = n.sent(), o = new cu(r, e.Fh), u = o.Eu(e.documents), s = o.Vr(u,
+                                            return e = n.sent(), o = new cu(r, e.Fh), u = o.Eu(e.documents), s = o.Vr(u, 
                                             /* updateLimboDocuments= */ !1), i.resolve(s.snapshot), [ 3 /*break*/ , 3 ];
 
                                           case 2:
-                                            return a = n.sent(), c = _r(a, "Failed to execute query '" + r + " against cache"),
+                                            return a = n.sent(), c = _r(a, "Failed to execute query '" + r + " against cache"), 
                                             i.reject(c), [ 3 /*break*/ , 3 ];
 
                                           case 3:
@@ -21980,7 +21980,7 @@ var app = (function () {
                                 e = Fu(t), n.label = 1;
 
                               case 1:
-                                return n.trys.push([ 1, 5, , 6 ]), [ 4 /*yield*/ ,
+                                return n.trys.push([ 1, 5, , 6 ]), [ 4 /*yield*/ , 
                                 /* Accepts locally generated Mutations and commit them to storage. */
                                 function(t, e) {
                                     var n, r = k$1(t), i = Q$1.now(), o = e.reduce((function(t, e) {
@@ -21997,7 +21997,7 @@ var app = (function () {
                                             // transform.
                                             var u = [], s = 0, a = e; s < a.length; s++) {
                                                 var c = a[s], h = cn(c, n.get(c.key));
-                                                null != h &&
+                                                null != h && 
                                                 // NOTE: The base state should only be applied if there's some
                                                 // existing document to override, so use a Precondition of
                                                 // exists=true
@@ -22046,7 +22046,7 @@ var app = (function () {
                 return __awaiter(r, void 0, void 0, (function() {
                     return __generator(this, (function(t) {
                         return [ 2 /*return*/ , function(t, e) {
-                            k$1(t).qs.add(e),
+                            k$1(t).qs.add(e), 
                             // Immediately fire an initial event, indicating all existing listeners
                             // are in-sync.
                             e.next();
@@ -22073,7 +22073,7 @@ var app = (function () {
             },
             enumerable: !1,
             configurable: !0
-        }),
+        }), 
         /**
          * Takes an updateFunction in which a set of reads and writes can be performed
          * atomically. In the updateFunction, the client can read and write values
@@ -22206,9 +22206,9 @@ var app = (function () {
             var e = X$1.q(t);
             x$1(je(e));
             var n = new G$1(e.get(1), e.get(3)), r = new Z$1(e.N(5));
-            return n.isEqual(this._) ||
+            return n.isEqual(this._) || 
             // TODO(b/64130202): Somehow support foreign references.
-            N$1("Document " + r + " contains a document reference within a different database (" + n.projectId + "/" + n.database + ") which is not supported. It will be treated as a reference in the current database (" + this._.projectId + "/" + this._.database + ") instead."),
+            N$1("Document " + r + " contains a document reference within a different database (" + n.projectId + "/" + n.database + ") which is not supported. It will be treated as a reference in the current database (" + this._.projectId + "/" + this._.database + ") instead."), 
             this.z_(r);
         }, t;
     }(), Qs = ti.uo, Hs = /** @class */ function() {
@@ -22218,12 +22218,12 @@ var app = (function () {
                 if (void 0 !== t.ssl) throw new I$1(b.INVALID_ARGUMENT, "Can't provide ssl option if host option is not set");
                 this.host = "firestore.googleapis.com", this.ssl = !0;
             } else this.host = t.host, this.ssl = null === (e = t.ssl) || void 0 === e || e;
-            if (this.credentials = t.credentials, this.ignoreUndefinedProperties = !!t.ignoreUndefinedProperties,
+            if (this.credentials = t.credentials, this.ignoreUndefinedProperties = !!t.ignoreUndefinedProperties, 
             void 0 === t.cacheSizeBytes) this.cacheSizeBytes = ti._o; else {
                 if (t.cacheSizeBytes !== Qs && t.cacheSizeBytes < ti.lo) throw new I$1(b.INVALID_ARGUMENT, "cacheSizeBytes must be at least " + ti.lo);
                 this.cacheSizeBytes = t.cacheSizeBytes;
             }
-            this.experimentalForceLongPolling = !!t.experimentalForceLongPolling, this.experimentalAutoDetectLongPolling = !!t.experimentalAutoDetectLongPolling,
+            this.experimentalForceLongPolling = !!t.experimentalForceLongPolling, this.experimentalAutoDetectLongPolling = !!t.experimentalAutoDetectLongPolling, 
             as("experimentalForceLongPolling", t.experimentalForceLongPolling, "experimentalAutoDetectLongPolling", t.experimentalAutoDetectLongPolling);
         }
         return t.prototype.isEqual = function(t) {
@@ -22288,7 +22288,7 @@ var app = (function () {
         // expected by the console build.
         function t(r, i, o) {
             var u = this;
-            if (void 0 === o && (o = new Xs), this.hf = o, this.cf = null,
+            if (void 0 === o && (o = new Xs), this.hf = o, this.cf = null, 
             // Public for use in tests.
             // TODO(mikelehen): Use modularized initialization instead.
             this.rf = new Er, this.INTERNAL = {
@@ -22317,7 +22317,7 @@ var app = (function () {
             } else {
                 var a = r;
                 if (!a.projectId) throw new I$1(b.INVALID_ARGUMENT, "Must provide projectId");
-                this.l_ = new G$1(a.projectId, a.database),
+                this.l_ = new G$1(a.projectId, a.database), 
                 // Use a default persistenceKey that lines up with FirebaseApp.
                 this.af = "[DEFAULT]", this.ff = new No;
             }
@@ -22332,7 +22332,7 @@ var app = (function () {
             enumerable: !1,
             configurable: !0
         }), t.prototype.settings = function(t) {
-            t.merge &&
+            t.merge && 
             // Remove the property from the settings once the merge is completed
             delete (t = Object.assign(Object.assign({}, this.df), t)).merge;
             var e = new Hs(t);
@@ -22343,7 +22343,7 @@ var app = (function () {
                   case "gapi":
                     var e = t.client;
                     // Make sure this really is a Gapi client.
-                                    return x$1(!("object" != typeof e || null === e || !e.auth || !e.auth.getAuthHeaderValueForFirstParty)),
+                                    return x$1(!("object" != typeof e || null === e || !e.auth || !e.auth.getAuthHeaderValueForFirstParty)), 
                     new So(e, t.sessionIndex || "0");
 
                   case "provider":
@@ -22354,7 +22354,7 @@ var app = (function () {
                 }
             }(e.credentials));
         }, t.prototype.useEmulator = function(t, e) {
-            "firestore.googleapis.com" !== this.df.host && A$1("Host has been set in both settings() and useEmulator(), emulator host will be used"),
+            "firestore.googleapis.com" !== this.df.host && A$1("Host has been set in both settings() and useEmulator(), emulator host will be used"), 
             this.settings({
                 host: t + ":" + e,
                 ssl: !1,
@@ -22367,7 +22367,7 @@ var app = (function () {
         }, t.prototype.enablePersistence = function(t) {
             if (this.lf) throw new I$1(b.FAILED_PRECONDITION, "Firestore has already been started and persistence can no longer be enabled. You can only call enablePersistence() before calling any other methods on a Firestore object.");
             var e = !1, n = !1;
-            return t && as("synchronizeTabs", e = !!t.synchronizeTabs, "experimentalForceOwningTab", n = !!t.experimentalForceOwningTab),
+            return t && as("synchronizeTabs", e = !!t.synchronizeTabs, "experimentalForceOwningTab", n = !!t.experimentalForceOwningTab), 
             e ? this.hf.enableMultiTabIndexedDbPersistence(this) : this.hf.enableIndexedDbPersistence(this, n);
         }, t.prototype.clearPersistence = function() {
             return __awaiter(this, void 0, void 0, (function() {
@@ -22393,13 +22393,13 @@ var app = (function () {
             };
             return this.lf.W_(e);
         }, t.prototype.uf = function() {
-            return this.lf ||
+            return this.lf || 
             // Kick off starting the client but don't actually wait for it.
             // eslint-disable-next-line @typescript-eslint/no-floating-promises
             this.if(new es, new is), this.lf;
         }, t.prototype.If = function() {
             return new j(this.l_, this.af, this.df.host, this.df.ssl, this.df.experimentalForceLongPolling, this.df.experimentalAutoDetectLongPolling);
-        },
+        }, 
         // TODO(schmidt-sebastian): Make this private again in
         // https://github.com/firebase/firebase-js-sdk/pull/3901.
         t.prototype.if = function(t, e) {
@@ -22418,10 +22418,10 @@ var app = (function () {
             enumerable: !1,
             configurable: !0
         }), t.prototype.collection = function(t) {
-            return us("Firestore.collection", "path", t), this.uf(), new fa$1(X$1.q(t), this,
+            return us("Firestore.collection", "path", t), this.uf(), new fa$1(X$1.q(t), this, 
             /* converter= */ null);
         }, t.prototype.doc = function(t) {
-            return us("Firestore.doc", "path", t), this.uf(), ea$1.mf(X$1.q(t), this,
+            return us("Firestore.doc", "path", t), this.uf(), ea$1.mf(X$1.q(t), this, 
             /* converter= */ null);
         }, t.prototype.collectionGroup = function(t) {
             if (us("Firestore.collectionGroup", "collectionId", t), t.indexOf("/") >= 0) throw new I$1(b.INVALID_ARGUMENT, "Invalid collection ID '" + t + "' passed to function Firestore.collectionGroup(). Collection IDs must not contain '/'.");
@@ -22432,7 +22432,7 @@ var app = (function () {
      */
             function(t) {
                 return new Dn(X$1.U(), t);
-            }(t), this,
+            }(t), this, 
             /* converter= */ null);
         }, t.prototype.runTransaction = function(t) {
             var e = this;
@@ -22441,7 +22441,7 @@ var app = (function () {
             }));
         }, t.prototype.batch = function() {
             return this.uf(), new ta$1(this);
-        },
+        }, 
         // Visible for testing.
         t.prototype.sf = function() {
             return this.df;
@@ -22455,11 +22455,11 @@ var app = (function () {
             return this.Rf.b_([ n.__ ]).then((function(t) {
                 if (!t || 1 !== t.length) return S$1();
                 var r = t[0];
-                if (r instanceof Nn) return new ra$1(e.Af, n.__, null,
-                /* fromCache= */ !1,
+                if (r instanceof Nn) return new ra$1(e.Af, n.__, null, 
+                /* fromCache= */ !1, 
                 /* hasPendingWrites= */ !1, n.f_);
-                if (r instanceof Tn) return new ra$1(e.Af, n.__, r,
-                /* fromCache= */ !1,
+                if (r instanceof Tn) return new ra$1(e.Af, n.__, r, 
+                /* fromCache= */ !1, 
                 /* hasPendingWrites= */ !1, n.f_);
                 throw S$1();
             }));
@@ -22470,8 +22470,8 @@ var app = (function () {
             return this.Rf.set(r.__, o), this;
         }, t.prototype.update = function(t, e, n) {
             for (var r, i, o = [], u = 3; u < arguments.length; u++) o[u - 3] = arguments[u];
-            return "string" == typeof e || e instanceof ls ? (r = la$1("Transaction.update", t, this.Af),
-            i = Os(this.Af.wf, "Transaction.update", r.__, e, n, o)) : (r = la$1("Transaction.update", t, this.Af),
+            return "string" == typeof e || e instanceof ls ? (r = la$1("Transaction.update", t, this.Af), 
+            i = Os(this.Af.wf, "Transaction.update", r.__, e, n, o)) : (r = la$1("Transaction.update", t, this.Af), 
             i = Ps(this.Af.wf, "Transaction.update", r.__, e)), this.Rf.update(r.__, i), this;
         }, t.prototype.delete = function(t) {
             var e = la$1("Transaction.delete", t, this.Af);
@@ -22489,9 +22489,9 @@ var app = (function () {
             return this.Pf = this.Pf.concat(o.d_(r.__, rn.ze())), this;
         }, t.prototype.update = function(t, e, n) {
             for (var r, i, o = [], u = 3; u < arguments.length; u++) o[u - 3] = arguments[u];
-            return this.Vf(), "string" == typeof e || e instanceof ls ? (r = la$1("WriteBatch.update", t, this.Af),
-            i = Os(this.Af.wf, "WriteBatch.update", r.__, e, n, o)) : (r = la$1("WriteBatch.update", t, this.Af),
-            i = Ps(this.Af.wf, "WriteBatch.update", r.__, e)), this.Pf = this.Pf.concat(i.d_(r.__, rn.exists(!0))),
+            return this.Vf(), "string" == typeof e || e instanceof ls ? (r = la$1("WriteBatch.update", t, this.Af), 
+            i = Os(this.Af.wf, "WriteBatch.update", r.__, e, n, o)) : (r = la$1("WriteBatch.update", t, this.Af), 
+            i = Ps(this.Af.wf, "WriteBatch.update", r.__, e)), this.Pf = this.Pf.concat(i.d_(r.__, rn.exists(!0))), 
             this;
         }, t.prototype.delete = function(t) {
             this.Vf();
@@ -22505,7 +22505,7 @@ var app = (function () {
     }(), ea$1 = /** @class */ function(e) {
         function n(t, n, r) {
             var i = this;
-            return (i = e.call(this, n.l_, t, r) || this).__ = t, i.firestore = n, i.f_ = r,
+            return (i = e.call(this, n.l_, t, r) || this).__ = t, i.firestore = n, i.f_ = r, 
             i.lf = i.firestore.uf(), i;
         }
         return __extends(n, e), n.mf = function(t, e, r) {
@@ -22532,7 +22532,7 @@ var app = (function () {
         }), n.prototype.collection = function(t) {
             if (us("DocumentReference.collection", "path", t), !t) throw new I$1(b.INVALID_ARGUMENT, "Must provide a non-empty collection name to collection()");
             var e = X$1.q(t);
-            return new fa$1(this.__.path.child(e), this.firestore,
+            return new fa$1(this.__.path.child(e), this.firestore, 
             /* converter= */ null);
         }, n.prototype.isEqual = function(t) {
             return t instanceof n && this.firestore === t.firestore && this.__.isEqual(t.__) && this.f_ === t.f_;
@@ -22542,7 +22542,7 @@ var app = (function () {
             return this.lf.write(r.d_(this.__, rn.ze()));
         }, n.prototype.update = function(t, e) {
             for (var n, r = [], i = 2; i < arguments.length; i++) r[i - 2] = arguments[i];
-            return n = "string" == typeof t || t instanceof ls ? Os(this.firestore.wf, "DocumentReference.update", this.__, t, e, r) : Ps(this.firestore.wf, "DocumentReference.update", this.__, t),
+            return n = "string" == typeof t || t instanceof ls ? Os(this.firestore.wf, "DocumentReference.update", this.__, t, e, r) : Ps(this.firestore.wf, "DocumentReference.update", this.__, t), 
             this.lf.write(n.d_(this.__, rn.exists(!0)));
         }, n.prototype.delete = function() {
             return this.lf.write([ new gn(this.__, rn.ze()) ]);
@@ -22557,7 +22557,7 @@ var app = (function () {
             };
             if (Ks(i[s])) {
                 var c = i[s];
-                i[s] = null === (t = c.next) || void 0 === t ? void 0 : t.bind(c), i[s + 1] = null === (e = c.error) || void 0 === e ? void 0 : e.bind(c),
+                i[s] = null === (t = c.next) || void 0 === t ? void 0 : t.bind(c), i[s + 1] = null === (e = c.error) || void 0 === e ? void 0 : e.bind(c), 
                 i[s + 2] = null === (n = c.complete) || void 0 === n ? void 0 : n.bind(c);
             }
             var h = {
@@ -22571,14 +22571,14 @@ var app = (function () {
         }, n.prototype.get = function(t) {
             var e = this, n = this.firestore.uf();
             return t && "cache" === t.source ? n.q_(this.__).then((function(t) {
-                return new ra$1(e.firestore, e.__, t,
+                return new ra$1(e.firestore, e.__, t, 
                 /*fromCache=*/ !0, t instanceof Tn && t.Ye, e.f_);
             })) : n.U_(this.__, t).then((function(t) {
                 return e.yf(t);
             }));
         }, n.prototype.withConverter = function(t) {
             return new n(this.__, this.firestore, t);
-        },
+        }, 
         /**
          * Converts a ViewSnapshot that contains the current document to a
          * DocumentSnapshot.
@@ -22610,7 +22610,7 @@ var app = (function () {
                 // We only want to use the converter and create a new DocumentSnapshot
                 // if a converter has been provided.
                 if (this.f_) {
-                    var n = new ia(this.Af, this.__, this.pf, this.bf, this.vf,
+                    var n = new ia(this.Af, this.__, this.pf, this.bf, this.vf, 
                     /* converter= */ null);
                     return this.f_.fromFirestore(n, t);
                 }
@@ -22748,8 +22748,8 @@ var app = (function () {
                             }
                         };
                     } else s = oa$1(r, t, u);
-                } else "in" /* IN */ !== o && "not-in" /* NOT_IN */ !== o && "array-contains-any" /* ARRAY_CONTAINS_ANY */ !== o || ua$1(u, o),
-                s = Ls(n, e, u,
+                } else "in" /* IN */ !== o && "not-in" /* NOT_IN */ !== o && "array-contains-any" /* ARRAY_CONTAINS_ANY */ !== o || ua$1(u, o), 
+                s = Ls(n, e, u, 
                 /* allowArrays= */ "in" /* IN */ === o || "not-in" /* NOT_IN */ === o);
                 var l = Kn.create(i, o, s);
                 return function(t, e) {
@@ -22765,7 +22765,7 @@ var app = (function () {
                             if (e.indexOf(i.op) >= 0) return i.op;
                         }
                         return null;
-                    }(t,
+                    }(t, 
                     /**
      * Given an operator, returns the set of operators that cannot be used with it.
      *
@@ -22799,7 +22799,7 @@ var app = (function () {
                             return [];
                         }
                     }(e.op));
-                    if (null !== i)
+                    if (null !== i) 
                     // Special case when it's a duplicate op to give a slightly clearer error message.
                     throw i === e.op ? new I$1(b.INVALID_ARGUMENT, "Invalid query. You cannot use more than one '" + e.op.toString() + "' filter.") : new I$1(b.INVALID_ARGUMENT, "Invalid query. You cannot use '" + e.op.toString() + "' filters with '" + i.toString() + "' filters.");
                 }(t, l), l;
@@ -22837,29 +22837,29 @@ var app = (function () {
             return hs("Query.limitToLast", e), new t(Un(this.Sf, e, "L" /* Last */), this.firestore, this.f_);
         }, t.prototype.startAt = function(e) {
             for (var n = [], r = 1; r < arguments.length; r++) n[r - 1] = arguments[r];
-            var i = this.Df("Query.startAt", e, n,
+            var i = this.Df("Query.startAt", e, n, 
             /*before=*/ !0);
             return new t(Mn(this.Sf, i), this.firestore, this.f_);
         }, t.prototype.startAfter = function(e) {
             for (var n = [], r = 1; r < arguments.length; r++) n[r - 1] = arguments[r];
-            var i = this.Df("Query.startAfter", e, n,
+            var i = this.Df("Query.startAfter", e, n, 
             /*before=*/ !1);
             return new t(Mn(this.Sf, i), this.firestore, this.f_);
         }, t.prototype.endBefore = function(e) {
             for (var n = [], r = 1; r < arguments.length; r++) n[r - 1] = arguments[r];
-            var i = this.Df("Query.endBefore", e, n,
+            var i = this.Df("Query.endBefore", e, n, 
             /*before=*/ !0);
             return new t(qn(this.Sf, i), this.firestore, this.f_);
         }, t.prototype.endAt = function(e) {
             for (var n = [], r = 1; r < arguments.length; r++) n[r - 1] = arguments[r];
-            var i = this.Df("Query.endAt", e, n,
+            var i = this.Df("Query.endAt", e, n, 
             /*before=*/ !1);
             return new t(qn(this.Sf, i), this.firestore, this.f_);
         }, t.prototype.isEqual = function(e) {
             return e instanceof t && this.firestore === e.firestore && Fn(this.Sf, e.Sf) && this.f_ === e.f_;
         }, t.prototype.withConverter = function(e) {
             return new t(this.Sf, this.firestore, e);
-        },
+        }, 
         /** Helper function to create a bound from a document or fields */ t.prototype.Df = function(t, e, n, r) {
             if (e instanceof ra$1) return function(t, e, n, r, i) {
                 if (!r) throw new I$1(b.NOT_FOUND, "Can't use a DocumentSnapshot that doesn't exist for " + n + "().");
@@ -22910,7 +22910,7 @@ var app = (function () {
             var u = {}, s = 0;
             if ("object" != typeof i[s] || Ks(i[s]) || (u = i[s], s++), Ks(i[s])) {
                 var a = i[s];
-                i[s] = null === (t = a.next) || void 0 === t ? void 0 : t.bind(a), i[s + 1] = null === (e = a.error) || void 0 === e ? void 0 : e.bind(a),
+                i[s] = null === (t = a.next) || void 0 === t ? void 0 : t.bind(a), i[s + 1] = null === (e = a.error) || void 0 === e ? void 0 : e.bind(a), 
                 i[s + 2] = null === (n = a.complete) || void 0 === n ? void 0 : n.bind(a);
             }
             var c = {
@@ -22931,7 +22931,7 @@ var app = (function () {
         }, t;
     }(), ha$1 = /** @class */ function() {
         function t(t, e, n, r) {
-            this.Af = t, this.Cf = e, this.Nf = n, this.f_ = r, this.xf = null, this.Ff = null,
+            this.Af = t, this.Cf = e, this.Nf = n, this.f_ = r, this.xf = null, this.Ff = null, 
             this.metadata = new na$1(n.hasPendingWrites, n.fromCache);
         }
         return Object.defineProperty(t.prototype, "docs", {
@@ -22969,7 +22969,7 @@ var app = (function () {
         }), t.prototype.docChanges = function(t) {
             var e = !(!t || !t.includeMetadataChanges);
             if (e && this.Nf.jt) throw new I$1(b.INVALID_ARGUMENT, "To include metadata changes with your document changes, you must also pass { includeMetadataChanges:true } to onSnapshot().");
-            return this.xf && this.Ff === e || (this.xf =
+            return this.xf && this.Ff === e || (this.xf = 
             /**
          * Calculates the array of DocumentChanges for a given ViewSnapshot.
          *
@@ -23002,7 +23002,7 @@ var app = (function () {
                     return e || 3 /* Metadata */ !== t.type;
                 })).map((function(e) {
                     var r = n(e.doc, t.fromCache, t.Qt.has(e.doc.key)), o = -1, u = -1;
-                    return 0 /* Added */ !== e.type && (o = i.indexOf(e.doc.key), i = i.delete(e.doc.key)),
+                    return 0 /* Added */ !== e.type && (o = i.indexOf(e.doc.key), i = i.delete(e.doc.key)), 
                     1 /* Removed */ !== e.type && (u = (i = i.add(e.doc)).indexOf(e.doc.key)), {
                         type: pa$1(e.type),
                         doc: r,
@@ -23011,7 +23011,7 @@ var app = (function () {
                     };
                 }));
             }(this.Nf, e, this.kf.bind(this)), this.Ff = e), this.xf;
-        },
+        }, 
         /** Check the equality. The call can be very expensive. */ t.prototype.isEqual = function(e) {
             return e instanceof t && this.Af === e.Af && Fn(this.Cf, e.Cf) && this.Nf.isEqual(e.Nf) && this.f_ === e.f_;
         }, t.prototype.kf = function(t, e, n) {
@@ -23032,7 +23032,7 @@ var app = (function () {
         }), Object.defineProperty(n.prototype, "parent", {
             get: function() {
                 var t = this.Sf.path.F();
-                return t.P() ? null : new ea$1(new Z$1(t), this.firestore,
+                return t.P() ? null : new ea$1(new Z$1(t), this.firestore, 
                 /* converter= */ null);
             },
             enumerable: !1,
@@ -23061,7 +23061,7 @@ var app = (function () {
     }(ca$1);
 
     function la$1(t, e, n) {
-        var r = function(t,
+        var r = function(t, 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         e) {
             if (!(t instanceof e)) {
@@ -23134,7 +23134,7 @@ var app = (function () {
             return t.t_ = "FieldValue.delete", new n(t);
         }, n.arrayUnion = function() {
             for (var t = [], e = 0; e < arguments.length; e++) t[e] = arguments[e];
-            var r =
+            var r = 
             /**
      * Returns a special value that can be used with {@link setDoc()} or {@link
      * updateDoc()} that tells the server to union the given elements with any array
@@ -26236,7 +26236,7 @@ var app = (function () {
     	return block;
     }
 
-    // (207:47)
+    // (207:47)                  
     function fallback_block(ctx) {
     	let button;
     	let mounted;
@@ -28282,7 +28282,7 @@ var app = (function () {
           "name": "_fallback",
           "ext": "svelte",
           "badExt": false,
-          "absolutePath": "/Users/nlangle/Sites/amc-network/demo-day-app-nosplit/src/pages/_fallback.svelte",
+          "absolutePath": "/Users/nlangle/Sites/amc-network/phaseII-app/src/pages/_fallback.svelte",
           "importPath": "../../../../src/pages/_fallback.svelte",
           "isLayout": false,
           "isReset": false,
@@ -28309,7 +28309,7 @@ var app = (function () {
           "name": "_layout",
           "ext": "svelte",
           "badExt": false,
-          "absolutePath": "/Users/nlangle/Sites/amc-network/demo-day-app-nosplit/src/pages/_layout.svelte",
+          "absolutePath": "/Users/nlangle/Sites/amc-network/phaseII-app/src/pages/_layout.svelte",
           "importPath": "../../../../src/pages/_layout.svelte",
           "isLayout": true,
           "isReset": false,
@@ -28336,7 +28336,7 @@ var app = (function () {
           "name": "index",
           "ext": "svelte",
           "badExt": false,
-          "absolutePath": "/Users/nlangle/Sites/amc-network/demo-day-app-nosplit/src/pages/index.svelte",
+          "absolutePath": "/Users/nlangle/Sites/amc-network/phaseII-app/src/pages/index.svelte",
           "importPath": "../../../../src/pages/index.svelte",
           "isLayout": false,
           "isReset": false,
@@ -28363,7 +28363,7 @@ var app = (function () {
           "name": "review",
           "ext": "svelte",
           "badExt": false,
-          "absolutePath": "/Users/nlangle/Sites/amc-network/demo-day-app-nosplit/src/pages/review.svelte",
+          "absolutePath": "/Users/nlangle/Sites/amc-network/phaseII-app/src/pages/review.svelte",
           "importPath": "../../../../src/pages/review.svelte",
           "isLayout": false,
           "isReset": false,
