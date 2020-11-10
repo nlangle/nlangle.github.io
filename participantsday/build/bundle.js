@@ -23928,7 +23928,7 @@ var app = (function () {
     		document.getElementById("new-notification").classList.add("ie");
     	}
 
-    	const links = [["./batteryrecycling/participantsday/index", "score table"], ["./batteryrecycling/participantsday/review", "set scores"]]; //["./dashboard", "test"]
+    	const links = [["./index", "score table"], ["./review", "set scores"]]; //["./dashboard", "test"]
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
